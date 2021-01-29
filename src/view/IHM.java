@@ -24,7 +24,7 @@ public class IHM extends JFrame {
         panel2.setBackground(new Color(193, 56, 58));
         panel3.setBackground(new Color(193, 56, 58));
         panel4.setBackground(new Color(193, 56, 58));
-        panel5.setBackground(new Color(222, 222, 222));
+        //panel5.setBackground(new Color(222, 222, 222));
 
         JFrame frame = new JFrame("Royal House") ;
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
