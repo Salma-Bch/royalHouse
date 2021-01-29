@@ -1,10 +1,6 @@
 package view;
 
-import model.BoiteOutil;
-import model.Mobilier;
-
 import java.awt.* ;
-import java.util.ArrayList;
 import javax.swing.* ;
 
 public class IHM extends JFrame {
@@ -24,12 +20,11 @@ public class IHM extends JFrame {
         panel2.setBackground(new Color(193, 56, 58));
         panel3.setBackground(new Color(193, 56, 58));
         panel4.setBackground(new Color(193, 56, 58));
-        //panel5.setBackground(new Color(222, 222, 222));
 
         JFrame frame = new JFrame("Royal House") ;
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setIconImage(new ImageIcon("./ressources/images/logo.png").getImage());
-        frame.setSize(1000,600);
+        frame.setSize(1200,600);
         frame.setLocationRelativeTo(null);
         frame.getContentPane().setBackground(new java.awt.Color(90, 90, 90));
 
@@ -39,7 +34,6 @@ public class IHM extends JFrame {
         frame.add(panel4, BorderLayout.SOUTH);
         frame.add(panel5, BorderLayout.CENTER);
         frame.setVisible(true);
-
     }
 
 }
