@@ -1,23 +1,34 @@
 package view;
 
+import model.BoiteOutil;
+import model.Mobilier;
+
 import java.awt.* ;
+import java.util.ArrayList;
 import javax.swing.* ;
 
 public class IHM extends JFrame {
 
     public static void main(String[] args) {
 
-        JPanel panel1, panel2, panel3, panel4, panel5;
-        panel1 = new JPanel();
+        BoiteOutil boiteOutil =  new BoiteOutil() ;
+        ArrayList<Mobilier[]> mobilier = new ArrayList();
+     //   mobilier.add(new Mobilier("Canapé", "Baroque", "Canapé baroque blanc", 200, 200, false, "./ressources/images/canapeVuDenFace.png"));
+      //  mobilier.add(new Mobilier("Table", "Classique", "Table classique en bois", 200, 200, false, "./ressources/images/tableVuDenFace.png"));
+        JPanel panel2, panel3, panel4, panel5;
+        Toolbox panel1 = new Toolbox();
         panel2 = new JPanel();
         panel3 = new JPanel();
         panel4 = new JPanel();
         panel5 = new JPanel();
 
-        panel1.setBackground(new Color(193, 56, 58));
+        panel1.setPreferredSize(new Dimension(275, 600));
+        panel1.setBorder(BorderFactory.createEmptyBorder(200,20,20,200));
+        panel1.setBackground(new Color(203, 203, 203));
         panel2.setBackground(new Color(193, 56, 58));
         panel3.setBackground(new Color(193, 56, 58));
         panel4.setBackground(new Color(193, 56, 58));
+        panel5.setBackground(new Color(222, 222, 222));
 
         JFrame frame = new JFrame("Royal House") ;
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,13 +37,6 @@ public class IHM extends JFrame {
         frame.setLocationRelativeTo(null);
         frame.getContentPane().setBackground(new java.awt.Color(90, 90, 90));
 
-        JPanel toolbox = new JPanel();
-        toolbox.setSize(100,100);
-        toolbox.setBackground(new Color(193, 37, 192));
-        toolbox.setLayout(new FlowLayout());
-        toolbox.setVisible(false);
-
-        frame.getContentPane().add(toolbox) ;
         frame.add(panel1,BorderLayout.WEST);
         frame.add(panel2, BorderLayout.EAST);
         frame.add(panel3, BorderLayout.NORTH);
@@ -41,6 +45,5 @@ public class IHM extends JFrame {
         frame.setVisible(true);
 
     }
-
 
 }
