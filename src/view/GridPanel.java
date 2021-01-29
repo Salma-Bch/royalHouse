@@ -78,7 +78,7 @@ public class GridPanel extends JPanel implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         int x = e.getX()/50;
         int y = e.getY()/50;
-        position = y*12 + x;
+        position = y*12 + x -27;
         System.out.println(position);
 
     }
