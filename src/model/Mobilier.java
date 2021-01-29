@@ -1,5 +1,6 @@
 package model;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Mobilier {
@@ -10,9 +11,9 @@ public class Mobilier {
     private int largeur;
     private int longueur;
     private boolean superposable;
-    private Image image;
+    private ImageIcon image;
 
-    public Mobilier(String type, String style, String name, int largeur, int longueur, boolean superposable, Image image) {
+    public Mobilier(String type, String style, String name, int largeur, int longueur, boolean superposable, ImageIcon image) {
         this.type = type;
         this.style = style;
         this.name = name;
@@ -46,7 +47,7 @@ public class Mobilier {
         return superposable;
     }
 
-    public Image getImage() {
+    public ImageIcon getImage() {
         return this.image;
     }
 
@@ -74,7 +75,7 @@ public class Mobilier {
         this.superposable = superposable;
     }
 
-    public void setImage(Image image) {
+    public void setImage(ImageIcon image) {
         this.image = image;
     }
 }
