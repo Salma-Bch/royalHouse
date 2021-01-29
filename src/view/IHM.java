@@ -12,7 +12,7 @@ public class IHM extends JFrame {
         panel2 = new JPanel();
         panel3 = new JPanel();
         panel4 = new JPanel();
-        panel5 = new JPanel();
+        GridPanel gridPanel = new GridPanel();
 
         panel1.setBackground(new Color(193, 56, 58));
         panel2.setBackground(new Color(193, 56, 58));
@@ -37,7 +37,7 @@ public class IHM extends JFrame {
         frame.add(panel2, BorderLayout.EAST);
         frame.add(panel3, BorderLayout.NORTH);
         frame.add(panel4, BorderLayout.SOUTH);
-        frame.add(panel5, BorderLayout.CENTER);
+        frame.add(gridPanel, BorderLayout.CENTER);
         frame.setVisible(true);
 
     }
