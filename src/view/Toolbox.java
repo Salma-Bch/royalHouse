@@ -13,7 +13,7 @@ public class Toolbox extends JPanel {
     public static int width = 620;
     public static int length = 300;
     public static Room grid;
-    ArrayList<Mobilier> mobiliers;
+    public static ArrayList<Mobilier> mobiliers;
 
     BoiteOutil boiteOutil =  new BoiteOutil() ;
 

@@ -34,6 +34,11 @@ public class GridPanel extends JPanel implements MouseListener {
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
         drawGrid(g, width, taille,length);
+        for(int i=0; i< Toolbox.mobiliers.size(); i++){
+            Image image = Toolbox.mobiliers.get(i).getImage().getImage().getScaledInstance(50,50,Image.SCALE_DEFAULT);
+            ImageIcon imageIcon = new ImageIcon(image);
+            imageIcon.paintIcon(this, g2, 150 + i*50,100);
+        }
     }
 
     private void drawGrid(Graphics g, int width, int taille ,int length) {
@@ -94,6 +99,12 @@ public class GridPanel extends JPanel implements MouseListener {
         py = 100 + y * 50 - 50;
         g.setColor(new Color(59, 109, 146));
         g.fillRect(px - 49,py - 49,49, 49 );
+
+        for(int i=0; i< Toolbox.mobiliers.size(); i++){
+            Image image = Toolbox.mobiliers.get(i).getImage().getImage().getScaledInstance(50,50,Image.SCALE_DEFAULT);
+            ImageIcon imageIcon = new ImageIcon(image);
+            imageIcon.paintIcon(this, g, 150 + i*50,100);
+        }
 
     }
 
