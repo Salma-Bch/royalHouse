@@ -13,6 +13,7 @@ public class IHM extends JFrame {
         panel3 = new JPanel();
         panel4 = new JPanel();
         GridPanel panel5 = new GridPanel();
+        panel5.setBackground(new Color(189, 189, 189));
 
         panel1.setPreferredSize(new Dimension(275, 600));
         panel1.setBorder(BorderFactory.createEmptyBorder(200,20,20,200));

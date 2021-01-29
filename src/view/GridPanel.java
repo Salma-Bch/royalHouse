@@ -14,6 +14,10 @@ public class GridPanel extends JPanel implements MouseListener {
     public static int length = 600;
     public static Room grid;
     int position = 0;
+    int x = 0;
+    int y = 0;
+    int px =  50 + x * 50;
+    int py = 100 + y * 50 - 50;
 
     public GridPanel() {
       //  setPreferredSize(new Dimension(601, 601));
@@ -21,6 +25,7 @@ public class GridPanel extends JPanel implements MouseListener {
         this.setSize(600, 600);
         grid = new Room();
         this.addMouseListener(this);
+
 
     }
 
@@ -76,10 +81,19 @@ public class GridPanel extends JPanel implements MouseListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        int x = e.getX()/50;
-        int y = e.getY()/50;
+        Graphics g = this.getGraphics();
+        if(px != 0 && py != 0) {
+            g.setColor(new Color(189, 189, 189));
+            g.fillRect(px - 49, py - 49, 49, 49);
+        }
+        x = e.getX()/50;
+        y = e.getY()/50;
         position = y*12 + x -27;
         System.out.println(position);
+        px =  50 + x * 50;
+        py = 100 + y * 50 - 50;
+        g.setColor(new Color(59, 109, 146));
+        g.fillRect(px - 49,py - 49,49, 49 );
 
     }
 
