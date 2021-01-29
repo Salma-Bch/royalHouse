@@ -1,4 +1,9 @@
 package view;
 
-public class IHM {
+import java.awt.* ;
+import javax.swing.* ;
+
+public class IHM extends JFrame {
+
+
 }
