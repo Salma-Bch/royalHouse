@@ -4,22 +4,22 @@ import java.util.ArrayList;
 
 public class BoiteOutil {
 
-    private ArrayList<Mobilier> mobilier;
+    private ArrayList<Mobilier> mobiliers;
 
     public BoiteOutil() {
-        mobilier = new ArrayList<Mobilier>();
+        mobiliers = new ArrayList<Mobilier>();
     }
 
-    public ArrayList<Mobilier> getArrayMobilier() {
-        return this.mobilier;
+    public ArrayList<Mobilier> getMobiliers() {
+        return this.mobiliers;
     }
 
-    public void setMobilier(ArrayList<Mobilier> mobilier) {
-        this.mobilier = mobilier;
+    public void setMobiliers(ArrayList<Mobilier> mobilier) {
+        this.mobiliers = mobilier;
     }
 
     public ArrayList<Mobilier> addMobilier(Mobilier meuble) {
-        mobilier.add(meuble);
-        return mobilier;
+        mobiliers.add(meuble);
+        return mobiliers;
     }
 }
