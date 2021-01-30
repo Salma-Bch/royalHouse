@@ -13,7 +13,7 @@ public class Toolbox extends JPanel {
     public static int width = 620;
     public static int length = 300;
     public static Room grid;
-    ArrayList<Mobilier> mobiliers;
+    public static ArrayList<Mobilier> mobiliers;
 
     BoiteOutil boiteOutil =  new BoiteOutil() ;
 
@@ -23,7 +23,7 @@ public class Toolbox extends JPanel {
         this.setSize(600, 600);
         grid = new Room();
         mobiliers = new ArrayList<Mobilier>();
-        mobiliers.add(new Mobilier("Canapé", "Baroque", "Canapé baroque blanc", 200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
+        mobiliers.add(new Mobilier("Canapé", "Baroque", "Canapé baroque bleu", 200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
         mobiliers.add(new Mobilier("Table", "Classique", "Table classique en bois", 200, 200, false,  new ImageIcon("./ressources/images/tableVuDenFace.png")));
         boiteOutil.setMobiliers(mobiliers);
     }

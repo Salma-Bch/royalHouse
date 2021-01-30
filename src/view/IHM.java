@@ -13,13 +13,13 @@ public class IHM extends JFrame {
         panel3 = new JPanel();
         panel4 = new JPanel();
         GridPanel panel5 = new GridPanel();
+        panel5.setBackground(new Color(189, 189, 189));
 
         panel1.setPreferredSize(new Dimension(275, 600));
         panel1.setBorder(BorderFactory.createEmptyBorder(200,20,20,200));
         panel1.setBackground(new Color(203, 203, 203));
-        panel2.setBackground(new Color(193, 56, 58));
-        panel3.setBackground(new Color(193, 56, 58));
-        panel4.setBackground(new Color(193, 56, 58));
+        panel3.setBackground(new Color(59, 109, 146));
+        panel4.setBackground(new Color(59, 109, 146));
 
         JFrame frame = new JFrame("Royal House") ;
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

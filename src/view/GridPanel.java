@@ -14,6 +14,10 @@ public class GridPanel extends JPanel implements MouseListener {
     public static int length = 600;
     public static Room grid;
     int position = 0;
+    int x = 0;
+    int y = 0;
+    int px =  50 + x * 50;
+    int py = 100 + y * 50 - 50;
 
     public GridPanel() {
       //  setPreferredSize(new Dimension(601, 601));
@@ -22,6 +26,7 @@ public class GridPanel extends JPanel implements MouseListener {
         grid = new Room();
         this.addMouseListener(this);
 
+
     }
 
     @Override
@@ -29,6 +34,11 @@ public class GridPanel extends JPanel implements MouseListener {
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
         drawGrid(g, width, taille,length);
+        for(int i=0; i< Toolbox.mobiliers.size(); i++){
+            Image image = Toolbox.mobiliers.get(i).getImage().getImage().getScaledInstance(50,50,Image.SCALE_DEFAULT);
+            ImageIcon imageIcon = new ImageIcon(image);
+            imageIcon.paintIcon(this, g2, 150 + i*50,100);
+        }
     }
 
     private void drawGrid(Graphics g, int width, int taille ,int length) {
@@ -76,10 +86,25 @@ public class GridPanel extends JPanel implements MouseListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        int x = e.getX()/50;
-        int y = e.getY()/50;
+        Graphics g = this.getGraphics();
+        if(px != 0 && py != 0) {
+            g.setColor(new Color(189, 189, 189));
+            g.fillRect(px - 49, py - 49, 49, 49);
+        }
+        x = e.getX()/50;
+        y = e.getY()/50;
         position = y*12 + x -27;
         System.out.println(position);
+        px =  50 + x * 50;
+        py = 100 + y * 50 - 50;
+        g.setColor(new Color(59, 109, 146));
+        g.fillRect(px - 49,py - 49,49, 49 );
+
+        for(int i=0; i< Toolbox.mobiliers.size(); i++){
+            Image image = Toolbox.mobiliers.get(i).getImage().getImage().getScaledInstance(50,50,Image.SCALE_DEFAULT);
+            ImageIcon imageIcon = new ImageIcon(image);
+            imageIcon.paintIcon(this, g, 150 + i*50,100);
+        }
 
     }
 
