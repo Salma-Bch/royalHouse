@@ -17,7 +17,7 @@ public class ToolboxPanel extends JPanel {
 
     public static ToolboxConstructor toolboxConstructor;
     public static ArrayList<Furniture> furnitures;
-
+    //changement du toolbook
     model.Toolbox boiteOutil =  new model.Toolbox() ;
 
 

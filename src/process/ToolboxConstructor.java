@@ -9,6 +9,7 @@ public class ToolboxConstructor {
     public ToolboxConstructor( int columnNumber, int rowNumber){
        gridConstructor = new GridConstructor(columnNumber,rowNumber);
     }
+    //constructeur toolbok
     public ToolboxConstructor(){
 
     }
