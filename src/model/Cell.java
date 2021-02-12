@@ -6,12 +6,22 @@ public class Cell {
     private int y;
     private int width;
     private int height;
+    private Furniture furniture;
 
-    public Cell(int x, int y, int width, int height) {
+    public Cell(int x, int y, int width, int height, Furniture furniture) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.furniture = furniture;
+    }
+
+    public Furniture getFurniture() {
+        return furniture;
+    }
+
+    public void setFurniture(Furniture furniture) {
+        this.furniture = furniture;
     }
 
     public int getX() {
