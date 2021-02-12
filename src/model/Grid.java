@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Grid {
 
+    private ArrayList<Cell> cells;
     private int rowNumber;
     private int columnNumber;
 
@@ -11,7 +12,7 @@ public class Grid {
     public Grid(int rowNumber, int columnNumber) {
         this.rowNumber = rowNumber;
         this.columnNumber = columnNumber;
-        ArrayList<Cell> cells = new ArrayList<Cell>();
+        cells = new ArrayList<Cell>();
     }
 
     public int getColumnNumber() {

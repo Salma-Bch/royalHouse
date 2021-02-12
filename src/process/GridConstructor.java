@@ -18,7 +18,7 @@ public class GridConstructor {
     public void createGrid(int x, int y) {
         for(int i = 0; i<x; i++) {
             for(int j = 0; j<y; j++) {
-                Cell cell = new Cell(x, y, widthCell, heightCell, null);
+                Cell cell = new Cell(widthCell, heightCell, null);
                 cells.add(cell);
             }
         }
