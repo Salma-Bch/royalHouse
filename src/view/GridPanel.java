@@ -24,16 +24,18 @@ public class GridPanel extends JPanel implements MouseListener {
     Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 
 
-    public GridPanel() {
+    public GridPanel(int numberCellX, int numberCellY) {
       //  setPreferredSize(new Dimension(601, 601));
         super();
         this.setSize(600, 600);
         grid = new GridConstructor(6, 6);
         this.addMouseListener(this);
-        height = (int)dimension.getHeight()-100;
-        sizeCell = height/6;
-        width  = sizeCell*6;
-        height = sizeCell*6;
+        height = (int)dimension.getHeight();
+        width = (int)dimension.getWidth();
+
+        sizeCell = height/numberCellX;
+        width  = sizeCell*numberCellX;
+        height = sizeCell*numberCellY;
     }
 
     @Override
