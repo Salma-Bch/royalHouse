@@ -4,15 +4,14 @@ import java.util.ArrayList;
 
 public class Grid {
 
-    private ArrayList<Cell> cells;
     private int rowNumber;
     private int columnNumber;
 
 
-    public Grid(ArrayList<Cell> cells, int rowNumber, int columnNumber) {
-        this.cells = cells;
+    public Grid(int rowNumber, int columnNumber) {
         this.rowNumber = rowNumber;
         this.columnNumber = columnNumber;
+        ArrayList<Cell> cells = new ArrayList<Cell>();
     }
 
     public int getColumnNumber() {
