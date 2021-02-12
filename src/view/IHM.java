@@ -8,7 +8,7 @@ public class IHM extends JFrame {
     public static void main(String[] args) {
 
         JPanel panel2, panel3, panel4;
-        Toolbox panel1 = new Toolbox();
+        ToolboxPanel panel1 = new ToolboxPanel();
         panel2 = new JPanel();
         panel3 = new JPanel();
         panel4 = new JPanel();

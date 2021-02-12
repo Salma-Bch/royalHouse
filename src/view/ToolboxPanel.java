@@ -2,25 +2,30 @@ package view;
 
 import model.Furniture;
 import model.Grid;
+import process.ToolboxConstructor;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Toolbox extends JPanel {
+public class ToolboxPanel extends JPanel {
     public static int taille = 91 ;
     public static int width = 620;
     public static int length = 300;
-    public static Grid grid;
+    private JLabel mobilier = new JLabel("Mobilier ");
+    JComboBox meubles = new JComboBox();
+
+    public static ToolboxConstructor toolboxConstructor;
     public static ArrayList<Furniture> furnitures;
 
     model.Toolbox boiteOutil =  new model.Toolbox() ;
 
 
-    public Toolbox() {
+    public ToolboxPanel() {
         //  setPreferredSize(new Dimension(601, 601));
+
         this.setSize(600, 600);
-        grid = new Grid();
+        toolboxConstructor = new ToolboxConstructor(8,8);
         furnitures = new ArrayList<Furniture>();
         furnitures.add(new Furniture("Canapé", "Baroque", "Canapé baroque bleu", 200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
         furnitures.add(new Furniture("Table", "Classique", "Table classique en bois", 200, 200, false,  new ImageIcon("./ressources/images/tableVuDenFace.png")));
@@ -37,6 +42,7 @@ public class Toolbox extends JPanel {
             ImageIcon imageIcon = new ImageIcon(image);
             imageIcon.paintIcon(this, g2, i*91,1);
         }
+
     }
 
     private void drawGrid(Graphics g, int width, int taille ,int length) {
