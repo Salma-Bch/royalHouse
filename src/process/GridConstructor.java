@@ -11,16 +11,17 @@ public class GridConstructor {
 
     ArrayList<Cell> cells = new ArrayList<Cell>();
 
-    public GridConstructor() {
-
+    public GridConstructor(int columnNumber, int rowNumber) {
+        Grid grid = createGrid(columnNumber, rowNumber);
     }
 
-    public void createGrid(int x, int y) {
-        for(int i = 0; i<x; i++) {
-            for(int j = 0; j<y; j++) {
+    public Grid createGrid(int columnNumber, int rowNumber) {
+        Grid grid = new Grid(columnNumber, rowNumber);
+        for(int i = 0; i<columnNumber*rowNumber; i++) {
                 Cell cell = new Cell(widthCell, heightCell, null);
                 cells.add(cell);
-            }
         }
+        grid.setCells(cells);
+        return grid;
     }
 }
