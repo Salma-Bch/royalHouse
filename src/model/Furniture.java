@@ -1,25 +1,24 @@
 package model;
 
 import javax.swing.*;
-import java.awt.*;
 
-public class Mobilier {
+public class Furniture {
 
     private String type;
     private String style;
     private String name;
-    private int largeur;
-    private int longueur;
-    private boolean superposable;
+    private int width;
+    private int lenght;
+    private boolean stackable;
     private ImageIcon image;
 
-    public Mobilier(String type, String style, String name, int largeur, int longueur, boolean superposable, ImageIcon image) {
+    public Furniture(String type, String style, String name, int width, int lenght, boolean stackable, ImageIcon image) {
         this.type = type;
         this.style = style;
         this.name = name;
-        this.largeur = largeur;
-        this.longueur = longueur;
-        this.superposable = superposable;
+        this.width = width;
+        this.lenght = lenght;
+        this.stackable = stackable;
         this.image = image;
     }
 
@@ -35,16 +34,16 @@ public class Mobilier {
         return name;
     }
 
-    public int getLargeur() {
-        return largeur;
+    public int getWidth() {
+        return width;
     }
 
-    public int getLongueur() {
-        return longueur;
+    public int getLenght() {
+        return lenght;
     }
 
-    public boolean isSuperposable() {
-        return superposable;
+    public boolean isStackable() {
+        return stackable;
     }
 
     public ImageIcon getImage() {
@@ -63,16 +62,16 @@ public class Mobilier {
         this.name = name;
     }
 
-    public void setLargeur(int largeur) {
-        this.largeur = largeur;
+    public void setWidth(int width) {
+        this.width = width;
     }
 
-    public void setLongueur(int longueur) {
-        this.longueur = longueur;
+    public void setLenght(int lenght) {
+        this.lenght = lenght;
     }
 
-    public void setSuperposable(boolean superposable) {
-        this.superposable = superposable;
+    public void setStackable(boolean stackable) {
+        this.stackable = stackable;
     }
 
     public void setImage(ImageIcon image) {

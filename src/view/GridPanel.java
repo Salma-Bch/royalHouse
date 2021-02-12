@@ -1,6 +1,6 @@
 package view;
 
-import model.Room;
+import model.Grid;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +12,7 @@ public class GridPanel extends JPanel implements MouseListener {
     public static int taille = 50 ;
     public static int width = 600;
     public static int length = 600;
-    public static Room grid;
+    public static Grid grid;
     int position = 0;
     int x = 0;
     int y = 0;
@@ -23,7 +23,7 @@ public class GridPanel extends JPanel implements MouseListener {
       //  setPreferredSize(new Dimension(601, 601));
         super();
         this.setSize(600, 600);
-        grid = new Room();
+        grid = new Grid();
         this.addMouseListener(this);
 
 
@@ -34,8 +34,8 @@ public class GridPanel extends JPanel implements MouseListener {
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
         drawGrid(g, width, taille,length);
-        for(int i=0; i< Toolbox.mobiliers.size(); i++){
-            Image image = Toolbox.mobiliers.get(i).getImage().getImage().getScaledInstance(50,50,Image.SCALE_DEFAULT);
+        for(int i = 0; i< Toolbox.furnitures.size(); i++){
+            Image image = Toolbox.furnitures.get(i).getImage().getImage().getScaledInstance(50,50,Image.SCALE_DEFAULT);
             ImageIcon imageIcon = new ImageIcon(image);
             imageIcon.paintIcon(this, g2, 150 + i*50,100);
         }
@@ -100,8 +100,8 @@ public class GridPanel extends JPanel implements MouseListener {
         g.setColor(new Color(59, 109, 146));
         g.fillRect(px - 49,py - 49,49, 49 );
 
-        for(int i=0; i< Toolbox.mobiliers.size(); i++){
-            Image image = Toolbox.mobiliers.get(i).getImage().getImage().getScaledInstance(50,50,Image.SCALE_DEFAULT);
+        for(int i = 0; i< Toolbox.furnitures.size(); i++){
+            Image image = Toolbox.furnitures.get(i).getImage().getImage().getScaledInstance(50,50,Image.SCALE_DEFAULT);
             ImageIcon imageIcon = new ImageIcon(image);
             imageIcon.paintIcon(this, g, 150 + i*50,100);
         }
