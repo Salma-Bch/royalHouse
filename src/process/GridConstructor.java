@@ -8,11 +8,14 @@ import java.util.ArrayList;
 public class GridConstructor {
     public static final int heightCell = 50;
     public static final int widthCell = 50;
-
+    public int columnNumber, rowNumber;
     ArrayList<Cell> cells = new ArrayList<Cell>();
+
 
     public GridConstructor(int columnNumber, int rowNumber) {
         Grid grid = createGrid(columnNumber, rowNumber);
+        this.columnNumber=columnNumber;
+        this.rowNumber=rowNumber;
     }
 
     public Grid createGrid(int columnNumber, int rowNumber) {
@@ -23,5 +26,12 @@ public class GridConstructor {
         }
         grid.setCells(cells);
         return grid;
+    }
+
+    public int getRowNumber() {
+        return rowNumber;
+    }
+    public int getColumnNumber(){
+        return columnNumber;
     }
 }

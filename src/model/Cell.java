@@ -2,8 +2,8 @@ package model;
 
 public class Cell {
 
-    private int width;
-    private int height;
+    public static int width;
+    public static int height;
     private Furniture furniture;
 
     public Cell(int width, int height, Furniture furniture) {
