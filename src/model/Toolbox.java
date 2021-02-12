@@ -5,14 +5,14 @@ import java.util.ArrayList;
 public class Toolbox {
 
     private ArrayList<Furniture> furnitures;
-    private ArrayList<Cell> cells;
+    private Grid grid;
 
     public Toolbox() {
         furnitures = new ArrayList<Furniture>();
     }
 
-    public Toolbox(ArrayList<Cell> cells, ArrayList<Furniture> furnitures) {
-        this.cells = cells;
+    public Toolbox(Grid grid, ArrayList<Furniture> furnitures) {
+        this.grid = grid;
         this.furnitures = furnitures;
     }
 
@@ -29,11 +29,11 @@ public class Toolbox {
         return furnitures;
     }
 
-    public ArrayList<Cell> getCells() {
-        return cells;
+    public Grid getGrid() {
+        return grid;
     }
 
-    public void setCells(ArrayList<Cell> cells) {
-        this.cells = cells;
+    public void setGrid(Grid grid) {
+        this.grid = grid;
     }
 }
