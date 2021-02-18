@@ -52,6 +52,10 @@ public class GridHandler {
                 200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
         grid.getCells().get(2).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
                 200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
+        grid.getCells().get(24).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
+                200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
+        grid.getCells().get(47).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
+                200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
         return grid;
     }
 

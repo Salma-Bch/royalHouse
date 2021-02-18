@@ -39,8 +39,7 @@ public class GridPanel extends JPanel implements MouseListener {
         if(cell.getFurniture() != null){
             Image image = cell.getFurniture().getImage().getImage().getScaledInstance(cellSize,cellSize,Image.SCALE_DEFAULT);
             ImageIcon imageIcon = new ImageIcon(image);
-            imageIcon.paintIcon(this, g, (position-columnNumber*(position/cellSize))*cellSize,position/columnNumber*cellSize);
-            System.out.println(position);
+            imageIcon.paintIcon(this, g, (((position-(columnNumber*(position/columnNumber)))))*cellSize,(position/columnNumber)*cellSize);
         }
     }
 
@@ -84,7 +83,7 @@ public class GridPanel extends JPanel implements MouseListener {
         if(e.getX()<width && e.getY()<height) {
             int x = e.getX() / GridHandler.sizeCell;
             int y = e.getY() / GridHandler.sizeCell;
-            int position = 8 * y + x;
+            int position = grid.getColumnNumber() * y + x;
             gridHandler.setSelectedCell(position);
             this.repaint();
         }
