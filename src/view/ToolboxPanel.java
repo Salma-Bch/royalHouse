@@ -25,7 +25,7 @@ public class ToolboxPanel extends JPanel {
         //  setPreferredSize(new Dimension(601, 601));
 
         this.setSize(600, 600);
-        toolboxConstructor = new ToolboxConstructor(8,8);
+        toolboxConstructor = new ToolboxConstructor(4,4);
         furnitures = new ArrayList<Furniture>();
         furnitures.add(new Furniture("Canapé", "Baroque", "Canapé baroque bleu", 200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
         furnitures.add(new Furniture("Table", "Classique", "Table classique en bois", 200, 200, false,  new ImageIcon("./ressources/images/tableVuDenFace.png")));
