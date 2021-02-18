@@ -4,22 +4,12 @@ import java.awt.* ;
 import javax.swing.* ;
 
 public class IHM extends JFrame {
+    private ToolboxPanel toolboxPan;
+    private GridPanel gridPan;
 
-    public static void main(String[] args) {
-
-        JPanel panel2, panel3, panel4;
-        ToolboxPanel panel1 = new ToolboxPanel();
-        panel2 = new JPanel();
-        panel3 = new JPanel();
-        panel4 = new JPanel();
-        GridPanel panel5 = new GridPanel();
-        panel5.setBackground(new Color(189, 189, 189));
-
-        panel1.setPreferredSize(new Dimension(275, 600));
-        panel1.setBorder(BorderFactory.createEmptyBorder(200,20,20,200));
-        panel1.setBackground(new Color(203, 203, 203));
-        panel3.setBackground(new Color(59, 109, 146));
-        panel4.setBackground(new Color(59, 109, 146));
+    public IHM(){
+        toolboxPan = initToolboxPan();
+        gridPan = initGridPan();
 
         JFrame frame = new JFrame("Royal House") ;
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,12 +18,26 @@ public class IHM extends JFrame {
         frame.setLocationRelativeTo(null);
         frame.getContentPane().setBackground(new java.awt.Color(90, 90, 90));
 
-        frame.add(panel1,BorderLayout.WEST);
-        frame.add(panel2, BorderLayout.EAST);
-        frame.add(panel3, BorderLayout.NORTH);
-        frame.add(panel4, BorderLayout.SOUTH);
-        frame.add(panel5, BorderLayout.CENTER);
+        frame.add(toolboxPan,BorderLayout.WEST);
+        frame.add(gridPan, BorderLayout.CENTER);
         frame.setVisible(true);
+    }
+
+    public ToolboxPanel initToolboxPan(){
+        ToolboxPanel toolboxPan = new ToolboxPanel();
+        toolboxPan.setPreferredSize(new Dimension(275, 600));
+        toolboxPan.setBorder(BorderFactory.createEmptyBorder(200,20,20,200));
+        toolboxPan.setBackground(new Color(203, 203, 203));
+        return toolboxPan;
+    }
+
+    public GridPanel initGridPan(){
+        GridPanel gridPan = new GridPanel();
+        gridPan.setBackground(new Color(189, 189, 189));
+        return gridPan;
+    }
+    public static void main(String[] args) {
+        new IHM();
     }
 
 }
