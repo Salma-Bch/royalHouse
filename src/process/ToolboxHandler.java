@@ -4,11 +4,11 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class ToolboxHandler {
-    private GridConstructor gridConstructor;
+    private GridHandler gridHandler;
 
 
     public ToolboxHandler(int columnNumber, int rowNumber){
-       gridConstructor = new GridConstructor(columnNumber,rowNumber);
+       gridHandler = new GridHandler(columnNumber,rowNumber);
     }
     public ToolboxHandler(){
 
