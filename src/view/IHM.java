@@ -27,7 +27,7 @@ public class IHM extends JFrame {
         ToolboxPanel toolboxPan = new ToolboxPanel();
         toolboxPan.setPreferredSize(new Dimension(275, 600));
         toolboxPan.setBorder(BorderFactory.createEmptyBorder(20,170,20,200));
-        toolboxPan.setBackground(new Color(203, 203, 203));
+        //toolboxPan.setBackground(new Color(203, 203, 203));
         return toolboxPan;
     }
 

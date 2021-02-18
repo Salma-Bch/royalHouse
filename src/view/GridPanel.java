@@ -19,6 +19,10 @@ public class GridPanel extends JPanel implements MouseListener {
 
     public GridPanel(int widthPan, int heightPan, int columnNumber, int rowNumber) {
         super();
+        //this.setMinimumSize(new Dimension(200,200));
+      /*  this.add(new JLabel("ggggbgtbrbfvfvggg"));
+        this.add(new JLabel("ggggbgtbrbfvfvggg"));
+        this.add(new JLabel("ggggbgtbrbfvfvggg"));*/
         this.setSize(widthPan, heightPan);
         gridHandler = new GridHandler(columnNumber,rowNumber);
         grid = gridHandler.getGrid();

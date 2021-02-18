@@ -7,9 +7,7 @@ public class ToolboxHandler {
     private GridHandler gridHandler;
 
 
-    public ToolboxHandler(int columnNumber, int rowNumber){
-       gridHandler = new GridHandler(columnNumber,rowNumber);
-    }
+
     public ToolboxHandler(){
 
     }

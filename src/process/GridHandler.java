@@ -11,16 +11,15 @@ import java.util.ArrayList;
 public class GridHandler {
     private static final Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
     public static final int sizeCell = (int)(dimension.getHeight()-100)/6;
-    private int columnNumber, rowNumber, position;
+    private int columnNumber, rowNumber;
     private Grid grid;
     private int selectedCell;
 
 
     public GridHandler(int columnNumber, int rowNumber) {
-        grid = createGrid(columnNumber, rowNumber);
+        grid = initGrid(columnNumber, rowNumber);
         this.columnNumber=columnNumber;
         this.rowNumber=rowNumber;
-        this.position = -1;
         this.selectedCell = -1;
     }
 
@@ -36,7 +35,7 @@ public class GridHandler {
         return this.grid;
     }
 
-    public Grid createGrid(int columnNumber, int rowNumber) {
+    public Grid initGrid(int columnNumber, int rowNumber) {
         Grid grid = new Grid(columnNumber, rowNumber);
         ArrayList<Cell> cells = new ArrayList<Cell>();
         for(int i = 0; i<columnNumber*rowNumber; i++) {
@@ -59,7 +58,6 @@ public class GridHandler {
         return grid;
     }
 
-    public int getPosition(){ return this.position;}
     public int getRowNumber() {
         return this.rowNumber;
     }
