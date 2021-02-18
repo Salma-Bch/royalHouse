@@ -14,9 +14,11 @@ public class ToolboxPanel extends JPanel {
     }
     public void build(){
         //this.setSize(600, 600);
+        GridPanel gridPanel = new GridPanel(600,600,5,5);
         ToolboxHandler toolboxHandler = new ToolboxHandler(4,4);
         toolboxHandler.initComboBox(comboBoxMeuble,comboBoxStyles);
         this.add(this.getJpanelComboboxs());
+        this.add(gridPanel);
     }
 
     @Override

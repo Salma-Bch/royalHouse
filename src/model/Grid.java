@@ -8,7 +8,6 @@ public class Grid {
     private int rowNumber;
     private int columnNumber;
 
-
     public Grid(int rowNumber, int columnNumber) {
         this.rowNumber = rowNumber;
         this.columnNumber = columnNumber;

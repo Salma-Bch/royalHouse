@@ -1,8 +1,10 @@
 package process;
 
 import model.Cell;
+import model.Furniture;
 import model.Grid;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -42,6 +44,14 @@ public class GridHandler {
                 cells.add(cell);
         }
         grid.setCells(cells);
+        grid.getCells().get(7).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
+                200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
+        grid.getCells().get(3).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
+                200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
+        grid.getCells().get(9).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
+                200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
+        grid.getCells().get(2).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
+                200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
         return grid;
     }
 
