@@ -10,6 +10,9 @@ import java.awt.event.MouseListener;
 
 public class GridPanel extends JPanel implements MouseListener {
 
+    public static final int row = 6;
+    public static final int column = 8;
+
     public static Grid grid;
     int position = 0;
     int x = 0;
@@ -18,8 +21,10 @@ public class GridPanel extends JPanel implements MouseListener {
     int py = 100 + y * 50 - 50;
     Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
     int height = (int)dimension.getHeight()-100;
-    int width  = (int)dimension.getWidth()-400;
+    int width = (int)dimension.getHeight()-400;
     int sizeCell = height/6;
+
+
 
     public GridPanel() {
       //  setPreferredSize(new Dimension(601, 601));
@@ -28,25 +33,24 @@ public class GridPanel extends JPanel implements MouseListener {
         //grid = new Grid();
         this.addMouseListener(this);
 
-
+        height = sizeCell * row;
+        width = sizeCell * column;
     }
 
     @Override
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
-        drawGrid(g, width,height, sizeCell, 8, 6);
+        drawGrid(g, width,height, sizeCell);
         for(int i = 0; i< ToolboxPanel.furnitures.size(); i++){
-            Image image = ToolboxPanel.furnitures.get(i).getImage().getImage().getScaledInstance(50,50,Image.SCALE_DEFAULT);
+            Image image = ToolboxPanel.furnitures.get(i).getImage().getImage().getScaledInstance(sizeCell,sizeCell,Image.SCALE_DEFAULT);
             ImageIcon imageIcon = new ImageIcon(image);
-            imageIcon.paintIcon(this, g2, 150 + i*50,100);
+            imageIcon.paintIcon(this, g2, i*sizeCell,100);
         }
     }
 
-    private void drawGrid(Graphics g, int width ,int height, int sizeCell, int column, int row) {
+    private void drawGrid(Graphics g, int width ,int height, int sizeCell) {
 
-        height = sizeCell * row;
-        width = sizeCell * column;
         g.setColor(Color.BLACK);
 
         g.drawLine(0, 0, width, 0);
@@ -93,13 +97,14 @@ public class GridPanel extends JPanel implements MouseListener {
             g.setColor(new Color(189, 189, 189));
             g.fillRect(px, py, 0, 0);
         }
+        if(e.getX()<width && e.getY()<height) {
+            x = e.getX() / sizeCell;
+            y = e.getY() / sizeCell;
+            System.out.println("x = " + x + " y = " + y);
 
-        //x = e.getX()/sizeCell;
-        //y = e.getY()/sizeCell;
-        //System.out.println("x = " + x  + " y = " + y);
-
-        position = 7*y + x;
-        System.out.println(position);
+            position = 8 * y + x;
+            System.out.println(position);
+        }
     }
 
     @Override
