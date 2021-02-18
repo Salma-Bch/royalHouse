@@ -26,7 +26,7 @@ public class ToolboxPanel extends JPanel {
 
     public JPanel getJpanelComboboxs(){
         JPanel jPanel = new JPanel();
-        jPanel.setBackground(Color.BLUE);
+        //jPanel.setBackground(Color.BLUE);
         jPanel.add(comboBoxMeuble);
         jPanel.add(comboBoxStyles);
         return jPanel;
