@@ -1,9 +1,10 @@
 package view;
 
 import java.awt.* ;
+import java.io.Serializable;
 import javax.swing.* ;
 
-public class IHM extends JFrame {
+public class IHM extends JFrame implements Serializable {
     private ToolboxPanel toolboxPan;
     private GridPanel gridPan;
 
