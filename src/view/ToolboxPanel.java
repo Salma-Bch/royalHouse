@@ -1,28 +1,31 @@
 package view;
 
+import model.Furniture;
 import process.ToolboxHandler;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class ToolboxPanel extends JPanel {
     private JComboBox comboBoxMeuble = new JComboBox();
     private JComboBox comboBoxStyles = new JComboBox();
-    public ToolboxHandler toolboxHandler;
+    public ToolboxHandler toolboxHandler = new ToolboxHandler();
+    public GridPanel gridPanel;
 
     public ToolboxPanel() {
         super();
         this.setBackground(Color.BLUE);
         JPanel mainPan = new JPanel();
-        ToolboxHandler toolboxHandler = new ToolboxHandler();
+        //ToolboxHandler toolboxHandler = new ToolboxHandler();
         toolboxHandler.initComboBox(comboBoxMeuble,comboBoxStyles);
-        GridPanel gridPanel = new GridPanel(600,600,5,2);
+        gridPanel = new GridPanel(600,600,5,2);
         gridPanel.setBackground(Color.BLACK);
         this.add(this.getJpanelComboboxs());
         this.add(gridPanel, BorderLayout.CENTER);
         System.out.println(this.getSize().getWidth());
         gridPanel.setPreferredSize(new Dimension(250,600));
 
-
+        gridPanel = drawFurniture();
         //this.setSize(300,200);
         //this.setLayout(new BorderLayout());
         // build();
@@ -70,5 +73,15 @@ public class ToolboxPanel extends JPanel {
         jPanel.add(comboBoxMeuble);
         jPanel.add(comboBoxStyles);
         return jPanel;
+    }
+
+    public GridPanel drawFurniture() {
+        ArrayList<Furniture> furnitures = toolboxHandler.initFurniture();
+
+        for(int i = 0; i<furnitures.size(); i++) {
+            gridPanel.getGridHandler().addFurniture(i, furnitures.get(i));
+        }
+
+        return gridPanel;
     }
 }

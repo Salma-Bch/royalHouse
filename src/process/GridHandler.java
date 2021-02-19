@@ -43,18 +43,25 @@ public class GridHandler {
                 cells.add(cell);
         }
         grid.setCells(cells);
-        grid.getCells().get(7).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
+        /*grid.getCells().get(7).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
                 200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
         grid.getCells().get(3).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
                 200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
         grid.getCells().get(9).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
                 200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
         grid.getCells().get(2).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
-                200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
+                200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));*/
+
+
         //grid.getCells().get(24).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
         //        200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
        // grid.getCells().get(47).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
        //         200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
+        return grid;
+    }
+
+    public Grid addFurniture(int position, Furniture furniture) {
+        grid.getCells().get(position).setFurniture(furniture);
         return grid;
     }
 

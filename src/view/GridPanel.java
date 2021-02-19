@@ -155,4 +155,12 @@ public class GridPanel extends JPanel implements MouseListener {
     public void mouseExited(MouseEvent e) {
 
     }
+
+    public GridHandler getGridHandler() {
+        return gridHandler;
+    }
+
+    public void setGridHandler(GridHandler gridHandler) {
+        this.gridHandler = gridHandler;
+    }
 }
