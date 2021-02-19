@@ -63,7 +63,7 @@ public class GridPanel extends JPanel implements MouseListener {
             , DnDConstants.ACTION_COPY,dragGestureHandler);
         }*/
         dropHandler = new DropHandler();
-        dropTarget = new DropTarget(this, DnDConstants.ACTION_MOVE, dropHandler, true);
+        dropTarget = new DropTarget(this, DnDConstants.ACTION_COPY, dropHandler, true);
 
     }
 
@@ -81,8 +81,8 @@ public class GridPanel extends JPanel implements MouseListener {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        //drawCells(g);
-        //drawGridBorder(g, width,height, GridHandler.sizeCell);
+        drawCells(g);
+        drawGridBorder(g, width,height, GridHandler.sizeCell);
     }
 
     private void drawFurniture(Graphics g, Cell cell, int cellSize, int position, int columnNumber){
