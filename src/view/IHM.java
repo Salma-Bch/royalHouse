@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.swing.* ;
 
 public class IHM extends JFrame implements Serializable {
-    private ToolboxPanel toolboxPan;
+    public static ToolboxPanel toolboxPan;
     public static GridPanel gridPan;
 
     public IHM(){

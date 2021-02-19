@@ -15,7 +15,10 @@ public class ToolboxPanel extends JPanel implements ActionListener {
     private JButton ajouter = new JButton("Ajouter");
     public ToolboxHandler toolboxHandler = new ToolboxHandler();
     public GridPanel gridPanel;
-    public int i = 0;
+    public int nbCell = 0;
+
+
+    private ArrayList<Furniture> emplacement = new ArrayList<Furniture>();
 
     public ToolboxPanel() {
         super();
@@ -90,10 +93,15 @@ public class ToolboxPanel extends JPanel implements ActionListener {
     public GridPanel drawFurniture(String type, String style) {
         ArrayList<Furniture> furnitures = toolboxHandler.initFurniture();
 
+            emplacement = new ArrayList<Furniture>();
+
         int nbElt = 0;
+        gridPanel.getGridHandler().removeFurnitures();
         for(int i = 0; i<furnitures.size(); i++) {
             if(furnitures.get(i).getStyle().equals(style) && furnitures.get(i).getType().equals(type)) {
+
                 gridPanel.getGridHandler().addFurniture(nbElt, furnitures.get(i));
+                emplacement.add(furnitures.get(i));
                 nbElt++;
             }
         }
@@ -106,6 +114,7 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         Object Button = e.getSource();
         if (Button == valider) {
             //gridPanel = drawFurniture("Canape", "Baroque");
+
             gridPanel = drawFurniture((String) comboBoxMeuble.getSelectedItem(), (String) comboBoxStyles.getSelectedItem());
             gridPanel.revalidate();
             gridPanel.repaint();
@@ -114,11 +123,16 @@ public class ToolboxPanel extends JPanel implements ActionListener {
             //System.out.println((String)comboBoxStyles.getSelectedItem());        }
         }
         if(Button == ajouter){
-            if(i<49) {
-                ArrayList<Furniture> furnitures = toolboxHandler.initFurniture();
-                IHM.gridPan.drawF(i, furnitures.get(1));
+            if(nbCell<49 && IHM.toolboxPan.gridPanel.gridHandler.getSelectedCell() <emplacement.size()) {
+                //ArrayList<Furniture> furnitures = toolboxHandler.initFurniture();
+                IHM.gridPan.drawF(nbCell, emplacement.get(IHM.toolboxPan.gridPanel.gridHandler.getSelectedCell()));
+                IHM.toolboxPan.gridPanel.gridHandler.setSelectedCell(-1);
                 IHM.gridPan.repaint();
-                i++;
+                nbCell++;
+
+                //System.out.println(IHM.toolboxPan.gridPanel.gridHandler.getSelectedCell());
+
+
             }
         }
     }

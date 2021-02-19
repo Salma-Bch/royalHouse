@@ -65,6 +65,12 @@ public class GridHandler {
         return grid;
     }
 
+    public void removeFurnitures(){
+        for(int i = 0; i< grid.getCells().size(); i++){
+            grid.getCells().get(i).setFurniture(null);
+        }
+    }
+
     public int getRowNumber() {
         return this.rowNumber;
     }
