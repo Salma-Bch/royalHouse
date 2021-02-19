@@ -31,10 +31,10 @@ public class GridPanel extends JPanel implements MouseListener {
         super();
 
         // FOR DRAG AND DROP
-        dragGestureHandler = new DragGestureHandler(this);
-        dgr = DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_COPY, dragGestureHandler);
         dropHandler = new DropHandler();
         dropTarget = new DropTarget(this,DnDConstants.ACTION_COPY,dropHandler,true);
+        dragGestureHandler = new DragGestureHandler(this);
+        dgr = DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_COPY, dragGestureHandler);
 
 
         //////////
@@ -62,17 +62,20 @@ public class GridPanel extends JPanel implements MouseListener {
             dgr = DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this
             , DnDConstants.ACTION_COPY,dragGestureHandler);
         }*/
+        dropHandler = new DropHandler();
+        dropTarget = new DropTarget(this, DnDConstants.ACTION_COPY, dropHandler, true);
 
     }
 
     @Override
     public void removeNotify(){
-        if (dgr != null){
+       /* if (dgr != null){
             dgr.removeDragGestureListener(dragGestureHandler);
             dragGestureHandler = null;
         }
-        dgr = null;
+        dgr = null;*/
         super.removeNotify();
+        dropTarget.removeDropTargetListener(dropHandler);
     }
 
     @Override
