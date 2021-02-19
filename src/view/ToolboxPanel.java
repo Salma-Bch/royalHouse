@@ -12,8 +12,10 @@ public class ToolboxPanel extends JPanel implements ActionListener {
     private JComboBox comboBoxMeuble = new JComboBox();
     private JComboBox comboBoxStyles = new JComboBox();
     private JButton valider = new JButton("Valider");
+    private JButton ajouter = new JButton("Ajouter");
     public ToolboxHandler toolboxHandler = new ToolboxHandler();
     public GridPanel gridPanel;
+    public int i = 0;
 
     public ToolboxPanel() {
         super();
@@ -24,9 +26,11 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         gridPanel = new GridPanel(600,600,5,2);
         gridPanel.setBackground(Color.BLACK);
         valider.addActionListener(this);
+        ajouter.addActionListener(this);
 
         this.add(this.getJpanelComboboxs());
         this.add(valider);
+        this.add(ajouter);
         this.add(gridPanel, BorderLayout.CENTER);
         System.out.println(this.getSize().getWidth());
         gridPanel.setPreferredSize(new Dimension(250,600));
@@ -100,16 +104,22 @@ public class ToolboxPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object Button = e.getSource();
-        if(Button == valider ){
+        if (Button == valider) {
             //gridPanel = drawFurniture("Canape", "Baroque");
-            gridPanel = drawFurniture((String)comboBoxMeuble.getSelectedItem(), (String)comboBoxStyles.getSelectedItem());
+            gridPanel = drawFurniture((String) comboBoxMeuble.getSelectedItem(), (String) comboBoxStyles.getSelectedItem());
             gridPanel.revalidate();
             gridPanel.repaint();
 
             //System.out.println((String)comboBoxMeuble.getSelectedItem());
-            //System.out.println((String)comboBoxStyles.getSelectedItem());
-
-
+            //System.out.println((String)comboBoxStyles.getSelectedItem());        }
+        }
+        if(Button == ajouter){
+            if(i<49) {
+                ArrayList<Furniture> furnitures = toolboxHandler.initFurniture();
+                IHM.gridPan.drawF(i, furnitures.get(1));
+                IHM.gridPan.repaint();
+                i++;
+            }
         }
     }
 }

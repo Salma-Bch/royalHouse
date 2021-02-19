@@ -4,6 +4,7 @@ import model.Cell;
 import model.Furniture;
 import model.Grid;
 import process.GridHandler;
+import process.ToolboxHandler;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,6 +19,9 @@ public class GridPanel extends JPanel implements MouseListener {
     public GridHandler gridHandler;
     private final Grid grid;
     int height, width;
+
+    //A supprimer
+    //ToolboxHandler toolboxHandler = new ToolboxHandler();
 
     private DragGestureRecognizer dgr;
     private DragGestureHandler dragGestureHandler;
@@ -92,6 +96,13 @@ public class GridPanel extends JPanel implements MouseListener {
             imageIcon.paintIcon(this, g, (((position-(columnNumber*(position/columnNumber)))))*cellSize,(position/columnNumber)*cellSize);
         }
     }
+
+
+    public GridPanel drawF(int nbCell, Furniture furniture) {
+        this.gridHandler.addFurniture(nbCell, furniture);
+        return this;
+    }
+
 
 
     private void drawGridBorder(Graphics g, int width , int height, int sizeCell) {

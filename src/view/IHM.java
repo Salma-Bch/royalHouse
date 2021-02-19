@@ -6,7 +6,7 @@ import javax.swing.* ;
 
 public class IHM extends JFrame implements Serializable {
     private ToolboxPanel toolboxPan;
-    private GridPanel gridPan;
+    public static GridPanel gridPan;
 
     public IHM(){
         toolboxPan = initToolboxPan();
