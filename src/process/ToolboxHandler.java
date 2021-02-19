@@ -62,6 +62,15 @@ public class ToolboxHandler {
                 200, 200, false, new ImageIcon("./ressources/images/table_classique.png"));
         Furniture f7 = new Furniture("Table", "Design", "Table design",
                 200, 200, false, new ImageIcon("./ressources/images/table_design.png"));
+        Furniture f8 = new Furniture("Fauteuil", "Classique", "Fauteuil Classique",
+                200, 200, false, new ImageIcon("./ressources/images/fauteuil.png"));
+        Furniture f9 = new Furniture("Table", "Baroque", "Table baroque",
+                200, 200, false, new ImageIcon("./ressources/images/table_barque1.png"));
+        Furniture f10 = new Furniture("Table", "Baroque", "Table baroque 2",
+                200, 200, false, new ImageIcon("./ressources/images/table_baroque2.png"));
+        Furniture f11 = new Furniture("Fauteuil", "Design", "Fauteuil design",
+                200, 200, false, new ImageIcon("./ressources/images/fauteuil_design.png"));
+
 
         ArrayList<Furniture> furniture = new ArrayList<Furniture>();
         furniture.add(f1);
@@ -71,6 +80,11 @@ public class ToolboxHandler {
         furniture.add(f5);
         furniture.add(f6);
         furniture.add(f7);
+        furniture.add(f8);
+        furniture.add(f9);
+        furniture.add(f10);
+        furniture.add(f11);
+
         //Ajouter les furnitures supplémentaire
         return furniture;
     }
