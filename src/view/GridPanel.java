@@ -24,6 +24,15 @@ public class GridPanel extends JPanel implements MouseListener {
         this.add(new JLabel("ggggbgtbrbfvfvggg"));
         this.add(new JLabel("ggggbgtbrbfvfvggg"));*/
         this.setSize(widthPan, heightPan);
+        JTextField jTextField = new JTextField();
+        jTextField.setText("Source hhhhhhhhhhh");
+        jTextField.setDragEnabled(true);
+        JTextField jt = new JTextField();
+        jt.setText("Destination ddddddddddddddddd");
+        jt.setDropMode(DropMode.INSERT);
+        //this.setDropTarget(jt);
+        this.add(jTextField);
+        this.add(jt);
         gridHandler = new GridHandler(columnNumber,rowNumber);
         grid = gridHandler.getGrid();
         height = GridHandler.sizeCell * grid.getRowNumber();

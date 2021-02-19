@@ -18,9 +18,10 @@ public class ToolboxPanel extends JPanel {
         GridPanel gridPanel = new GridPanel(600,600,5,2);
         gridPanel.setBackground(Color.BLACK);
         this.add(this.getJpanelComboboxs());
-        this.add(gridPanel);
+        this.add(gridPanel, BorderLayout.CENTER);
         System.out.println(this.getSize().getWidth());
         gridPanel.setPreferredSize(new Dimension(250,600));
+
 
         //this.setSize(300,200);
         //this.setLayout(new BorderLayout());
