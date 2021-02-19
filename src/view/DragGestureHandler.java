@@ -4,8 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.Transferable;
 import java.awt.dnd.*;
+import java.io.Serializable;
 
-public class DragGestureHandler implements DragGestureListener, DragSourceListener {
+public class DragGestureHandler implements DragGestureListener, DragSourceListener, Serializable {
     private Container parent;
     private JPanel child;
 

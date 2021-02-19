@@ -33,6 +33,7 @@ public class IHM extends JFrame {
 
     public GridPanel initGridPan(){
         GridPanel gridPan = new GridPanel(600,600,6,8);
+        gridPan.add(new JLabel("ttgtttt"));
         gridPan.setBackground(new Color(189, 189, 189));
         return gridPan;
     }
