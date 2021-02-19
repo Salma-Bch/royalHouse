@@ -47,12 +47,12 @@ public class ToolboxHandler {
     }
 
     public ArrayList<Furniture> initFurniture() {
-        Furniture f1 = new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
+        Furniture f1 = new Furniture("Canape", "Baroque", "Canape baroque bleu",
                 200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png"));
-        Furniture f2 = new Furniture("Canapé", "Design", "Canapé design",
+        Furniture f2 = new Furniture("Canape", "Design", "Canape design",
                 200, 200, false, new ImageIcon("./ressources/images/canape_design.png"));
 
-        Furniture f3 = new Furniture("Canapé", "Baroque", "Canapé baroque",
+        Furniture f3 = new Furniture("Canape", "Baroque", "Canapé baroque",
                 200, 200, false, new ImageIcon("./ressources/images/canape_baroque.png"));
         Furniture f4 = new Furniture("Lit", "Classique", "Lit classique",
                 200, 200, false, new ImageIcon("./ressources/images/lit_classique.png"));

@@ -4,11 +4,14 @@ import model.Furniture;
 import process.ToolboxHandler;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class ToolboxPanel extends JPanel {
+public class ToolboxPanel extends JPanel implements ActionListener {
     private JComboBox comboBoxMeuble = new JComboBox();
     private JComboBox comboBoxStyles = new JComboBox();
+    private JButton valider = new JButton("Valider");
     public ToolboxHandler toolboxHandler = new ToolboxHandler();
     public GridPanel gridPanel;
 
@@ -17,15 +20,20 @@ public class ToolboxPanel extends JPanel {
         this.setBackground(Color.BLUE);
         JPanel mainPan = new JPanel();
         //ToolboxHandler toolboxHandler = new ToolboxHandler();
-        toolboxHandler.initComboBox(comboBoxMeuble,comboBoxStyles);
+        toolboxHandler.initComboBox(comboBoxStyles, comboBoxMeuble);
         gridPanel = new GridPanel(600,600,5,2);
         gridPanel.setBackground(Color.BLACK);
+        valider.addActionListener(this);
+
         this.add(this.getJpanelComboboxs());
+        this.add(valider);
         this.add(gridPanel, BorderLayout.CENTER);
         System.out.println(this.getSize().getWidth());
         gridPanel.setPreferredSize(new Dimension(250,600));
 
-        gridPanel = drawFurniture();
+
+        //gridPanel = drawFurniture("Canape", "Baroque");
+
         //this.setSize(300,200);
         //this.setLayout(new BorderLayout());
         // build();
@@ -75,13 +83,33 @@ public class ToolboxPanel extends JPanel {
         return jPanel;
     }
 
-    public GridPanel drawFurniture() {
+    public GridPanel drawFurniture(String type, String style) {
         ArrayList<Furniture> furnitures = toolboxHandler.initFurniture();
 
+        int nbElt = 0;
         for(int i = 0; i<furnitures.size(); i++) {
-            gridPanel.getGridHandler().addFurniture(i, furnitures.get(i));
+            if(furnitures.get(i).getStyle().equals(style) && furnitures.get(i).getType().equals(type)) {
+                gridPanel.getGridHandler().addFurniture(nbElt, furnitures.get(i));
+                nbElt++;
+            }
         }
 
         return gridPanel;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object Button = e.getSource();
+        if(Button == valider ){
+            //gridPanel = drawFurniture("Canape", "Baroque");
+            gridPanel = drawFurniture((String)comboBoxMeuble.getSelectedItem(), (String)comboBoxStyles.getSelectedItem());
+            gridPanel.revalidate();
+            gridPanel.repaint();
+
+            System.out.println((String)comboBoxMeuble.getSelectedItem());
+            System.out.println((String)comboBoxStyles.getSelectedItem());
+
+
+        }
     }
 }
