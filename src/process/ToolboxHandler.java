@@ -71,7 +71,7 @@ public class ToolboxHandler {
         furniture.add(f5);
         furniture.add(f6);
         furniture.add(f7);
-
+        //Ajouter les furnitures supplémentaire
         return furniture;
     }
 }

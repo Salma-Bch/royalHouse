@@ -106,8 +106,8 @@ public class ToolboxPanel extends JPanel implements ActionListener {
             gridPanel.revalidate();
             gridPanel.repaint();
 
-            System.out.println((String)comboBoxMeuble.getSelectedItem());
-            System.out.println((String)comboBoxStyles.getSelectedItem());
+            //System.out.println((String)comboBoxMeuble.getSelectedItem());
+            //System.out.println((String)comboBoxStyles.getSelectedItem());
 
 
         }
