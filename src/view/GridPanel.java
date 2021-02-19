@@ -7,18 +7,33 @@ import process.GridHandler;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.datatransfer.Transferable;
+import java.awt.dnd.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-public class GridPanel extends JPanel implements MouseListener {
+public class GridPanel extends JPanel implements MouseListener, DropTargetListener {
 
     public GridHandler gridHandler;
     private final Grid grid;
     int height, width;
 
+    private DragGestureRecognizer dgr;
+    private DragGestureHandler dragGestureHandler;
+
+   // private DropTarget dropTarget;
+
+
     public GridPanel(int widthPan, int heightPan, int columnNumber, int rowNumber) {
         super();
+
+        // FOR DRAG AND DROP
+
+
+
+        //////////
+
         //this.setMinimumSize(new Dimension(200,200));
       /*  this.add(new JLabel("ggggbgtbrbfvfvggg"));
         this.add(new JLabel("ggggbgtbrbfvfvggg"));
@@ -33,12 +48,34 @@ public class GridPanel extends JPanel implements MouseListener {
         //this.setDropTarget(jt);
         this.add(jTextField);
         this.add(jt);
+        this.setTransferHandler(new TransferHandler("texte"));
         gridHandler = new GridHandler(columnNumber,rowNumber);
         grid = gridHandler.getGrid();
         height = GridHandler.sizeCell * grid.getRowNumber();
         width = GridHandler.sizeCell * grid.getColumnNumber();
 
         this.addMouseListener(this);
+    }
+
+    @Override
+    public void addNotify(){
+        super.addNotify();
+
+        if (dgr == null){
+            dragGestureHandler = new DragGestureHandler(this);
+            dgr = DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this
+            , DnDConstants.ACTION_MOVE,dragGestureHandler);
+        }
+    }
+
+    @Override
+    public void removeNotify(){
+        if (dgr != null){
+            dgr.removeDragGestureListener(dragGestureHandler);
+            dragGestureHandler = null;
+        }
+        dgr = null;
+        super.removeNotify();
     }
 
     @Override
@@ -122,4 +159,72 @@ public class GridPanel extends JPanel implements MouseListener {
 
     }
 
+    @Override
+    public void dragEnter(DropTargetDragEvent dtde) {
+        if(dtde.isDataFlavorSupported(PanelDataFlavor.SHARED_INSTANCE)){
+            dtde.acceptDrag(DnDConstants.ACTION_MOVE);
+        }
+        else {
+            dtde.rejectDrag();
+        }
+    }
+
+    @Override
+    public void dragOver(DropTargetDragEvent dtde) {
+
+    }
+
+    @Override
+    public void dropActionChanged(DropTargetDragEvent dtde) {
+
+    }
+
+    @Override
+    public void dragExit(DropTargetEvent dte) {
+
+    }
+
+    @Override
+    public void drop(DropTargetDropEvent dtde) {
+        boolean success = false;
+        if(dtde.isDataFlavorSupported(PanelDataFlavor.SHARED_INSTANCE)){
+            Transferable transferable = dtde.getTransferable();
+            try {
+                Object data = transferable.getTransferData(PanelDataFlavor.SHARED_INSTANCE);
+                if (data instanceof JPanel){
+                    JPanel panel = (JPanel) data;
+                    DropTargetContext dtc = dtde.getDropTargetContext();
+                    Component component = dtc.getComponent();
+                    if(component instanceof JComponent){
+                        Container parent = panel.getParent();
+                        if(parent != null){
+                            parent.remove(panel);
+                        }
+                        ((JComponent)component).add(panel);
+                        success = true;
+                        dtde.acceptDrop(DnDConstants.ACTION_MOVE);
+                        invalidate();
+                        repaint();
+                    }
+                    else {
+                        success = false;
+                        dtde.rejectDrop();
+                    }
+                }
+                else {
+                    success = false;
+                    dtde.rejectDrop();
+                }
+            } catch (Exception e){
+                success = false;
+                dtde.rejectDrop();
+                e.printStackTrace();
+            }
+        }
+        else {
+            success = false;
+            dtde.rejectDrop();
+        }
+        dtde.dropComplete(success);
+    }
 }
