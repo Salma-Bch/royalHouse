@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ToolboxPanel extends JPanel implements ActionListener {
@@ -90,8 +91,8 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         return jPanel;
     }
 
-    public GridPanel drawFurniture(String type, String style) {
-        ArrayList<Furniture> furnitures = toolboxHandler.initFurniture();
+    public GridPanel drawFurniture(String type, String style) throws IOException {
+        ArrayList<Furniture> furnitures = toolboxHandler.initFurniture("./ressources/furnitures.csv");
 
             emplacement = new ArrayList<Furniture>();
 
@@ -115,7 +116,11 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         if (Button == valider) {
             //gridPanel = drawFurniture("Canape", "Baroque");
 
-            gridPanel = drawFurniture((String) comboBoxMeuble.getSelectedItem(), (String) comboBoxStyles.getSelectedItem());
+            try {
+                gridPanel = drawFurniture((String) comboBoxMeuble.getSelectedItem(), (String) comboBoxStyles.getSelectedItem());
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
             gridPanel.revalidate();
             gridPanel.repaint();
 

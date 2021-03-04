@@ -46,46 +46,16 @@ public class ToolboxHandler {
         }
     }
 
-    public ArrayList<Furniture> initFurniture() {
-        Furniture f1 = new Furniture("Canape", "Baroque", "Canape baroque bleu",
-                200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png"));
-        Furniture f2 = new Furniture("Canape", "Design", "Canape design",
-                200, 200, false, new ImageIcon("./ressources/images/canape_design.png"));
-
-        Furniture f3 = new Furniture("Canape", "Baroque", "Canapé baroque",
-                200, 200, false, new ImageIcon("./ressources/images/canape_baroque.png"));
-        Furniture f4 = new Furniture("Lit", "Classique", "Lit classique",
-                200, 200, false, new ImageIcon("./ressources/images/lit_classique.png"));
-        Furniture f5 = new Furniture("Lit", "Design", "Lit design",
-                200, 200, false, new ImageIcon("./ressources/images/lit_design.png"));
-        Furniture f6 = new Furniture("Table", "Classique", "Table classique",
-                200, 200, false, new ImageIcon("./ressources/images/table_classique.png"));
-        Furniture f7 = new Furniture("Table", "Design", "Table design",
-                200, 200, false, new ImageIcon("./ressources/images/table_design.png"));
-        Furniture f8 = new Furniture("Fauteuil", "Classique", "Fauteuil Classique",
-                200, 200, false, new ImageIcon("./ressources/images/fauteuil.png"));
-        Furniture f9 = new Furniture("Table", "Baroque", "Table baroque",
-                200, 200, false, new ImageIcon("./ressources/images/table_barque1.png"));
-        Furniture f10 = new Furniture("Table", "Baroque", "Table baroque 2",
-                200, 200, false, new ImageIcon("./ressources/images/table_baroque2.png"));
-        Furniture f11 = new Furniture("Fauteuil", "Design", "Fauteuil design",
-                200, 200, false, new ImageIcon("./ressources/images/fauteuil_design.png"));
-
-
+    public ArrayList<Furniture> initFurniture(String filePathName) throws IOException {
         ArrayList<Furniture> furniture = new ArrayList<Furniture>();
-        furniture.add(f1);
-        furniture.add(f2);
-        furniture.add(f3);
-        furniture.add(f4);
-        furniture.add(f5);
-        furniture.add(f6);
-        furniture.add(f7);
-        furniture.add(f8);
-        furniture.add(f9);
-        furniture.add(f10);
-        furniture.add(f11);
-
-        //Ajouter les furnitures supplémentaire
+        FileReader fr = new FileReader(new File(filePathName));
+        BufferedReader br = new BufferedReader(fr);
+        for (String line = br.readLine(); line != null; line = br.readLine()) {
+            String[] words = line.split(";");
+            furniture.add(new Furniture(words[0], words[1], words[2], 200,200, words[3].equals("stackable"),new ImageIcon(words[4])));
+        }
+        br.close();
+        fr.close();
         return furniture;
     }
 }
