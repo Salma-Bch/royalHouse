@@ -9,12 +9,9 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class GridHandler {
-    private static final Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-    public static final int sizeCell = (int)(dimension.getHeight()-100)/6;
     private int columnNumber, rowNumber;
     private Grid grid;
     private int selectedCell;
-
 
     public GridHandler(int columnNumber, int rowNumber) {
         grid = initGrid(columnNumber, rowNumber);
@@ -39,24 +36,10 @@ public class GridHandler {
         Grid grid = new Grid(columnNumber, rowNumber);
         ArrayList<Cell> cells = new ArrayList<Cell>();
         for(int i = 0; i<columnNumber*rowNumber; i++) {
-                Cell cell = new Cell(sizeCell, sizeCell, null);
+                Cell cell = new Cell(200, 200, null);
                 cells.add(cell);
         }
         grid.setCells(cells);
-        /*grid.getCells().get(7).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
-                200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
-        grid.getCells().get(3).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
-                200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
-        grid.getCells().get(9).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
-                200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
-        grid.getCells().get(2).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
-                200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));*/
-
-
-        //grid.getCells().get(24).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
-        //        200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
-       // grid.getCells().get(47).setFurniture(new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
-       //         200, 200, false, new ImageIcon("./ressources/images/canapeVuDenFace.png")));
         return grid;
     }
 

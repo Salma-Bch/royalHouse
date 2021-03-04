@@ -27,7 +27,7 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         JPanel mainPan = new JPanel();
         //ToolboxHandler toolboxHandler = new ToolboxHandler();
         toolboxHandler.initComboBox(comboBoxStyles, comboBoxMeuble);
-        gridPanel = new GridPanel(600,600,5,2);
+        gridPanel = new GridPanel(6,6);
         gridPanel.setBackground(Color.BLACK);
         valider.addActionListener(this);
         ajouter.addActionListener(this);
@@ -127,7 +127,7 @@ public class ToolboxPanel extends JPanel implements ActionListener {
             //System.out.println((String)comboBoxMeuble.getSelectedItem());
             //System.out.println((String)comboBoxStyles.getSelectedItem());        }
         }
-        if(Button == ajouter){
+        /*if(Button == ajouter){
             if(nbCell<49 && IHM.toolboxPan.gridPanel.gridHandler.getSelectedCell() <emplacement.size()) {
                 //ArrayList<Furniture> furnitures = toolboxHandler.initFurniture();
                 IHM.gridPan.drawF(nbCell, emplacement.get(IHM.toolboxPan.gridPanel.gridHandler.getSelectedCell()));
@@ -139,6 +139,6 @@ public class ToolboxPanel extends JPanel implements ActionListener {
 
 
             }
-        }
+        }*/
     }
 }
