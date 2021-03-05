@@ -19,7 +19,7 @@ public class ToolboxPanel extends JPanel implements ActionListener {
     public int nbCell = 0;
     private ArrayList<Furniture> emplacement = new ArrayList<Furniture>();
     private ImageIcon backgroundIcon = new ImageIcon("../../ressources/images/royal_texture.jpg");
-  //  private Image backGroundImage = backgroundIcon.getImage();
+    private Image img = backgroundIcon.getImage();
 
 
     public ToolboxPanel() {
@@ -43,11 +43,11 @@ public class ToolboxPanel extends JPanel implements ActionListener {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-       // img = Toolkit.getDefaultToolkit().getImage("../../ressources/images/royal_texture.jpg");
-       // g.drawImage(backGroundImage, 0, 0, this);
-        Image image = backgroundIcon.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
-        ImageIcon imageIcon = new ImageIcon(image);
-        imageIcon.paintIcon(this, g,  0, 0);
+    }
+
+    public void paintComponent(Graphics graphics) {
+        graphics.drawImage(img, 0, 0, this);
+        super.paintComponent(graphics);
     }
 
     public JPanel getJpanelComboboxs(){
