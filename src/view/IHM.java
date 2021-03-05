@@ -8,14 +8,20 @@ public class IHM extends JFrame implements Serializable {
     public static ToolboxPanel toolboxPan;
     public static GridPanel gridPan;
     private JPanel buttonPan = new JPanel();
+    private Dimension dimension ;
+    private int height;
+    private int width;
 
     public IHM(){
+
+        Image img = Toolkit.getDefaultToolkit().getImage("/ressources/images/royal_texture.jpg");
+
         toolboxPan = initToolboxPan();
         gridPan = initGridPan();
 
-        Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        int height = (int)dimension.getHeight();
-        int width  = (int)dimension.getWidth();
+        dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        height = (int)dimension.getHeight();
+        width  = (int)dimension.getWidth();
         buttonPan.setPreferredSize(new Dimension(width/6, height));
         buttonPan.setBorder(BorderFactory.createEmptyBorder(30,0,30,0));
         buttonPan.setBackground(new Color(227, 72, 181));
@@ -33,20 +39,20 @@ public class IHM extends JFrame implements Serializable {
 
     public ToolboxPanel initToolboxPan(){
         ToolboxPanel toolboxPan = new ToolboxPanel();
-        Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        int height = (int)dimension.getHeight();
-        int width  = (int)dimension.getWidth();
+        dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        height = (int)dimension.getHeight();
+        width  = (int)dimension.getWidth();
         toolboxPan.setPreferredSize(new Dimension(width/4, height));
         toolboxPan.setBorder(BorderFactory.createEmptyBorder(30,0,30,0));
-        toolboxPan.setBackground(new Color(227, 195, 106));
+      //  toolboxPan.setBackground(new Color(227, 195, 106));
         return toolboxPan;
     }
 
     public GridPanel initGridPan(){
         GridPanel gridPan = new GridPanel(5,4);
-        Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        int height = (int)dimension.getHeight();
-        int width  = (int)dimension.getWidth();
+        dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        height = (int)dimension.getHeight();
+        width  = (int)dimension.getWidth();
         gridPan.setPreferredSize(new Dimension(width*7/12, height));
         return gridPan;
     }
