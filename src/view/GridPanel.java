@@ -36,6 +36,12 @@ public class GridPanel extends JPanel  {
         cellPanels = initCellPanels();
     }
 
+    public void reinitCellPanels(){
+        for (CellPanel cellPanel : cellPanels) {
+            cellPanel.setBackgroundColor(Color.GRAY);
+        }
+    }
+
     public ArrayList<CellPanel> initCellPanels(){
         ArrayList<CellPanel> cellPanels = new ArrayList<CellPanel>();
         int rows = grid.getRowNumber();
