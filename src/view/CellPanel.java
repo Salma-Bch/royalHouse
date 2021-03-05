@@ -11,6 +11,7 @@ import java.awt.event.MouseListener;
 public class CellPanel extends JPanel implements MouseListener {
     private final Cell cell;
     private final int cellSize;
+    private Color backgroundColor = Color.GRAY;
 
     public CellPanel(Cell cell, int cellSize){
         super();
@@ -27,6 +28,7 @@ public class CellPanel extends JPanel implements MouseListener {
     @Override
     public void paint(Graphics g){
         super.paint(g);
+        this.setBackground(backgroundColor);
         paintFurniture(g);
     }
 
@@ -38,9 +40,16 @@ public class CellPanel extends JPanel implements MouseListener {
         }
     }
 
+    public void setBackgroundColor(Color backgroundColor){
+        this.backgroundColor = backgroundColor;
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
-        this.setBackground(Color.BLUE);
+        ( (GridPanel)this.getParent() ).reinitCellPanels();
+        this.getParent().repaint();
+        backgroundColor = Color.BLUE;
+        this.repaint();
     }
 
     @Override
@@ -60,6 +69,5 @@ public class CellPanel extends JPanel implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
-
     }
 }
