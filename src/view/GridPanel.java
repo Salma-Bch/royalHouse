@@ -14,20 +14,20 @@ public class GridPanel extends JPanel  {
     private final Grid grid;
 
     //A ENLEVER
-    private DragGestureRecognizer dgr;
+    /*private DragGestureRecognizer dgr;
     private DragGestureHandler dragGestureHandler;
     DropTarget dropTarget;
-    DropHandler dropHandler;
+    DropHandler dropHandler;*/
     ///////////
 
     public GridPanel( int columnNumber, int rowNumber) {
         super();
 
         // FOR DRAG AND DROP A ENLEVER
-        dropHandler = new DropHandler();
+      /*  dropHandler = new DropHandler();
         dropTarget = new DropTarget(this,DnDConstants.ACTION_COPY,dropHandler,true);
-        dragGestureHandler = new DragGestureHandler(this);
-        dgr = DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_COPY, dragGestureHandler);
+        //dragGestureHandler = new DragGestureHandler(this);
+        dgr = DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_COPY, dragGestureHandler);*/
         ///////////
 
         this.setLayout(new GridLayout(rowNumber, columnNumber));
@@ -54,14 +54,14 @@ public class GridPanel extends JPanel  {
     }
 
     //A ENLEVER
-    @Override
+  /*  @Override
     public void addNotify(){
         super.addNotify();
        /* if (dgr == null){
             dragGestureHandler = new DragGestureHandler(this);
             dgr = DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this
             , DnDConstants.ACTION_COPY,dragGestureHandler);
-        }*/
+        }
         dropHandler = new DropHandler();
         dropTarget = new DropTarget(this, DnDConstants.ACTION_COPY, dropHandler, true);
     }
@@ -72,10 +72,10 @@ public class GridPanel extends JPanel  {
             dgr.removeDragGestureListener(dragGestureHandler);
             dragGestureHandler = null;
         }
-        dgr = null;*/
+        dgr = null;
         super.removeNotify();
         dropTarget.removeDropTargetListener(dropHandler);
-    }
+    }*/
     ////////////////
 
     @Override

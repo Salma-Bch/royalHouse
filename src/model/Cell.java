@@ -1,14 +1,16 @@
 package model;
 
-public class Cell {
+import java.io.Serializable;
+
+public class Cell implements Serializable {
 
     public static int width;
     public static int height;
     private Furniture furniture;
 
     public Cell(int width, int height, Furniture furniture) {
-        this.width = width;
-        this.height = height;
+        Cell.width = width;
+        Cell.height = height;
         this.furniture = furniture;
     }
 
@@ -29,10 +31,10 @@ public class Cell {
     }
 
     public void setWidth(int width) {
-        this.width = width;
+        Cell.width = width;
     }
 
     public void setHeight(int height) {
-        this.height = height;
+        Cell.height = height;
     }
 }

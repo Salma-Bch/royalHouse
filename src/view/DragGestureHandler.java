@@ -8,9 +8,9 @@ import java.io.Serializable;
 
 public class DragGestureHandler implements DragGestureListener, DragSourceListener, Serializable {
     private Container parent;
-    private JPanel child;
+    private CellPanel child;
 
-    public DragGestureHandler(JPanel child){
+    public DragGestureHandler(CellPanel child){
         this.child = child;
     }
 

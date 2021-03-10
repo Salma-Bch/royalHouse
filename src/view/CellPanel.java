@@ -5,14 +5,12 @@ import model.Furniture;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.dnd.DnDConstants;
-import java.awt.dnd.DragGestureRecognizer;
-import java.awt.dnd.DragSource;
-import java.awt.dnd.DropTarget;
+import java.awt.dnd.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.Serializable;
 
-public class CellPanel extends JPanel implements MouseListener {
+public class CellPanel extends JPanel implements MouseListener, Serializable {
     private final Cell cell;
     private final int cellSize;
     private Color backgroundColor = Color.GRAY;
@@ -29,6 +27,9 @@ public class CellPanel extends JPanel implements MouseListener {
       //  this.setPreferredSize(new Dimension(2000,200));
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.addMouseListener(this);
+
+        //dropTarget = new DropTarget(this,DnDConstants.ACTION_COPY_OR_MOVE, this, true,null);
+
        /* Furniture f1 = new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
                 200, 200, false, new ImageIcon("./ressources/images/canapes/baroque_1.png"));
         cell.setFurniture(f1);*/
@@ -41,22 +42,22 @@ public class CellPanel extends JPanel implements MouseListener {
     @Override
     public void addNotify(){
         super.addNotify();
-       /* if (dgr == null){
+        if (dragGestureRecognizer == null){
             dragGestureHandler = new DragGestureHandler(this);
-            dgr = DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this
+            dragGestureRecognizer = DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this
             , DnDConstants.ACTION_COPY,dragGestureHandler);
-        }*/
+        }
         dropHandler = new DropHandler();
         dropTarget = new DropTarget(this, DnDConstants.ACTION_COPY, dropHandler, true);
     }
 
     @Override
     public void removeNotify(){
-       /* if (dgr != null){
-            dgr.removeDragGestureListener(dragGestureHandler);
+        if (dragGestureRecognizer != null){
+            dragGestureRecognizer.removeDragGestureListener(dragGestureHandler);
             dragGestureHandler = null;
         }
-        dgr = null;*/
+        dragGestureRecognizer = null;
         super.removeNotify();
         dropTarget.removeDropTargetListener(dropHandler);
     }
@@ -107,4 +108,5 @@ public class CellPanel extends JPanel implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
     }
+
 }

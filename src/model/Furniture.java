@@ -1,8 +1,9 @@
 package model;
 
 import javax.swing.*;
+import java.io.Serializable;
 
-public class Furniture {
+public class Furniture implements Serializable {
 
     private String type;
     private String style;
