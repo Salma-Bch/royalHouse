@@ -39,6 +39,10 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
         dragGestureHandler = new DragGestureHandler(this);
         dragGestureRecognizer = DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_COPY, dragGestureHandler);
     }
+    public Cell getCell(){
+        return this.cell;
+    }
+
     @Override
     public void addNotify(){
         super.addNotify();
