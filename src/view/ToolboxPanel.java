@@ -18,14 +18,12 @@ public class ToolboxPanel extends JPanel implements ActionListener {
     public GridPanel gridPanel;
     public int nbCell = 0;
     private ArrayList<Furniture> emplacement = new ArrayList<Furniture>();
-    private ImageIcon backgroundIcon = new ImageIcon("../../ressources/images/royal_texture.jpg");
-    private Image img = backgroundIcon.getImage();
-
+    private Image image;
 
     public ToolboxPanel() {
         super();
+        image = Toolkit.getDefaultToolkit().getImage("./ressources/images/royal_texture.jpg");
         JPanel mainPan = new JPanel();
-        //ToolboxHandler toolboxHandler = new ToolboxHandler();
         toolboxHandler.initComboBox(comboBoxStyles, comboBoxMeuble);
         gridPanel = new GridPanel(6,6);
         gridPanel.setBackground(Color.BLACK);
@@ -45,14 +43,8 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         super.paint(g);
     }
 
-    public void paintComponent(Graphics graphics) {
-        graphics.drawImage(img, 0, 0, this);
-        super.paintComponent(graphics);
-    }
-
     public JPanel getJpanelComboboxs(){
         JPanel jPanel = new JPanel();
-        //jPanel.setBackground(Color.BLUE);
         jPanel.add(comboBoxMeuble);
         jPanel.add(comboBoxStyles);
         return jPanel;
@@ -73,7 +65,6 @@ public class ToolboxPanel extends JPanel implements ActionListener {
                 nbElt++;
             }
         }
-
         return gridPanel;
     }
 
@@ -81,8 +72,6 @@ public class ToolboxPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object Button = e.getSource();
         if (Button == valider) {
-            //gridPanel = drawFurniture("Canape", "Baroque");
-
             try {
                 gridPanel = drawFurniture((String) comboBoxMeuble.getSelectedItem(), (String) comboBoxStyles.getSelectedItem());
             } catch (IOException ioException) {
@@ -90,9 +79,7 @@ public class ToolboxPanel extends JPanel implements ActionListener {
             }
             gridPanel.revalidate();
             gridPanel.repaint();
-
-            //System.out.println((String)comboBoxMeuble.getSelectedItem());
-            //System.out.println((String)comboBoxStyles.getSelectedItem());        }
+       }
         }
         /*if(Button == ajouter){
             if(nbCell<49 && IHM.toolboxPan.gridPanel.gridHandler.getSelectedCell() <emplacement.size()) {
@@ -103,9 +90,12 @@ public class ToolboxPanel extends JPanel implements ActionListener {
                 nbCell++;
 
                 //System.out.println(IHM.toolboxPan.gridPanel.gridHandler.getSelectedCell());
-
-
             }
         }*/
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(image, 0, 0, this);
     }
 }
