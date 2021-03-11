@@ -90,8 +90,27 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
     public void mouseClicked(MouseEvent e) {
         ( (GridPanel)this.getParent() ).reinitCellPanels();
         this.getParent().repaint();
-        backgroundColor = Color.BLUE;
-        this.repaint();
+        Furniture f = cell.getFurniture();
+        if(f != null) {
+            try {
+                Furniture clonedF = (Furniture)f.clone();
+                ToolboxPanel.cellInfoPan.getCell().setFurniture(clonedF);
+            } catch (CloneNotSupportedException ex) {
+                ex.printStackTrace();
+            }
+
+            backgroundColor = Color.BLUE;
+            this.repaint();
+            /*JTextArea journal = new JTextArea("Monsiffffffffff");
+            JScrollPane scrollPane = new JScrollPane(journal);
+            JFrame jf = new JFrame();
+            jf.add(scrollPane);
+            jf.setSize(400, 400) ;
+            jf.setVisible(true);
+            jf.setLocationRelativeTo(null);
+            jf.setLocationRelativeTo(null);*/
+        }
+
     }
 
     @Override
