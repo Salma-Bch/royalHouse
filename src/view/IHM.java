@@ -7,7 +7,8 @@ import javax.swing.* ;
 public class IHM extends JFrame implements Serializable {
     public static ToolboxPanel toolboxPan;
     public static GridPanel gridPan;
-    private JPanel buttonPan = new JPanel();
+    //private JPanel buttonPan = new JPanel();
+    private JPanel buttonPan;
     private Dimension dimension ;
     private int height;
     private int width;
@@ -22,9 +23,13 @@ public class IHM extends JFrame implements Serializable {
         dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         height = (int)dimension.getHeight();
         width  = (int)dimension.getWidth();
-        buttonPan.setPreferredSize(new Dimension(width/6, height));
+
+        buttonPan = new GarbagePanel(width, height);
+
+
+        /*buttonPan.setPreferredSize(new Dimension(width/6, height));
         buttonPan.setBorder(BorderFactory.createEmptyBorder(30,0,30,0));
-        buttonPan.setBackground(new Color(227, 72, 181));
+        buttonPan.setBackground(new Color(227, 72, 181));*/
 
         JFrame frame = new JFrame("Royal House") ;
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
