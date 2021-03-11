@@ -1,5 +1,6 @@
 package view;
 
+import model.Cell;
 import model.Furniture;
 import process.ToolboxHandler;
 import javax.swing.*;
@@ -16,6 +17,7 @@ public class ToolboxPanel extends JPanel implements ActionListener {
     private JButton ajouter = new JButton("Ajouter");
     public ToolboxHandler toolboxHandler = new ToolboxHandler();
     public GridPanel gridPanel;
+    public static CellPanel cellInfoPan;
     public int nbCell = 0;
     private ArrayList<Furniture> emplacement = new ArrayList<Furniture>();
     private Image image;
@@ -25,7 +27,10 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         image = Toolkit.getDefaultToolkit().getImage("./ressources/images/royal_texture.jpg");
         JPanel mainPan = new JPanel();
         toolboxHandler.initComboBox(comboBoxStyles, comboBoxMeuble);
-        gridPanel = new GridPanel(6,6);
+        gridPanel = new GridPanel(3,6);
+
+        cellInfoPan = new CellPanel(new Cell(600,600,null),200);
+
         gridPanel.setBackground(Color.BLACK);
         valider.addActionListener(this);
         ajouter.addActionListener(this);
@@ -34,8 +39,10 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         this.add(valider);
         this.add(ajouter);
         this.add(gridPanel, BorderLayout.CENTER);
+        this.add(cellInfoPan, BorderLayout.SOUTH);
         System.out.println(this.getSize().getWidth());
         gridPanel.setPreferredSize(new Dimension(250,600));
+
     }
 
     @Override
@@ -98,4 +105,5 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         super.paintComponent(g);
         g.drawImage(image, 0, 0, this);
     }
+
 }

@@ -3,7 +3,7 @@ package model;
 import javax.swing.*;
 import java.io.Serializable;
 
-public class Furniture implements Serializable {
+public class Furniture implements Serializable, Cloneable {
 
     private String type;
     private String style;
@@ -21,6 +21,13 @@ public class Furniture implements Serializable {
         this.lenght = lenght;
         this.stackable = stackable;
         this.image = image;
+    }
+
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+       // return new Furniture(type, style, name, width, lenght, stackable, image);;
     }
 
     public String getType() {

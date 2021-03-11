@@ -1,5 +1,7 @@
 package view;
 
+import model.Furniture;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.Transferable;
@@ -44,21 +46,24 @@ public class DropHandler implements DropTargetListener, Serializable {
             try {
                 Object data = transferable.getTransferData(PanelDataFlavor.SHARED_INSTANCE);
                 if (data instanceof JPanel) {
-                    JPanel panel = (JPanel) data;
+                    CellPanel cellPanel = (CellPanel) data;
                     DropTargetContext dtc = dtde.getDropTargetContext();
                     Component component = dtc.getComponent();
                     if (component instanceof JComponent) {
-                        Container parent = panel.getParent();
+                        Container parent = cellPanel.getParent();
                         if (parent != null) {
-                            parent.remove(panel);
-                            parent.revalidate();
-                            parent.repaint();
+                            //parent.remove(panel);
+                           // parent.revalidate();
+                            //parent.repaint();
                         }
-                        ((JComponent) component).add(panel);
+                        Furniture f = cellPanel.getCell().getFurniture();
+                        Furniture clonedF =  (Furniture)f.clone();
+                        ((CellPanel) component).getCell().setFurniture(clonedF);
                         success = true;
                         dtde.acceptDrop(DnDConstants.ACTION_COPY);
                         ((JComponent) component).invalidate();
                         ((JComponent) component).repaint();
+
                     } else {
                         success = false;
                         dtde.rejectDrop();
