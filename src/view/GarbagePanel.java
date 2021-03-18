@@ -10,13 +10,13 @@ import java.io.File;
 import java.io.InputStream;
 
 import model.Cell;
-import org.apache.batik.swing.JSVGCanvas;
-import org.apache.batik.swing.svg.SVGDocumentLoader;
+//import org.apache.batik.swing.JSVGCanvas;
+//import org.apache.batik.swing.svg.SVGDocumentLoader;
 
 public class GarbagePanel extends JPanel implements ActionListener {
 
     private JButton poubelle = new JButton("Poubelle");
-    private JSVGCanvas svgCanvas = new JSVGCanvas(null,true,false);
+    //private JSVGCanvas svgCanvas = new JSVGCanvas(null,true,false);
     private JPanel deleteZone = new JPanel();
 
 
@@ -56,7 +56,7 @@ public class GarbagePanel extends JPanel implements ActionListener {
 
 
 
-        GridPanel gridPanel = new GridPanel(1,1);
+        GridPanel gridPanel = new GridPanel(1,1,false);
         gridPanel.setPreferredSize(new Dimension(150,150));
         gridPanel.add(label);
 

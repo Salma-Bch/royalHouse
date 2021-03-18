@@ -14,16 +14,18 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
     private final Cell cell;
     private final int cellSize;
     private Color backgroundColor = Color.GRAY;
+    public boolean dropable;
 
     private DragGestureRecognizer dragGestureRecognizer;
     private DragGestureHandler dragGestureHandler;
     DropTarget dropTarget;
     DropHandler dropHandler;
 
-    public CellPanel(Cell cell, int cellSize){
+    public CellPanel(Cell cell, int cellSize, boolean dropable){
         super();
         this.cell = cell;
         this.cellSize = cellSize;
+        this.dropable = dropable;
       //  this.setPreferredSize(new Dimension(2000,200));
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.addMouseListener(this);
@@ -34,10 +36,10 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
                 200, 200, false, new ImageIcon("./ressources/images/canapes/baroque_1.png"));
         cell.setFurniture(f1);*/
 
-        dropHandler = new DropHandler();
-        dropTarget = new DropTarget(this, DnDConstants.ACTION_COPY,dropHandler,true);
-        dragGestureHandler = new DragGestureHandler(this);
-        dragGestureRecognizer = DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_COPY, dragGestureHandler);
+        //dropHandler = new DropHandler();
+        //dropTarget = new DropTarget(this, DnDConstants.ACTION_COPY,dropHandler,true);
+        //dragGestureHandler = new DragGestureHandler(this);
+       // dragGestureRecognizer = DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_COPY, dragGestureHandler);
     }
     public Cell getCell(){
         return this.cell;
@@ -52,7 +54,8 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
             , DnDConstants.ACTION_COPY,dragGestureHandler);
         }
         dropHandler = new DropHandler();
-        dropTarget = new DropTarget(this, DnDConstants.ACTION_COPY, dropHandler, true);
+        if(this.dropable)
+            dropTarget = new DropTarget(this, DnDConstants.ACTION_COPY, dropHandler, true);
     }
 
     @Override
@@ -63,7 +66,8 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
         }
         dragGestureRecognizer = null;
         super.removeNotify();
-        dropTarget.removeDropTargetListener(dropHandler);
+        if(this.dropable)
+            dropTarget.removeDropTargetListener(dropHandler);
     }
 
 

@@ -27,9 +27,9 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         image = Toolkit.getDefaultToolkit().getImage("./ressources/images/royal_texture.jpg");
         JPanel mainPan = new JPanel();
         toolboxHandler.initComboBox(comboBoxStyles, comboBoxMeuble);
-        gridPanel = new GridPanel(3,6);
+        gridPanel = new GridPanel(3,6,false);
 
-        cellInfoPan = new CellPanel(new Cell(600,600,null),200);
+        cellInfoPan = new CellPanel(new Cell(600,600,null),200, false);
 
         gridPanel.setBackground(Color.BLACK);
         valider.addActionListener(this);
