@@ -24,14 +24,6 @@ public class GridPanel extends JPanel  {
     public GridPanel( int columnNumber, int rowNumber, boolean dropable) {
         super();
         this.dropable = dropable;
-
-        // FOR DRAG AND DROP A ENLEVER
-      /*  dropHandler = new DropHandler();
-        dropTarget = new DropTarget(this,DnDConstants.ACTION_COPY,dropHandler,true);
-        //dragGestureHandler = new DragGestureHandler(this);
-        dgr = DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_COPY, dragGestureHandler);*/
-        ///////////
-
         this.setLayout(new GridLayout(rowNumber, columnNumber));
         gridHandler = new GridHandler(columnNumber,rowNumber);
         grid = gridHandler.getGrid();
@@ -55,42 +47,14 @@ public class GridPanel extends JPanel  {
         return cellPanels;
     }
 
-    //A ENLEVER
-  /*  @Override
-    public void addNotify(){
-        super.addNotify();
-       /* if (dgr == null){
-            dragGestureHandler = new DragGestureHandler(this);
-            dgr = DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this
-            , DnDConstants.ACTION_COPY,dragGestureHandler);
-        }
-        dropHandler = new DropHandler();
-        dropTarget = new DropTarget(this, DnDConstants.ACTION_COPY, dropHandler, true);
-    }
-
-    @Override
-    public void removeNotify(){
-       /* if (dgr != null){
-            dgr.removeDragGestureListener(dragGestureHandler);
-            dragGestureHandler = null;
-        }
-        dgr = null;
-        super.removeNotify();
-        dropTarget.removeDropTargetListener(dropHandler);
-    }*/
-    ////////////////
 
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        for(int i=0; i<cellPanels.size(); i++){
-            cellPanels.get(i).repaint();
-        }
     }
 
-    //A ENLEVER
     public GridHandler getGridHandler() {
         return gridHandler;
     }
-    ////////////////
+
 }

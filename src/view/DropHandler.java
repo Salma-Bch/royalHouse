@@ -58,12 +58,14 @@ public class DropHandler implements DropTargetListener, Serializable {
                         }
 
                         Furniture f = cellPanel.getCell().getFurniture();
-                        Furniture clonedF = (Furniture) f.clone();
-                        ((CellPanel) component).getCell().setFurniture(clonedF);
-                        success = true;
-                        dtde.acceptDrop(DnDConstants.ACTION_MOVE);
-                        ((JComponent) component).invalidate();
-                        ((JComponent) component).repaint();
+                        if(f != null) {
+                            Furniture clonedF = (Furniture) f.clone();
+                            ((CellPanel) component).getCell().setFurniture(clonedF);
+                            success = true;
+                            dtde.acceptDrop(DnDConstants.ACTION_MOVE);
+                            ((JComponent) component).invalidate();
+                            ((JComponent) component).repaint();
+                        }
 
 
                     } else {

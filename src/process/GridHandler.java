@@ -43,9 +43,9 @@ public class GridHandler {
         return grid;
     }
 
-    public Grid addFurniture(int position, Furniture furniture) {
+    public void addFurniture(int position, Furniture furniture) {
         grid.getCells().get(position).setFurniture(furniture);
-        return grid;
+        //return grid;
     }
 
     public void removeFurnitures(){
