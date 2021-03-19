@@ -9,7 +9,7 @@ public class GarbagePanel extends JPanel implements ActionListener {
 
     private JButton poubelle = new JButton("Poubelle");
     private JPanel deleteZone = new JPanel();
-
+    private Image image;
 
     public GarbagePanel(int width, int height) {
         super();
@@ -21,6 +21,7 @@ public class GarbagePanel extends JPanel implements ActionListener {
         ImageIcon icon = new ImageIcon("./ressources/images/SVGFiles/trash.png");
         ImageIcon icon2 = new ImageIcon(icon.getImage().getScaledInstance(25,25,Image.SCALE_DEFAULT));
         JLabel label = new JLabel(icon2, JLabel.CENTER);
+        image = Toolkit.getDefaultToolkit().getImage("./ressources/images/autres/royal_texture.jpg");
 
         poubelle.addActionListener(this);
 
@@ -59,5 +60,11 @@ public class GarbagePanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(image, 0, 0, this);
     }
 }

@@ -25,7 +25,7 @@ public class IHM extends JFrame implements Serializable {
 
         JFrame frame = new JFrame("Royal House") ;
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setIconImage(new ImageIcon("./ressources/images/logo.png").getImage());
+        frame.setIconImage(new ImageIcon("./ressources/images/autres/logo.png").getImage());
         frame.setExtendedState(Frame.MAXIMIZED_BOTH);
         frame.setLocationRelativeTo(null);
         frame.add(toolboxPan,BorderLayout.WEST);
