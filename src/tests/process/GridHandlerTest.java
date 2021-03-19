@@ -20,9 +20,6 @@ public class GridHandlerTest {
         Furniture furniture = new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
                 200, 200, false,
                 new ImageIcon("./ressources/images/canapes/baroque_1.png"));
-        /*GridHandler gr = new GridHandler(1,1);
-        //ssertEquals(null, gr.addFurniture(position,furniture));
-        gr.addFurniture(position,furniture);*/
 
         GridPanel gp = new GridPanel(1,1, false);
         gp.getGridHandler().addFurniture(position, furniture);

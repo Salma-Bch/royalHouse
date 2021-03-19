@@ -29,7 +29,6 @@ public class ToolboxHandlerTest {
                 filtres2.add(word);
             }
         }
-
         assertEquals(filtres2.size(), filtres1.size());
     }
 
