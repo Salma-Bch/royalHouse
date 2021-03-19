@@ -17,6 +17,7 @@ public class ToolboxPanel extends JPanel implements ActionListener {
     private JButton ajouter = new JButton("Ajouter");
     public ToolboxHandler toolboxHandler = new ToolboxHandler();
     public GridPanel gridPanel;
+    public static JPanel infoPanel;
     public static CellPanel cellInfoPan;
     public int nbCell = 0;
     private ArrayList<Furniture> emplacement = new ArrayList<Furniture>();
@@ -29,8 +30,8 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         toolboxHandler.initComboBox(comboBoxStyles, comboBoxMeuble);
         gridPanel = new GridPanel(3,6,false);
 
-        cellInfoPan = new CellPanel(new Cell(600,600,null),200, false);
-        cellInfoPan.setPreferredSize(new Dimension(400,400));
+        cellInfoPan = new CellPanel(new Cell(600,600,null),200, false, false);
+
         gridPanel.setBackground(Color.BLACK);
         valider.addActionListener(this);
         ajouter.addActionListener(this);
@@ -38,10 +39,16 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         this.add(this.getJpanelComboboxs());
         this.add(valider);
         this.add(ajouter);
-        this.add(gridPanel, BorderLayout.CENTER);
-        this.add(cellInfoPan, BorderLayout.SOUTH);
+        infoPanel = new JPanel();
+        infoPanel.setLayout(new GridLayout(1,2));
+        infoPanel.add(cellInfoPan);
+        infoPanel.add(new JPanel());
         System.out.println(this.getSize().getWidth());
         gridPanel.setPreferredSize(new Dimension(250,600));
+        this.add(gridPanel, BorderLayout.CENTER);
+        this.add(infoPanel, BorderLayout.SOUTH);
+        infoPanel.setPreferredSize(new Dimension(400,200));
+        cellInfoPan.setPreferredSize(new Dimension(200,200));
 
     }
 

@@ -2,6 +2,7 @@ package view;
 
 import model.Cell;
 import model.Furniture;
+import model.Toolbox;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,36 +15,25 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
     private final Cell cell;
     private final int cellSize;
     private Color backgroundColor = Color.GRAY;
-    public boolean dropable;
+    private final boolean dropable;
+    private final boolean dragable;
     private JLabel name;
     private JLabel style;
     private JLabel type;
-    private JPanel pan  = new JPanel();
 
     private DragGestureRecognizer dragGestureRecognizer;
     private DragGestureHandler dragGestureHandler;
     DropTarget dropTarget;
     DropHandler dropHandler;
 
-    public CellPanel(Cell cell, int cellSize, boolean dropable){
+    public CellPanel(Cell cell, int cellSize, boolean dropable, boolean dragable){
         super();
         this.cell = cell;
         this.cellSize = cellSize;
         this.dropable = dropable;
-      //  this.setPreferredSize(new Dimension(2000,200));
+        this.dragable = dragable;
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.addMouseListener(this);
-
-        //dropTarget = new DropTarget(this,DnDConstants.ACTION_COPY_OR_MOVE, this, true,null);
-
-       /* Furniture f1 = new Furniture("Canapé", "Baroque", "Canapé baroque bleu",
-                200, 200, false, new ImageIcon("./ressources/images/canapes/baroque_1.png"));
-        cell.setFurniture(f1);*/
-
-        //dropHandler = new DropHandler();
-        //dropTarget = new DropTarget(this, DnDConstants.ACTION_COPY,dropHandler,true);
-        //dragGestureHandler = new DragGestureHandler(this);
-       // dragGestureRecognizer = DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_COPY, dragGestureHandler);
     }
     public Cell getCell(){
         return this.cell;
@@ -51,27 +41,31 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
 
     @Override
     public void addNotify(){
-        super.addNotify();
-        if (dragGestureRecognizer == null){
-            dragGestureHandler = new DragGestureHandler(this);
-            dragGestureRecognizer = DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this
-            , DnDConstants.ACTION_COPY,dragGestureHandler);
+        if(dragable) {
+            super.addNotify();
+            if (dragGestureRecognizer == null) {
+                dragGestureHandler = new DragGestureHandler(this);
+                dragGestureRecognizer = DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this
+                        , DnDConstants.ACTION_COPY, dragGestureHandler);
+            }
+            dropHandler = new DropHandler();
+            if (this.dropable)
+                dropTarget = new DropTarget(this, DnDConstants.ACTION_COPY, dropHandler, true);
         }
-        dropHandler = new DropHandler();
-        if(this.dropable)
-            dropTarget = new DropTarget(this, DnDConstants.ACTION_COPY, dropHandler, true);
     }
 
     @Override
     public void removeNotify(){
-        if (dragGestureRecognizer != null){
-            dragGestureRecognizer.removeDragGestureListener(dragGestureHandler);
-            dragGestureHandler = null;
+        if(dragable) {
+            if (dragGestureRecognizer != null) {
+                dragGestureRecognizer.removeDragGestureListener(dragGestureHandler);
+                dragGestureHandler = null;
+            }
+            dragGestureRecognizer = null;
+            super.removeNotify();
+            if (this.dropable)
+                dropTarget.removeDropTargetListener(dropHandler);
         }
-        dragGestureRecognizer = null;
-        super.removeNotify();
-        if(this.dropable)
-            dropTarget.removeDropTargetListener(dropHandler);
     }
 
 
@@ -104,11 +98,11 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
             try {
                 Furniture clonedF = (Furniture)f.clone();
                 ToolboxPanel.cellInfoPan.getCell().setFurniture(clonedF);
-                ToolboxPanel.cellInfoPan.repaint();
-                ToolboxPanel.cellInfoPan.add(pan);
-                pan.setLayout(new BorderLayout());
-                pan.add(informationsMeubles,BorderLayout.CENTER);
+                ToolboxPanel.infoPanel.remove(1);
+                ToolboxPanel.infoPanel.add(informationsMeubles);
                 this.setVisible(true);
+                ToolboxPanel.infoPanel.revalidate();
+                ToolboxPanel.infoPanel.repaint();
             } catch (CloneNotSupportedException ex) {
                 ex.printStackTrace();
             }
@@ -121,35 +115,13 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
     }
     public JPanel informationsMeubles() {
         JPanel informations = new JPanel();
-        informations.setLayout(new GridBagLayout());
-        GridBagConstraints constraints = new GridBagConstraints();
-
+        informations.setLayout(new GridLayout(3,1));
         name = new JLabel(cell.getFurniture().getName());
         style = new JLabel(cell.getFurniture().getStyle());
         type = new JLabel(cell.getFurniture().getType());
-        /*name = new JLabel("NAME");
-        style = new JLabel("style");
-        type = new JLabel("type");*/
-
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.weightx = 0.5;
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        informations.add(name, constraints);
-
-        constraints.insets = new Insets(0,20,0,0);
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.weightx = 0.5;
-        constraints.gridx = 1;
-        constraints.gridy = 0;
-        informations.add(type, constraints);
-
-        constraints.insets = new Insets(0,20,0,0);
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.weightx = 0.5;
-        constraints.gridx = 2;
-        constraints.gridy = 0;
-        informations.add(style, constraints);
+        informations.add(name);
+        informations.add(type);
+        informations.add(style);
 
         return informations;
     }
