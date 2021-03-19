@@ -31,6 +31,7 @@ public class IHM extends JFrame implements Serializable {
         frame.add(toolboxPan,BorderLayout.WEST);
         frame.add(gridPan, BorderLayout.CENTER);
         frame.add(buttonPan, BorderLayout.EAST) ;
+        frame.setSize(new Dimension(1000, 600));
         frame.setVisible(true);
     }
 
