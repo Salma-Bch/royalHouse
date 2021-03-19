@@ -15,6 +15,10 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
     private final int cellSize;
     private Color backgroundColor = Color.GRAY;
     public boolean dropable;
+    private JLabel name;
+    private JLabel style;
+    private JLabel type;
+    private JPanel pan  = new JPanel();
 
     private DragGestureRecognizer dragGestureRecognizer;
     private DragGestureHandler dragGestureHandler;
@@ -95,26 +99,59 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
         ( (GridPanel)this.getParent() ).reinitCellPanels();
         this.getParent().repaint();
         Furniture f = cell.getFurniture();
+        JPanel informationsMeubles = informationsMeubles();
         if(f != null) {
             try {
                 Furniture clonedF = (Furniture)f.clone();
                 ToolboxPanel.cellInfoPan.getCell().setFurniture(clonedF);
+                ToolboxPanel.cellInfoPan.repaint();
+                ToolboxPanel.cellInfoPan.add(pan);
+                pan.setLayout(new BorderLayout());
+                pan.add(informationsMeubles,BorderLayout.CENTER);
+                this.setVisible(true);
             } catch (CloneNotSupportedException ex) {
                 ex.printStackTrace();
             }
 
             backgroundColor = Color.BLUE;
             this.repaint();
-            /*JTextArea journal = new JTextArea("Monsiffffffffff");
-            JScrollPane scrollPane = new JScrollPane(journal);
-            JFrame jf = new JFrame();
-            jf.add(scrollPane);
-            jf.setSize(400, 400) ;
-            jf.setVisible(true);
-            jf.setLocationRelativeTo(null);
-            jf.setLocationRelativeTo(null);*/
+
         }
 
+    }
+    public JPanel informationsMeubles() {
+        JPanel informations = new JPanel();
+        informations.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+
+        name = new JLabel(cell.getFurniture().getName());
+        style = new JLabel(cell.getFurniture().getStyle());
+        type = new JLabel(cell.getFurniture().getType());
+        /*name = new JLabel("NAME");
+        style = new JLabel("style");
+        type = new JLabel("type");*/
+
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.weightx = 0.5;
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        informations.add(name, constraints);
+
+        constraints.insets = new Insets(0,20,0,0);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.weightx = 0.5;
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+        informations.add(type, constraints);
+
+        constraints.insets = new Insets(0,20,0,0);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.weightx = 0.5;
+        constraints.gridx = 2;
+        constraints.gridy = 0;
+        informations.add(style, constraints);
+
+        return informations;
     }
 
     @Override

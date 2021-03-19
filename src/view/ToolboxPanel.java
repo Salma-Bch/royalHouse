@@ -30,7 +30,7 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         gridPanel = new GridPanel(3,6,false);
 
         cellInfoPan = new CellPanel(new Cell(600,600,null),200, false);
-
+        cellInfoPan.setPreferredSize(new Dimension(400,400));
         gridPanel.setBackground(Color.BLACK);
         valider.addActionListener(this);
         ajouter.addActionListener(this);
