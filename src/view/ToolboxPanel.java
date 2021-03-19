@@ -67,7 +67,7 @@ public class ToolboxPanel extends JPanel implements ActionListener {
     public GridPanel drawFurniture(String type, String style) throws IOException {
         ArrayList<Furniture> furnitures = toolboxHandler.initFurniture("./ressources/furnitures.csv");
 
-            emplacement = new ArrayList<Furniture>();
+            //emplacement = new ArrayList<Furniture>();
 
         int nbElt = 0;
         gridPanel.getGridHandler().removeFurnitures();
@@ -75,7 +75,7 @@ public class ToolboxPanel extends JPanel implements ActionListener {
             if(furnitures.get(i).getStyle().equals(style) && furnitures.get(i).getType().equals(type)) {
 
                 gridPanel.getGridHandler().addFurniture(nbElt, furnitures.get(i));
-                emplacement.add(furnitures.get(i));
+                //emplacement.add(furnitures.get(i));
                 nbElt++;
             }
         }
