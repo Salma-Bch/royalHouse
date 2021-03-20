@@ -10,16 +10,14 @@ public class Furniture implements Serializable, Cloneable {
     private String name;
     private int width;
     private int lenght;
-    private boolean stackable;
     private ImageIcon image;
 
-    public Furniture(String type, String style, String name, int width, int lenght, boolean stackable, ImageIcon image) {
+    public Furniture(String type, String style, String name, int width, int lenght, ImageIcon image) {
         this.type = type;
         this.style = style;
         this.name = name;
         this.width = width;
         this.lenght = lenght;
-        this.stackable = stackable;
         this.image = image;
     }
 
@@ -27,7 +25,6 @@ public class Furniture implements Serializable, Cloneable {
     @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
-       // return new Furniture(type, style, name, width, lenght, stackable, image);;
     }
 
     public String getType() {
@@ -48,10 +45,6 @@ public class Furniture implements Serializable, Cloneable {
 
     public int getLenght() {
         return lenght;
-    }
-
-    public boolean isStackable() {
-        return stackable;
     }
 
     public ImageIcon getImage() {
@@ -76,10 +69,6 @@ public class Furniture implements Serializable, Cloneable {
 
     public void setLenght(int lenght) {
         this.lenght = lenght;
-    }
-
-    public void setStackable(boolean stackable) {
-        this.stackable = stackable;
     }
 
     public void setImage(ImageIcon image) {

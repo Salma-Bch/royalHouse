@@ -17,7 +17,7 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
     private Color backgroundColor = Color.GRAY;
     private final boolean dropable;
     private final boolean dragable;
-    private JLabel name;
+    private JLabel couleur;
     private JLabel style;
     private JLabel type;
 
@@ -116,10 +116,13 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
     public JPanel informationsMeubles() {
         JPanel informations = new JPanel();
         informations.setLayout(new GridLayout(3,1));
-        name = new JLabel(cell.getFurniture().getName());
-        style = new JLabel(cell.getFurniture().getStyle());
-        type = new JLabel(cell.getFurniture().getType());
-        informations.add(name);
+        couleur = new JLabel();
+        style = new JLabel();
+        type = new JLabel();
+        couleur.setText("Couleur : " + cell.getFurniture().getName());
+        style.setText("Style : " + cell.getFurniture().getStyle());
+        type.setText("Type : " + cell.getFurniture().getType());
+        informations.add(couleur);
         informations.add(type);
         informations.add(style);
 
