@@ -25,13 +25,12 @@ public class ToolboxPanel extends JPanel implements ActionListener {
 
     public ToolboxPanel() {
         super();
-        image = Toolkit.getDefaultToolkit().getImage("./ressources/images/autres/royal_texture.jpg");
         JPanel mainPan = new JPanel();
-        toolboxHandler.initComboBox(comboBoxStyles, comboBoxMeuble);
-        gridPanel = new GridPanel(2,5,false);
-
+        gridPanel = new GridPanel(2,3,false);
         cellInfoPan = new CellPanel(new Cell(600,600,null),200, false, false);
 
+        image = Toolkit.getDefaultToolkit().getImage("./ressources/images/autres/royal_texture.jpg");
+        toolboxHandler.initComboBox(comboBoxStyles, comboBoxMeuble);
         gridPanel.setBackground(Color.BLACK);
         valider.addActionListener(this);
         ajouter.addActionListener(this);
@@ -49,7 +48,6 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         this.add(infoPanel, BorderLayout.SOUTH);
         infoPanel.setPreferredSize(new Dimension(400,200));
         cellInfoPan.setPreferredSize(new Dimension(200,200));
-
     }
 
     @Override
@@ -66,16 +64,11 @@ public class ToolboxPanel extends JPanel implements ActionListener {
 
     public GridPanel drawFurniture(String type, String style) throws IOException {
         ArrayList<Furniture> furnitures = toolboxHandler.initFurniture("./ressources/furnitures.csv");
-
-            //emplacement = new ArrayList<Furniture>();
-
         int nbElt = 0;
         gridPanel.getGridHandler().removeFurnitures();
         for(int i = 0; i<furnitures.size(); i++) {
             if(furnitures.get(i).getStyle().equals(style) && furnitures.get(i).getType().equals(type)) {
-
                 gridPanel.getGridHandler().addFurniture(nbElt, furnitures.get(i));
-                //emplacement.add(furnitures.get(i));
                 nbElt++;
             }
         }
@@ -94,7 +87,7 @@ public class ToolboxPanel extends JPanel implements ActionListener {
             gridPanel.revalidate();
             gridPanel.repaint();
        }
-        }
+    }
         /*if(Button == ajouter){
             if(nbCell<49 && IHM.toolboxPan.gridPanel.gridHandler.getSelectedCell() <emplacement.size()) {
                 //ArrayList<Furniture> furnitures = toolboxHandler.initFurniture();

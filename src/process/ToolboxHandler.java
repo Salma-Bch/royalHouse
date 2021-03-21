@@ -50,7 +50,7 @@ public class ToolboxHandler {
         BufferedReader br = new BufferedReader(fr);
         for (String line = br.readLine(); line != null; line = br.readLine()) {
             String[] words = line.split(";");
-            furniture.add(new Furniture(words[0], words[1], words[2], 200,200, words[3].equals("stackable"),new ImageIcon(words[4])));
+            furniture.add(new Furniture(words[0], words[1], words[2], 200,200,new ImageIcon(words[3])));
         }
         br.close();
         fr.close();
