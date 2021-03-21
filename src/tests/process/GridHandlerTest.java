@@ -1,4 +1,4 @@
-package process;
+/*package process;
 
 import model.Cell;
 import model.Furniture;
@@ -76,4 +76,4 @@ public class GridHandlerTest {
     @Test
     public void getColumnNumber() {
     }
-}
+}*/
