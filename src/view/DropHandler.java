@@ -46,18 +46,18 @@ public class DropHandler implements DropTargetListener, Serializable {
             try {
                 Object data = transferable.getTransferData(PanelDataFlavor.SHARED_INSTANCE);
                 if (data instanceof JPanel) {
-                    CellPanel parentCellPanel = (CellPanel) data;
+                    CellPanel cellPanel = (CellPanel) data;
                     DropTargetContext dtc = dtde.getDropTargetContext();
                     Component component = dtc.getComponent();
                     if (component instanceof JComponent) {
-                        Container parent = parentCellPanel.getParent();
+                        Container parent = cellPanel.getParent();
                         if (parent != null) {
                             //parent.remove(panel);
-                           // parent.revalidate();
+                            // parent.revalidate();
                             //parent.repaint();
                         }
 
-                        Furniture f = parentCellPanel.getCell().getFurniture();
+                        Furniture f = cellPanel.getCell().getFurniture();
                         if(f != null) {
                             Furniture clonedF = (Furniture) f.clone();
                             ((CellPanel) component).getCell().setFurniture(clonedF);

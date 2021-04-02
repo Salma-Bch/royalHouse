@@ -25,12 +25,9 @@ public class ToolboxPanel extends JPanel implements ActionListener {
 
     public ToolboxPanel() {
         super();
-        image = Toolkit.getDefaultToolkit().getImage("./ressources/images/autres/royal_texture.jpg");
         JPanel mainPan = new JPanel();
-        toolboxHandler.initComboBox(comboBoxStyles, comboBoxMeuble);
-        gridPanel = new GridPanel(2,3,false,200);
-
-        cellInfoPan = new CellPanel(new Cell(600,600,0,null),200, false, false);
+        gridPanel = new GridPanel(2,3,false);
+        cellInfoPan = new CellPanel(new Cell(600,600,null),200, false, false);
 
         image = Toolkit.getDefaultToolkit().getImage("./ressources/images/autres/royal_texture.jpg");
         toolboxHandler.initComboBox(comboBoxStyles, comboBoxMeuble);
@@ -44,9 +41,7 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         infoPanel = new JPanel();
         infoPanel.setLayout(new GridLayout(1,2));
         infoPanel.add(cellInfoPan);
-        JPanel jp = new JPanel();
-        jp.setBackground(Color.gray);
-        infoPanel.add(jp);
+        infoPanel.add(new JPanel());
         System.out.println(this.getSize().getWidth());
         gridPanel.setPreferredSize(new Dimension(250,600));
         this.add(gridPanel, BorderLayout.CENTER);
@@ -91,7 +86,7 @@ public class ToolboxPanel extends JPanel implements ActionListener {
             }
             gridPanel.revalidate();
             gridPanel.repaint();
-       }
+        }
     }
         /*if(Button == ajouter){
             if(nbCell<49 && IHM.toolboxPan.gridPanel.gridHandler.getSelectedCell() <emplacement.size()) {

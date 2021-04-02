@@ -40,18 +40,17 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
     }
 
     @Override
-    public void addNotify() {
-        if (dragable) {
+    public void addNotify(){
+        if(dragable) {
             super.addNotify();
             if (dragGestureRecognizer == null) {
                 dragGestureHandler = new DragGestureHandler(this);
                 dragGestureRecognizer = DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this
                         , DnDConstants.ACTION_COPY, dragGestureHandler);
             }
-            if (this.dropable) {
-                dropHandler = new DropHandler();
+            dropHandler = new DropHandler();
+            if (this.dropable)
                 dropTarget = new DropTarget(this, DnDConstants.ACTION_COPY, dropHandler, true);
-            }
         }
     }
 
@@ -79,7 +78,7 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
 
     public void paintFurniture(Graphics g){
         if(cell.getFurniture() != null) {
-            Image image = cell.getFurniture().getImage().getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
+            Image image = cell.getFurniture().getImage().getImage().getScaledInstance(cellSize, cellSize, Image.SCALE_DEFAULT);
             ImageIcon imageIcon = new ImageIcon(image);
             imageIcon.paintIcon(this, g,  0, 0);
         }
@@ -117,10 +116,6 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
     public JPanel informationsMeubles() {
         JPanel informations = new JPanel();
         informations.setLayout(new GridLayout(3,1));
-        JLabel name = new JLabel(cell.getFurniture().getName());
-        JLabel style = new JLabel(cell.getFurniture().getStyle());
-        JLabel type = new JLabel(cell.getFurniture().getType());
-        informations.add(name);
         couleur = new JLabel();
         style = new JLabel();
         type = new JLabel();

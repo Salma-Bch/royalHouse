@@ -25,7 +25,7 @@ public class GarbagePanel extends JPanel implements ActionListener {
 
         poubelle.addActionListener(this);
 
-        GridPanel gridPanel = new GridPanel(1,1,false,200);
+        GridPanel gridPanel = new GridPanel(1,1,false);
         gridPanel.setPreferredSize(new Dimension(150,150));
         gridPanel.add(label);
 
