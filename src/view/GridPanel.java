@@ -13,6 +13,7 @@ public class GridPanel extends JPanel  {
     public GridHandler gridHandler;
     private final Grid grid;
     private boolean dropable;
+    private final int cellSize;
 
     //A ENLEVER
     /*private DragGestureRecognizer dgr;
@@ -21,13 +22,14 @@ public class GridPanel extends JPanel  {
     DropHandler dropHandler;*/
     ///////////
 
-    public GridPanel( int columnNumber, int rowNumber, boolean dropable) {
+    public GridPanel( int columnNumber, int rowNumber, boolean dropable, int cellSize) {
         super();
         this.dropable = dropable;
         this.setLayout(new GridLayout(rowNumber, columnNumber));
         gridHandler = new GridHandler(columnNumber,rowNumber);
         grid = gridHandler.getGrid();
         cellPanels = initCellPanels();
+        this.cellSize = cellSize;
     }
 
     public void reinitCellPanels(){
@@ -41,7 +43,7 @@ public class GridPanel extends JPanel  {
         int rows = grid.getRowNumber();
         int columns = grid.getColumnNumber();
         for(int i=0; i<rows*columns; i++){
-            cellPanels.add(new CellPanel(grid.getCells().get(i),200, this.dropable, true));
+            cellPanels.add(new CellPanel(grid.getCells().get(i),cellSize, this.dropable, true));
             this.add(cellPanels.get(i));
         }
         return cellPanels;

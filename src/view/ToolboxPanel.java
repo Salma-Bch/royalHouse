@@ -25,9 +25,12 @@ public class ToolboxPanel extends JPanel implements ActionListener {
 
     public ToolboxPanel() {
         super();
+        image = Toolkit.getDefaultToolkit().getImage("./ressources/images/autres/royal_texture.jpg");
         JPanel mainPan = new JPanel();
-        gridPanel = new GridPanel(2,3,false);
-        cellInfoPan = new CellPanel(new Cell(600,600,null),200, false, false);
+        toolboxHandler.initComboBox(comboBoxStyles, comboBoxMeuble);
+        gridPanel = new GridPanel(2,3,false,200);
+
+        cellInfoPan = new CellPanel(new Cell(600,600,0,null),200, false, false);
 
         image = Toolkit.getDefaultToolkit().getImage("./ressources/images/autres/royal_texture.jpg");
         toolboxHandler.initComboBox(comboBoxStyles, comboBoxMeuble);
@@ -41,7 +44,9 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         infoPanel = new JPanel();
         infoPanel.setLayout(new GridLayout(1,2));
         infoPanel.add(cellInfoPan);
-        infoPanel.add(new JPanel());
+        JPanel jp = new JPanel();
+        jp.setBackground(Color.gray);
+        infoPanel.add(jp);
         System.out.println(this.getSize().getWidth());
         gridPanel.setPreferredSize(new Dimension(250,600));
         this.add(gridPanel, BorderLayout.CENTER);

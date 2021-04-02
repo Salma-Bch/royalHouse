@@ -7,11 +7,17 @@ public class Cell implements Serializable {
     public static int width;
     public static int height;
     private Furniture furniture;
+    private final int position;
 
-    public Cell(int width, int height, Furniture furniture) {
+    public Cell(int width, int height, int position, Furniture furniture) {
         Cell.width = width;
         Cell.height = height;
         this.furniture = furniture;
+        this.position = position;
+    }
+
+    public int getPosition(){
+        return this.position;
     }
 
     public Furniture getFurniture() {
