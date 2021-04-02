@@ -14,7 +14,6 @@ public class DropHandler implements DropTargetListener, Serializable {
         if (dtde.isDataFlavorSupported(PanelDataFlavor.SHARED_INSTANCE)) {
 
             dtde.acceptDrag(DnDConstants.ACTION_COPY);
-
         } else {
 
             dtde.rejectDrag();
@@ -66,6 +65,7 @@ public class DropHandler implements DropTargetListener, Serializable {
                             ((JComponent) component).invalidate();
                             ((JComponent) component).repaint();
                         }
+
 
 
                     } else {

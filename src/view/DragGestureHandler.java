@@ -1,5 +1,7 @@
 package view;
 
+import model.Cell;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.Transferable;
@@ -37,6 +39,7 @@ public class DragGestureHandler implements DragGestureListener, DragSourceListen
         Transferable transferable = new PanelTransferable(getPanel());
 
         DragSource ds = dge.getDragSource();
+
         ds.startDrag(dge, null,transferable, this);
         parent.remove(getPanel());
         parent.invalidate();
@@ -66,6 +69,10 @@ public class DragGestureHandler implements DragGestureListener, DragSourceListen
     @Override
     public void dragDropEnd(DragSourceDropEvent dsde) {
         if(!dsde.getDropSuccess()){
+            if(((CellPanel)getPanel()).canThrow){
+                ((CellPanel)getPanel()).getCell().setFurniture(null);
+                System.out.println("mis a null");
+            }
             getParent().add(getPanel());
             getParent().invalidate();
             getParent().repaint();

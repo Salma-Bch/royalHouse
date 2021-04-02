@@ -1,5 +1,7 @@
 package view;
 
+import model.Cell;
+
 import model.Furniture;
 import process.GridHandler;
 
@@ -18,6 +20,9 @@ public class GarbagePanel extends JPanel implements ActionListener {
     private JPanel deleteZone = new JPanel();
     private Image image;
     private JButton button ;
+
+    public JPanel garbagePanel;
+    public CellPanel cellPan;
 
     public GarbagePanel(int width, int height) {
         super();
@@ -53,16 +58,32 @@ public class GarbagePanel extends JPanel implements ActionListener {
 
         poubelle.addActionListener(this);
 
-        GridPanel gridPanel = new GridPanel(1,1,false);
-        gridPanel.setPreferredSize(new Dimension(150,150));
-        gridPanel.add(label);
+        Cell cell = new Cell(200,200,null);
 
-        JPanel complete = buildPanel(poubelle, gridPanel);
+        cellPan = new CellPanel(cell,200, true, true,false);
+        cellPan.setPreferredSize(new Dimension(200,200));
+
+        /*garbagePanel = new JPanel();
+        garbagePanel.setLayout(new GridLayout(1,2));
+        garbagePanel.add(cellPan);
+        garbagePanel.add(new JPanel());*/
+
+
+        /*GridPanel gridPanel = new GridPanel(1,1,true);
+        gridPanel.setPreferredSize(new Dimension(150,150));
+        gridPanel.add(label);*/
+
+        /*Cell cell = new Cell(200,200,null);
+
+        CellPanel cellPanel = new CellPanel(cell, 200, true, false);*/
+
+
+        JPanel complete = buildPanel(poubelle, cellPan);
 
         this.add(complete);
     }
 
-    public JPanel buildPanel(JButton trash, GridPanel gridPanel) {
+    public JPanel buildPanel(JButton trash, CellPanel panel) {
         JPanel grid = new JPanel();
         grid.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -79,7 +100,7 @@ public class GarbagePanel extends JPanel implements ActionListener {
         c.gridx = 0;
         c.gridy = 1;
 
-        grid.add(gridPanel, c);
+        grid.add(panel, c);
         grid.setBackground(new Color(227, 72, 181));
 
         return grid;
@@ -90,9 +111,9 @@ public class GarbagePanel extends JPanel implements ActionListener {
 
     }
 
-    @Override
+    /*@Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(image, 0, 0, this);
-    }
+    }*/
 }

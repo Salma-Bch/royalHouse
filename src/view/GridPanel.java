@@ -41,7 +41,7 @@ public class GridPanel extends JPanel  {
         int rows = grid.getRowNumber();
         int columns = grid.getColumnNumber();
         for(int i=0; i<rows*columns; i++){
-            cellPanels.add(new CellPanel(grid.getCells().get(i),200, this.dropable, true));
+            cellPanels.add(new CellPanel(grid.getCells().get(i),200, this.dropable, true,true));
             this.add(cellPanels.get(i));
         }
         return cellPanels;
