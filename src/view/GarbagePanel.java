@@ -1,15 +1,20 @@
 package view;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class GarbagePanel extends JPanel implements ActionListener {
 
     private JButton poubelle = new JButton("Poubelle");
     private JPanel deleteZone = new JPanel();
     private Image image;
+    private JButton button ;
 
     public GarbagePanel(int width, int height) {
         super();
@@ -22,6 +27,15 @@ public class GarbagePanel extends JPanel implements ActionListener {
         ImageIcon icon2 = new ImageIcon(icon.getImage().getScaledInstance(25,25,Image.SCALE_DEFAULT));
         JLabel label = new JLabel(icon2, JLabel.CENTER);
         image = Toolkit.getDefaultToolkit().getImage("./ressources/images/autres/royal_texture.jpg");
+        BufferedImage buttonIcon = null;
+        try {
+            buttonIcon = ImageIO.read(new File("./ressources/images/autres/rotation.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        button = new JButton(new ImageIcon(buttonIcon));
+
+        this.add(button);
 
         poubelle.addActionListener(this);
 
