@@ -53,7 +53,7 @@ public class DropHandler implements DropTargetListener, Serializable {
                         Container parent = cellPanel.getParent();
                         if (parent != null) {
                             //parent.remove(panel);
-                           // parent.revalidate();
+                            // parent.revalidate();
                             //parent.repaint();
                         }
 

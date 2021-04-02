@@ -86,7 +86,7 @@ public class ToolboxPanel extends JPanel implements ActionListener {
             }
             gridPanel.revalidate();
             gridPanel.repaint();
-       }
+        }
     }
         /*if(Button == ajouter){
             if(nbCell<49 && IHM.toolboxPan.gridPanel.gridHandler.getSelectedCell() <emplacement.size()) {
