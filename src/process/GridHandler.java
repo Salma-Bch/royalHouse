@@ -3,6 +3,7 @@ package process;
 import model.Cell;
 import model.Furniture;
 import model.Grid;
+import view.CellPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,21 +12,13 @@ import java.util.ArrayList;
 public class GridHandler {
     private int columnNumber, rowNumber;
     private Grid grid;
-    private int selectedCell;
+    public static CellPanel selectedCellPanel;
 
     public GridHandler(int columnNumber, int rowNumber) {
         grid = initGrid(columnNumber, rowNumber);
         this.columnNumber=columnNumber;
         this.rowNumber=rowNumber;
-        this.selectedCell = -1;
-    }
-
-    public void setSelectedCell(int selectedCell) {
-        this.selectedCell = selectedCell;
-    }
-
-    public int getSelectedCell() {
-        return selectedCell;
+        //this.selectedCell = -1;
     }
 
     public Grid getGrid(){

@@ -11,6 +11,7 @@ public class Furniture implements Serializable, Cloneable {
     private int width;
     private int lenght;
     private ImageIcon image;
+    private int orientation;
 
     public Furniture(String type, String style, String name, int width, int lenght, ImageIcon image) {
         this.type = type;
@@ -19,8 +20,22 @@ public class Furniture implements Serializable, Cloneable {
         this.width = width;
         this.lenght = lenght;
         this.image = image;
+        this.orientation = 0;
     }
 
+    public void incrementeOrientation(){
+        this.orientation += 90;
+        if(orientation > 270)
+            orientation = 0;
+    }
+
+    public int getOrientation() {
+        return orientation;
+    }
+
+    public void setOrientation(int orientation) {
+        this.orientation = orientation;
+    }
 
     @Override
     public Object clone() throws CloneNotSupportedException {

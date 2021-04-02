@@ -3,6 +3,8 @@ package view;
 import model.Cell;
 import model.Furniture;
 import model.Toolbox;
+import process.GridHandler;
+import tests.process.RotatedIcon;
 
 import javax.swing.*;
 import java.awt.*;
@@ -80,7 +82,9 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
         if(cell.getFurniture() != null) {
             Image image = cell.getFurniture().getImage().getImage().getScaledInstance(cellSize, cellSize, Image.SCALE_DEFAULT);
             ImageIcon imageIcon = new ImageIcon(image);
-            imageIcon.paintIcon(this, g,  0, 0);
+            RotatedIcon rotatedIcon = new RotatedIcon(imageIcon,cell.getFurniture().getOrientation());
+            rotatedIcon.paintIcon(this, g,  0, 0);
+
         }
     }
 
@@ -93,6 +97,7 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
         ( (GridPanel)this.getParent() ).reinitCellPanels();
         this.getParent().repaint();
         Furniture f = cell.getFurniture();
+        GridHandler.selectedCellPanel = this;
         JPanel informationsMeubles = informationsMeubles();
         if(f != null) {
             try {

@@ -1,5 +1,8 @@
 package view;
 
+import model.Furniture;
+import process.GridHandler;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -36,6 +39,17 @@ public class GarbagePanel extends JPanel implements ActionListener {
         button = new JButton(new ImageIcon(buttonIcon));
 
         this.add(button);
+
+        button.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(GridHandler.selectedCellPanel != null) {
+                    GridHandler.selectedCellPanel.getCell().getFurniture().incrementeOrientation();
+                    GridHandler.selectedCellPanel.repaint();
+                }
+            }
+        });
 
         poubelle.addActionListener(this);
 
