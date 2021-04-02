@@ -36,8 +36,8 @@ public class GridHandler {
         Grid grid = new Grid(columnNumber, rowNumber);
         ArrayList<Cell> cells = new ArrayList<Cell>();
         for(int i = 0; i<columnNumber*rowNumber; i++) {
-                Cell cell = new Cell(200, 200, i, null);
-                cells.add(cell);
+            Cell cell = new Cell(200, 200, null);
+            cells.add(cell);
         }
         grid.setCells(cells);
         return grid;
