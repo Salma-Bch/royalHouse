@@ -22,7 +22,7 @@ public class GarbagePanel extends JPanel implements ActionListener {
     private JButton button ;
 
     public JPanel garbagePanel;
-    public CellPanel cellPan;
+    public GridPanel cellPan;
 
     public GarbagePanel(int width, int height) {
         super();
@@ -59,8 +59,10 @@ public class GarbagePanel extends JPanel implements ActionListener {
         poubelle.addActionListener(this);
 
         Cell cell = new Cell(200,200,null);
+        cellPan = new GridPanel(1,1,true,true);
+        //il faut que dragable soit impossible
 
-        cellPan = new CellPanel(cell,200, true, true,false);
+        /*cellPan = new CellPanel(cell,200, true, false,false);*/
         cellPan.setPreferredSize(new Dimension(200,200));
 
         /*garbagePanel = new JPanel();
@@ -83,7 +85,7 @@ public class GarbagePanel extends JPanel implements ActionListener {
         this.add(complete);
     }
 
-    public JPanel buildPanel(JButton trash, CellPanel panel) {
+    public JPanel buildPanel(JButton trash, GridPanel panel) {
         JPanel grid = new JPanel();
         grid.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -109,8 +111,16 @@ public class GarbagePanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        Object Button = e.getSource();
+        if (Button == poubelle) {
+            //cellPan.getCell().setFurniture(null);
+            cellPan.getGridHandler().getGrid().getCells().get(0).setFurniture(null);
+            //getParent().add(cellPan.getCell());
+            //getParent().invalidate();
+            //getParent().repaint();
+            repaint();
+        }
     }
-
     /*@Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

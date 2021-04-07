@@ -26,7 +26,7 @@ public class ToolboxPanel extends JPanel implements ActionListener {
     public ToolboxPanel() {
         super();
         JPanel mainPan = new JPanel();
-        gridPanel = new GridPanel(2,3,false);
+        gridPanel = new GridPanel(2,3,false, false);
         cellInfoPan = new CellPanel(new Cell(600,600,null),200, false, false,false);
 
         image = Toolkit.getDefaultToolkit().getImage("./ressources/images/autres/royal_texture.jpg");
