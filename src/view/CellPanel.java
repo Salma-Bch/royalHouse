@@ -42,6 +42,10 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
         return this.cell;
     }
 
+    public Color getBackgroundColor() {
+        return backgroundColor;
+    }
+
     @Override
     public void addNotify(){
         if(dragable) {
