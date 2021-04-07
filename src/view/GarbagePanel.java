@@ -59,7 +59,7 @@ public class GarbagePanel extends JPanel implements ActionListener {
         poubelle.addActionListener(this);
 
         Cell cell = new Cell(200,200,null);
-        cellPan = new GridPanel(1,1,true,true);
+        cellPan = new GridPanel(1,1,true,true,150);
         //il faut que dragable soit impossible
 
         /*cellPan = new CellPanel(cell,200, true, false,false);*/

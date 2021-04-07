@@ -26,7 +26,7 @@ public class ToolboxPanel extends JPanel implements ActionListener {
     public ToolboxPanel() {
         super();
         JPanel mainPan = new JPanel();
-        gridPanel = new GridPanel(2,3,false, false);
+        gridPanel = new GridPanel(1,6,false, false,130);
         cellInfoPan = new CellPanel(new Cell(600,600,null),200, false, false,false);
 
         image = Toolkit.getDefaultToolkit().getImage("./ressources/images/autres/royal_texture.jpg");
@@ -43,11 +43,11 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         infoPanel.add(cellInfoPan);
         infoPanel.add(new JPanel());
         System.out.println(this.getSize().getWidth());
-        gridPanel.setPreferredSize(new Dimension(250,600));
+        gridPanel.setPreferredSize(new Dimension(260,700));
         this.add(gridPanel, BorderLayout.CENTER);
-        this.add(infoPanel, BorderLayout.SOUTH);
-        infoPanel.setPreferredSize(new Dimension(400,200));
-        cellInfoPan.setPreferredSize(new Dimension(200,200));
+      //  this.add(infoPanel, BorderLayout.SOUTH);
+      //  infoPanel.setPreferredSize(new Dimension(400,200));
+      //  cellInfoPan.setPreferredSize(new Dimension(200,200));
     }
 
     @Override

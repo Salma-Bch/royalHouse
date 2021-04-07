@@ -86,7 +86,6 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
             ImageIcon imageIcon = new ImageIcon(image);
             RotatedIcon rotatedIcon = new RotatedIcon(imageIcon,cell.getFurniture().getOrientation());
             rotatedIcon.paintIcon(this, g,  0, 0);
-
         }
     }
 
