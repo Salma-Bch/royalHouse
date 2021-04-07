@@ -14,13 +14,9 @@ public class GridPanelTest {
     @Test
     public void reinitCellPanels() {
         ArrayList<CellPanel> cellPanels = new ArrayList<CellPanel>();
-        //GridPanel gp = new GridPanel(1,1,false);
         Cell cell = new Cell(10, 10, null);
         CellPanel cp = new CellPanel(cell, 200, false, false, false);
         cellPanels.add(cp);
-        /*gp.reinitCellPanels();
-        assertArrayEquals(true, cellPanels.get);*/
-
 
         for (CellPanel cellPanel : cellPanels) {
            cellPanel.setBackgroundColor(Color.GRAY);
@@ -33,16 +29,9 @@ public class GridPanelTest {
             System.out.println("La couleur est : " + cellPanels.get(i).getBackgroundColor());
             System.out.println("La couleur est : " + Color.GRAY);
 
-            //Ne marche pas. A revoir.
             assertEquals(Color.GRAY, cellPanels.get(i).getBackgroundColor());
 
         }
-        /*int r=4, c=4;
-        GridPanel gp = new GridPanel(r, c, false);
-        gp.reinitCellPanels();
-        for (int i=0; i<gp.getGridHandler().getGrid().getCells().size(); i++) {
-            assertEquals(true , gp.getGridHandler().getGrid().getCells(). == Color.GRAY);
-        }*/
    }
 
     @Test
