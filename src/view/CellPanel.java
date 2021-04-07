@@ -2,9 +2,8 @@ package view;
 
 import model.Cell;
 import model.Furniture;
-import model.Toolbox;
 import process.GridHandler;
-import tests.process.RotatedIcon;
+import process.RotatedIcon;
 
 import javax.swing.*;
 import java.awt.*;

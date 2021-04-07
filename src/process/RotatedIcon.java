@@ -1,4 +1,4 @@
-package tests.process;
+package process;
 
 import javax.swing.*;
 import java.awt.*;
