@@ -21,15 +21,17 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
     private JLabel couleur;
     private JLabel style;
     private JLabel type;
+    public boolean canThrow;
 
     private DragGestureRecognizer dragGestureRecognizer;
     private DragGestureHandler dragGestureHandler;
     DropTarget dropTarget;
     DropHandler dropHandler;
 
-    public CellPanel(Cell cell, int cellSize, boolean dropable, boolean dragable){
+    public CellPanel(Cell cell, int cellSize, boolean dropable, boolean dragable,boolean canThrow){
         super();
         this.cell = cell;
+        this.canThrow = canThrow;
         this.cellSize = cellSize;
         this.dropable = dropable;
         this.dragable = dragable;
@@ -83,7 +85,6 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
             ImageIcon imageIcon = new ImageIcon(image);
             RotatedIcon rotatedIcon = new RotatedIcon(imageIcon,cell.getFurniture().getOrientation());
             rotatedIcon.paintIcon(this, g,  0, 0);
-
         }
     }
 
