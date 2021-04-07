@@ -14,7 +14,6 @@ public class ToolboxPanel extends JPanel implements ActionListener {
     private JComboBox comboBoxMeuble = new JComboBox();
     private JComboBox comboBoxStyles = new JComboBox();
     private JButton valider = new JButton("Valider");
-    private JButton ajouter = new JButton("Ajouter");
     public ToolboxHandler toolboxHandler = new ToolboxHandler();
     public GridPanel gridPanel;
     public static JPanel infoPanel;
@@ -33,17 +32,15 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         toolboxHandler.initComboBox(comboBoxStyles, comboBoxMeuble);
         gridPanel.setBackground(Color.BLACK);
         valider.addActionListener(this);
-        ajouter.addActionListener(this);
 
         this.add(this.getJpanelComboboxs());
         this.add(valider);
-        this.add(ajouter);
         infoPanel = new JPanel();
         infoPanel.setLayout(new GridLayout(1,2));
         infoPanel.add(cellInfoPan);
         infoPanel.add(new JPanel());
         System.out.println(this.getSize().getWidth());
-        gridPanel.setPreferredSize(new Dimension(260,700));
+        gridPanel.setPreferredSize(new Dimension(200,700));
         this.add(gridPanel, BorderLayout.CENTER);
       //  this.add(infoPanel, BorderLayout.SOUTH);
       //  infoPanel.setPreferredSize(new Dimension(400,200));

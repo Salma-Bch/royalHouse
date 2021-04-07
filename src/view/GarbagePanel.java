@@ -103,7 +103,6 @@ public class GarbagePanel extends JPanel implements ActionListener {
         c.gridy = 1;
 
         grid.add(panel, c);
-        grid.setBackground(new Color(227, 72, 181));
 
         return grid;
     }
@@ -121,9 +120,9 @@ public class GarbagePanel extends JPanel implements ActionListener {
             repaint();
         }
     }
-    /*@Override
+    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(image, 0, 0, this);
-    }*/
+    }
 }
