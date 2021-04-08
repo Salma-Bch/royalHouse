@@ -86,7 +86,7 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
             Image image = cell.getFurniture().getImage().getImage().getScaledInstance(cellSize, cellSize, Image.SCALE_DEFAULT);
             ImageIcon imageIcon = new ImageIcon(image);
             RotatedIcon rotatedIcon = new RotatedIcon(imageIcon,cell.getFurniture().getOrientation());
-            rotatedIcon.paintIcon(this, g,  0, 0);
+            rotatedIcon.paintIcon(this, g,  (getWidth()-cellSize)/2,(getHeight()-cellSize)/2);
         }
     }
 
@@ -122,7 +122,7 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
                 ex.printStackTrace();
             }
 
-            backgroundColor = new Color(61, 101, 160);
+            backgroundColor = new Color(228, 172, 61);
             this.repaint();
 
         }
@@ -135,9 +135,9 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
         couleur = new JLabel();
         style = new JLabel();
         type = new JLabel();
-        couleur.setText("Couleur : " + cell.getFurniture().getColor());
-        style.setText("Style : " + cell.getFurniture().getStyle());
-        type.setText("Type : " + cell.getFurniture().getType());
+        couleur.setText("        Couleur : " + cell.getFurniture().getColor());
+        style.setText("        Style : " + cell.getFurniture().getStyle());
+        type.setText("        Type : " + cell.getFurniture().getType());
         couleur.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 22));
         style.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 22));
         type.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 22));

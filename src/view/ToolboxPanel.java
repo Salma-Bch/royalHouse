@@ -40,7 +40,7 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         valider.setVerticalAlignment(SwingConstants.BOTTOM);
         valider.addActionListener(this);
 
-        image = Toolkit.getDefaultToolkit().getImage("./ressources/images/autres/royal_texture.jpg");
+        image = Toolkit.getDefaultToolkit().getImage("./ressources/images/autres/royal_texture_gauche.jpg");
         toolboxHandler.initComboBox(comboBoxStyles, comboBoxMeuble);
 
         this.add(this.getJpanelComboboxs());

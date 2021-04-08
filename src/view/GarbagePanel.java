@@ -42,8 +42,8 @@ public class GarbagePanel extends JPanel implements ActionListener {
         this.setPreferredSize(new Dimension(width/4, height));
         this.setBorder(BorderFactory.createEmptyBorder(30,0,30,0));
 
-        cellInfoPan = new CellPanel(new Cell(600,600,null),200, false, false,false);
-        image = Toolkit.getDefaultToolkit().getImage("./ressources/images/autres/royal_texture.jpg");
+        cellInfoPan = new CellPanel(new Cell(600,600,null),150, false, false,false);
+        image = Toolkit.getDefaultToolkit().getImage("./ressources/images/autres/royal_texture_droite.jpg");
         BufferedImage rotationIcon = null;
         BufferedImage poubelleIcon = null;
 
@@ -57,9 +57,6 @@ public class GarbagePanel extends JPanel implements ActionListener {
             rotation.setPreferredSize(new Dimension(140, 140));
             poubelle.setPreferredSize(new Dimension(140, 140));
             rotation.putClientProperty("Synthetica.opaque",Boolean.TRUE);
-            rotation.setBackground(Color.WHITE);
-
-            rotation.setForeground(Color.WHITE);
 
         } catch (IOException e) {
             e.printStackTrace();
