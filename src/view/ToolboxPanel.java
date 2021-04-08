@@ -14,7 +14,7 @@ public class ToolboxPanel extends JPanel implements ActionListener {
     private JComboBox comboBoxStyles = new JComboBox();
     private JButton valider = new JButton("Valider");
     public ToolboxHandler toolboxHandler = new ToolboxHandler();
-    public GridPanel gridPanel;
+    public static GridPanel gridPanel;
     public int nbCell = 0;
     private ArrayList<Furniture> emplacement = new ArrayList<Furniture>();
     private Image image;
