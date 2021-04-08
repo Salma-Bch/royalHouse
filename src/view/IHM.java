@@ -46,7 +46,7 @@ public class IHM extends JFrame implements Serializable {
     }
 
     public GridPanel initGridPan(){
-        GridPanel gridPan = new GridPanel(5,5,true, true,200);
+        GridPanel gridPan = new GridPanel(5,5,true, true,160);
         dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         height = (int)dimension.getHeight();
         width  = (int)dimension.getWidth();

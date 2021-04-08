@@ -1,4 +1,4 @@
-/*package process;
+package process;
 
 import model.Furniture;
 import org.junit.Test;
@@ -18,7 +18,6 @@ public class ToolboxHandlerTest {
     public void getFilters() throws IOException {
         ToolboxHandler tbh = new ToolboxHandler();
         ArrayList<String> filtres1 = tbh.getFilters("./ressources/meubleFilter.csv");
-        //assertEquals(5, filtres1.size());
 
         ArrayList<String> filtres2 = new ArrayList<String>();
         FileReader fr = new FileReader(new File("./ressources/meubleFilter.csv"));
@@ -62,4 +61,4 @@ public class ToolboxHandlerTest {
 
         assertEquals(furnitures1.size(), furnitures2.size());
     }
-}*/
+}

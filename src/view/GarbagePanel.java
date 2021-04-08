@@ -4,6 +4,7 @@ import model.Cell;
 
 import model.Furniture;
 import process.GridHandler;
+import process.ToolboxHandler;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class GarbagePanel extends JPanel implements ActionListener {
 
@@ -20,6 +22,15 @@ public class GarbagePanel extends JPanel implements ActionListener {
     private JPanel deleteZone = new JPanel();
     private Image image;
     private JButton button ;
+
+
+    private JPanel modifMeuble = new JPanel();
+
+    private JComboBox<String> color;// = new JComboBox<String>();
+    private JComboBox<String> style = new JComboBox<String>();
+    private JComboBox<String> type = new JComboBox<String>();
+    private JButton valider = new JButton("Valider");
+    private boolean alreadyDone = false;
 
     public JPanel garbagePanel;
     public GridPanel cellPan;
@@ -59,7 +70,8 @@ public class GarbagePanel extends JPanel implements ActionListener {
         poubelle.addActionListener(this);
 
         Cell cell = new Cell(200,200,null);
-        cellPan = new GridPanel(1,1,true,true,150);
+        cellPan = new GridPanel(1,1,true,true,200);
+
         //il faut que dragable soit impossible
 
         /*cellPan = new CellPanel(cell,200, true, false,false);*/
@@ -78,14 +90,22 @@ public class GarbagePanel extends JPanel implements ActionListener {
         /*Cell cell = new Cell(200,200,null);
 
         CellPanel cellPanel = new CellPanel(cell, 200, true, false);*/
+        valider.addActionListener(this);
+        (new ToolboxHandler()).initComboBox(style, type);
+        JLabel phrase = new JLabel("Question : ");
+        modifMeuble.add(phrase);
+        modifMeuble.add(style);
+        modifMeuble.add(type);
+        modifMeuble.add(valider);
 
+        modifMeuble.setPreferredSize(new Dimension(200,200));
 
-        JPanel complete = buildPanel(poubelle, cellPan);
+        JPanel complete = buildPanel(poubelle, cellPan, modifMeuble);
 
         this.add(complete);
     }
 
-    public JPanel buildPanel(JButton trash, GridPanel panel) {
+    public JPanel buildPanel(JButton trash, GridPanel panel, JPanel modifMeuble) {
         JPanel grid = new JPanel();
         grid.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -96,11 +116,18 @@ public class GarbagePanel extends JPanel implements ActionListener {
         c.gridy = 0;
         grid.add(trash, c);
 
-        c.insets = new Insets(430,0,0,0);
+        c.insets = new Insets(30,0,0,0);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.5;
         c.gridx = 0;
         c.gridy = 1;
+        grid.add(modifMeuble, c);
+
+        c.insets = new Insets(330,0,0,0);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0.5;
+        c.gridx = 0;
+        c.gridy = 2;
 
         grid.add(panel, c);
         grid.setBackground(new Color(227, 72, 181));
@@ -120,7 +147,38 @@ public class GarbagePanel extends JPanel implements ActionListener {
             //getParent().repaint();
             repaint();
         }
+
+        if(Button == valider) {
+            try {
+                color = new JComboBox<String>();
+                color = couleurMeuble((String)type.getSelectedItem(), (String)style.getSelectedItem());
+
+                    modifMeuble.add(color);
+
+                //modifMeuble.repaint();
+                modifMeuble.revalidate();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+
     }
+
+
+
+    public JComboBox couleurMeuble(String type, String style) throws IOException {
+        ArrayList<Furniture> furnitures = (new ToolboxHandler()).initFurniture("./ressources/furnitures.csv");
+        JComboBox<String> color = new JComboBox<String>();
+
+        for(int i = 0; i<furnitures.size(); i++) {
+            if (furnitures.get(i).getStyle().equals(style) && furnitures.get(i).getType().equals(type)) {
+                color.addItem(furnitures.get(i).getColor());
+            }
+        }
+        return color;
+    }
+
+
     /*@Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
