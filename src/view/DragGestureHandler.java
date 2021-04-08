@@ -1,6 +1,7 @@
 package view;
 
 import model.Cell;
+import process.GridHandler;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,11 +32,6 @@ public class DragGestureHandler implements DragGestureListener, DragSourceListen
     public void dragGestureRecognized(DragGestureEvent dge) {
         Container parent = getPanel().getParent();
         setParent(parent);
-        /*
-        parent.remove(getPanel());
-        parent.invalidate();
-        parent.repaint();
-        */
         Transferable transferable = new PanelTransferable(getPanel());
 
         DragSource ds = dge.getDragSource();
@@ -47,22 +43,18 @@ public class DragGestureHandler implements DragGestureListener, DragSourceListen
 
     @Override
     public void dragEnter(DragSourceDragEvent dsde) {
-
     }
 
     @Override
     public void dragOver(DragSourceDragEvent dsde) {
-
     }
 
     @Override
     public void dropActionChanged(DragSourceDragEvent dsde) {
-
     }
 
     @Override
     public void dragExit(DragSourceEvent dse) {
-
     }
 
     @Override
@@ -70,7 +62,6 @@ public class DragGestureHandler implements DragGestureListener, DragSourceListen
         if(!dsde.getDropSuccess()){
             if(((CellPanel)getPanel()).canThrow){
                 ((CellPanel)getPanel()).getCell().setFurniture(null);
-                System.out.println("mis a null");
             }
             getParent().invalidate();
             getParent().repaint();

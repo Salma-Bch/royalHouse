@@ -1,12 +1,15 @@
 package process;
 
 import model.Furniture;
+import view.CellPanel;
+
 import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 
 public class ToolboxHandler {
     private GridHandler gridHandler;
+   // public static CellPanel selectedCellPanel;
 
     public ToolboxHandler(){
 
