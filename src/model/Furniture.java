@@ -7,21 +7,22 @@ public class Furniture implements Serializable, Cloneable {
 
     private String type;
     private String style;
-    private String name;
+    private String color;
     private int width;
     private int lenght;
     private ImageIcon image;
     private int orientation;
 
-    public Furniture(String type, String style, String name, int width, int lenght, ImageIcon image) {
+    public Furniture(String type, String style, String color, int width, int lenght, ImageIcon image) {
         this.type = type;
         this.style = style;
-        this.name = name;
+        this.color = color;
         this.width = width;
         this.lenght = lenght;
         this.image = image;
         this.orientation = 0;
     }
+
 
     public void incrementeOrientation(){
         this.orientation += 90;
@@ -50,8 +51,8 @@ public class Furniture implements Serializable, Cloneable {
         return style;
     }
 
-    public String getName() {
-        return name;
+    public String getColor() {
+        return color;
     }
 
     public int getWidth() {
@@ -74,8 +75,8 @@ public class Furniture implements Serializable, Cloneable {
         this.style = style;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public void setWidth(int width) {

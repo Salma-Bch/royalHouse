@@ -128,7 +128,7 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
         couleur = new JLabel();
         style = new JLabel();
         type = new JLabel();
-        couleur.setText("Couleur : " + cell.getFurniture().getName());
+        couleur.setText("Couleur : " + cell.getFurniture().getColor());
         style.setText("Style : " + cell.getFurniture().getStyle());
         type.setText("Type : " + cell.getFurniture().getType());
         informations.add(couleur);

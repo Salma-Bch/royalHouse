@@ -1,8 +1,9 @@
-package view;
+package tests.view;
 
 import model.Cell;
 import model.Furniture;
 import org.junit.Test;
+import view.CellPanel;
 
 import javax.swing.*;
 import java.awt.*;
