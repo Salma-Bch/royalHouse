@@ -4,7 +4,6 @@ import model.Grid;
 import process.GridHandler;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.dnd.*;
 import java.util.ArrayList;
 
 public class GridPanel extends JPanel  {

@@ -1,7 +1,6 @@
 package view;
 
 import javax.swing.*;
-import javax.xml.crypto.Data;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;

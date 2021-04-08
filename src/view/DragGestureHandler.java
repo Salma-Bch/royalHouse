@@ -1,8 +1,5 @@
 package view;
 
-import model.Cell;
-import process.GridHandler;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.Transferable;
