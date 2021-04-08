@@ -1,11 +1,9 @@
 package view;
 
 import model.Cell;
-
 import model.Furniture;
 import process.GridHandler;
 import process.ToolboxHandler;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -22,43 +20,41 @@ public class GarbagePanel extends JPanel implements ActionListener {
     private JPanel deleteZone = new JPanel();
     private Image image;
     private JButton button ;
-
-
     private JPanel modifMeuble = new JPanel();
-
-    JLabel phrase1 = new JLabel("Modification esthétique");
-    JLabel phrase2 = new JLabel("Et en quelle couleur ?");
-
-    private JComboBox<String> color = new JComboBox<String>();
+    private JComboBox<String> color;// = new JComboBox<String>();
     private JComboBox<String> style = new JComboBox<String>();
     private JComboBox<String> type = new JComboBox<String>();
     private JButton valider = new JButton("Valider");
     private JButton modifier = new JButton("Modifier");
+    JLabel phrase1 = new JLabel("Modification esthétique");
+    JLabel phrase2 = new JLabel("Et en quelle couleur ?");
     private boolean alreadyDone = false;
-
     public JPanel garbagePanel;
     public GridPanel cellPan;
+    public static JPanel infoPanel;
+    public static CellPanel cellInfoPan;
 
     public GarbagePanel(int width, int height) {
         super();
         this.setPreferredSize(new Dimension(width/6, height));
         this.setBorder(BorderFactory.createEmptyBorder(30,0,30,0));
-        this.setBackground(new Color(227, 72, 181));
+        cellInfoPan = new CellPanel(new Cell(600,600,null),200, false, false,false);
 
         //Sa c'est pour PNG
         ImageIcon icon = new ImageIcon("./ressources/images/SVGFiles/trash.png");
         ImageIcon icon2 = new ImageIcon(icon.getImage().getScaledInstance(25,25,Image.SCALE_DEFAULT));
-        JLabel label = new JLabel(icon2, JLabel.CENTER);
+
         image = Toolkit.getDefaultToolkit().getImage("./ressources/images/autres/royal_texture.jpg");
         BufferedImage buttonIcon = null;
         try {
             buttonIcon = ImageIO.read(new File("./ressources/images/autres/rotation.png"));
+            button = new JButton(new ImageIcon(buttonIcon));
+            button.setPreferredSize(new Dimension(130, 130));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        button = new JButton(new ImageIcon(buttonIcon));
 
-        this.add(button);
+
 
         button.addActionListener(new ActionListener() {
 
@@ -81,20 +77,46 @@ public class GarbagePanel extends JPanel implements ActionListener {
         /*cellPan = new CellPanel(cell,200, true, false,false);*/
         cellPan.setPreferredSize(new Dimension(200,200));
 
+
         valider.addActionListener(this);
         modifier.addActionListener(this);
 
         (new ToolboxHandler()).initComboBox(style, type);
-
+        JLabel phrase = new JLabel("Question : ");
         modifMeuble.add(phrase1);
         modifMeuble.add(style);
         modifMeuble.add(type);
         modifMeuble.add(valider);
 
+        style.setPreferredSize(new Dimension(150,40));
+        type.setPreferredSize(new Dimension(150,40));
+
+        style.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 22));
+        type.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 22));
+
+        ((JLabel)style.getRenderer()).setVerticalAlignment(SwingConstants.BOTTOM);
+        ((JLabel)type.getRenderer()).setVerticalAlignment(SwingConstants.BOTTOM);
+
+        valider.setPreferredSize(new Dimension(100, 40));
+        valider.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 20));
+        valider.setVerticalAlignment(SwingConstants.BOTTOM);
+        valider.addActionListener(this);
+
         modifMeuble.setPreferredSize(new Dimension(200,200));
+
+
+        infoPanel = new JPanel();
+        infoPanel.setLayout(new GridLayout(1,2));
+        infoPanel.add(cellInfoPan);
+        infoPanel.add(new JPanel());
+
+        this.add(infoPanel, BorderLayout.SOUTH);
+        infoPanel.setPreferredSize(new Dimension(400,200));
+        cellInfoPan.setPreferredSize(new Dimension(200,200));
 
         JPanel complete = buildPanel(poubelle, cellPan, modifMeuble);
 
+        this.add(button);
         this.add(complete);
     }
 
@@ -123,7 +145,6 @@ public class GarbagePanel extends JPanel implements ActionListener {
         c.gridx = 0;
         c.gridy = 2;
         grid.add(panel, c);
-        grid.setBackground(new Color(227, 72, 181));
 
         return grid;
     }
@@ -186,8 +207,6 @@ public class GarbagePanel extends JPanel implements ActionListener {
 
     }
 
-
-
     public JComboBox couleurMeuble(String type, String style) throws IOException {
         ArrayList<Furniture> furnitures = (new ToolboxHandler()).initFurniture("./ressources/furnitures.csv");
         JComboBox<String> color = new JComboBox<String>();
@@ -200,10 +219,9 @@ public class GarbagePanel extends JPanel implements ActionListener {
         return color;
     }
 
-
-    /*@Override
+    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(image, 0, 0, this);
-    }*/
+    }
 }
