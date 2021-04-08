@@ -4,6 +4,7 @@ import model.Cell;
 import model.Furniture;
 import process.GridHandler;
 import process.RotatedIcon;
+import process.ToolboxHandler;
 
 import javax.swing.*;
 import java.awt.*;
@@ -98,10 +99,22 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        ( (GridPanel)this.getParent() ).reinitCellPanels();
+
+        ToolboxPanel.gridPanel.reinitCellPanels();
+        ToolboxPanel.gridPanel.revalidate();
+        ToolboxPanel.gridPanel.repaint();
+        IHM.gridPan.reinitCellPanels();
+        IHM.gridPan.revalidate();
+        IHM.gridPan.repaint();
+
         this.getParent().repaint();
         Furniture f = cell.getFurniture();
+
         GridHandler.selectedCellPanel = this;
+      /*  if(GridHandler.selectedCellPanel == this){
+            ToolboxHandler.selectedCellPanel.setVisible(false);
+
+        }*/
         JPanel informationsMeubles = informationsMeubles();
         if(f != null) {
             try {

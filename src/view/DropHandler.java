@@ -1,6 +1,7 @@
 package view;
 
 import model.Furniture;
+import process.GridHandler;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,6 +42,12 @@ public class DropHandler implements DropTargetListener, Serializable {
         boolean success = false;
         // Basically, we want to unwrap the present...
         if (dtde.isDataFlavorSupported(PanelDataFlavor.SHARED_INSTANCE)) {
+            ToolboxPanel.gridPanel.reinitCellPanels();
+            ToolboxPanel.gridPanel.revalidate();
+            ToolboxPanel.gridPanel.repaint();
+            IHM.gridPan.reinitCellPanels();
+            IHM.gridPan.revalidate();
+            IHM.gridPan.repaint();
             Transferable transferable = dtde.getTransferable();
             try {
                 Object data = transferable.getTransferData(PanelDataFlavor.SHARED_INSTANCE);
@@ -50,14 +57,11 @@ public class DropHandler implements DropTargetListener, Serializable {
                     Component component = dtc.getComponent();
                     if (component instanceof JComponent) {
                         Container parent = cellPanel.getParent();
-                        if (parent != null) {
-                            //parent.remove(panel);
-                            // parent.revalidate();
-                            //parent.repaint();
-                        }
 
                         Furniture f = cellPanel.getCell().getFurniture();
                         if(f != null) {
+
+                            GridHandler.selectedCellPanel = null;
                             Furniture clonedF = (Furniture) f.clone();
                             ((CellPanel) component).getCell().setFurniture(clonedF);
                             success = true;

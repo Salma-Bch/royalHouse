@@ -19,7 +19,6 @@ public class GridHandler implements Serializable{
         grid = initGrid(columnNumber, rowNumber);
         this.columnNumber=columnNumber;
         this.rowNumber=rowNumber;
-        //this.selectedCell = -1;
     }
 
     public Grid getGrid(){
