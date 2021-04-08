@@ -26,10 +26,14 @@ public class GarbagePanel extends JPanel implements ActionListener {
 
     private JPanel modifMeuble = new JPanel();
 
-    private JComboBox<String> color;// = new JComboBox<String>();
+    JLabel phrase1 = new JLabel("Modification esthétique");
+    JLabel phrase2 = new JLabel("Et en quelle couleur ?");
+
+    private JComboBox<String> color = new JComboBox<String>();
     private JComboBox<String> style = new JComboBox<String>();
     private JComboBox<String> type = new JComboBox<String>();
     private JButton valider = new JButton("Valider");
+    private JButton modifier = new JButton("Modifier");
     private boolean alreadyDone = false;
 
     public JPanel garbagePanel;
@@ -77,23 +81,12 @@ public class GarbagePanel extends JPanel implements ActionListener {
         /*cellPan = new CellPanel(cell,200, true, false,false);*/
         cellPan.setPreferredSize(new Dimension(200,200));
 
-        /*garbagePanel = new JPanel();
-        garbagePanel.setLayout(new GridLayout(1,2));
-        garbagePanel.add(cellPan);
-        garbagePanel.add(new JPanel());*/
-
-
-        /*GridPanel gridPanel = new GridPanel(1,1,true);
-        gridPanel.setPreferredSize(new Dimension(150,150));
-        gridPanel.add(label);*/
-
-        /*Cell cell = new Cell(200,200,null);
-
-        CellPanel cellPanel = new CellPanel(cell, 200, true, false);*/
         valider.addActionListener(this);
+        modifier.addActionListener(this);
+
         (new ToolboxHandler()).initComboBox(style, type);
-        JLabel phrase = new JLabel("Question : ");
-        modifMeuble.add(phrase);
+
+        modifMeuble.add(phrase1);
         modifMeuble.add(style);
         modifMeuble.add(type);
         modifMeuble.add(valider);
@@ -150,15 +143,44 @@ public class GarbagePanel extends JPanel implements ActionListener {
 
         if(Button == valider) {
             try {
-                color = new JComboBox<String>();
+                //color = new JComboBox<String>();
                 color = couleurMeuble((String)type.getSelectedItem(), (String)style.getSelectedItem());
-
+                if(!alreadyDone) {
+                    modifMeuble.add(phrase2);
                     modifMeuble.add(color);
+                    modifMeuble.add(modifier);
+                    alreadyDone = true;
+                }
+                else {
+                    modifMeuble.remove(5);
+                    modifMeuble.remove(5);
+                    modifMeuble.add(color);
+                    modifMeuble.add(modifier);
+                }
 
                 //modifMeuble.repaint();
                 modifMeuble.revalidate();
             } catch (IOException ex) {
                 ex.printStackTrace();
+            }
+        }
+
+        if(Button == modifier) {
+            try {
+                ArrayList<Furniture> furnitures = (new ToolboxHandler()).initFurniture("./ressources/furnitures.csv");
+                for(int i = 0; i<furnitures.size(); i++) {
+                    if(furnitures.get(i).getType().equals((String)type.getSelectedItem()) && furnitures.get(i).getStyle().equals((String)style.getSelectedItem()) && furnitures.get(i).getColor().equals(color.getSelectedItem())) {
+                        Furniture furniture = new Furniture(furnitures.get(i).getType(), furnitures.get(i).getStyle(), furnitures.get(i).getColor(), 200,200, furnitures.get(i).getImage());
+                        if(GridHandler.selectedCellPanel != null)
+                            GridHandler.selectedCellPanel.getCell().setFurniture(furniture);
+                    }
+                }
+                if(GridHandler.selectedCellPanel != null) {
+                    GridHandler.selectedCellPanel.repaint();
+                    GridHandler.selectedCellPanel.revalidate();
+                }
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
             }
         }
 
