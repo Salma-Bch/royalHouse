@@ -1,6 +1,5 @@
 package view;
 
-import model.Cell;
 import model.Furniture;
 import process.ToolboxHandler;
 import javax.swing.*;
@@ -16,8 +15,6 @@ public class ToolboxPanel extends JPanel implements ActionListener {
     private JButton valider = new JButton("Valider");
     public ToolboxHandler toolboxHandler = new ToolboxHandler();
     public GridPanel gridPanel;
-    public static JPanel infoPanel;
-    public static CellPanel cellInfoPan;
     public int nbCell = 0;
     private ArrayList<Furniture> emplacement = new ArrayList<Furniture>();
     private Image image;
@@ -26,25 +23,31 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         super();
         JPanel mainPan = new JPanel();
         gridPanel = new GridPanel(1,6,false, false,130);
-        cellInfoPan = new CellPanel(new Cell(600,600,null),200, false, false,false);
+        gridPanel.setBackground(Color.BLACK);
+        gridPanel.setPreferredSize(new Dimension(280,900));
+
+        comboBoxStyles.setPreferredSize(new Dimension(150,40));
+        comboBoxMeuble.setPreferredSize(new Dimension(150,40));
+
+        comboBoxMeuble.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 22));
+        comboBoxStyles.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 22));
+
+        ((JLabel)comboBoxStyles.getRenderer()).setVerticalAlignment(SwingConstants.BOTTOM);
+        ((JLabel)comboBoxMeuble.getRenderer()).setVerticalAlignment(SwingConstants.BOTTOM);
+
+        valider.setPreferredSize(new Dimension(100, 40));
+        valider.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 20));
+        valider.setVerticalAlignment(SwingConstants.BOTTOM);
+        valider.addActionListener(this);
 
         image = Toolkit.getDefaultToolkit().getImage("./ressources/images/autres/royal_texture.jpg");
         toolboxHandler.initComboBox(comboBoxStyles, comboBoxMeuble);
-        gridPanel.setBackground(Color.BLACK);
-        valider.addActionListener(this);
 
         this.add(this.getJpanelComboboxs());
         this.add(valider);
-        infoPanel = new JPanel();
-        infoPanel.setLayout(new GridLayout(1,2));
-        infoPanel.add(cellInfoPan);
-        infoPanel.add(new JPanel());
+        this.add(gridPanel, BorderLayout.SOUTH);
+
         System.out.println(this.getSize().getWidth());
-        gridPanel.setPreferredSize(new Dimension(200,700));
-        this.add(gridPanel, BorderLayout.CENTER);
-      //  this.add(infoPanel, BorderLayout.SOUTH);
-      //  infoPanel.setPreferredSize(new Dimension(400,200));
-      //  cellInfoPan.setPreferredSize(new Dimension(200,200));
     }
 
     @Override

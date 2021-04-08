@@ -1,8 +1,6 @@
-package tests.view;
+package view;
 
 import org.junit.Test;
-import view.GridPanel;
-import view.ToolboxPanel;
 
 import javax.swing.*;
 import java.awt.*;

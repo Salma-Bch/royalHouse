@@ -41,7 +41,7 @@ public class IHM extends JFrame implements Serializable {
         height = (int)dimension.getHeight();
         width  = (int)dimension.getWidth();
         toolboxPan.setPreferredSize(new Dimension(width/4, height));
-        toolboxPan.setBorder(BorderFactory.createEmptyBorder(30,0,30,0));
+        toolboxPan.setBorder(BorderFactory.createEmptyBorder(30,0,0,0));
         return toolboxPan;
     }
 

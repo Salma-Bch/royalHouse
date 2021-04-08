@@ -106,12 +106,12 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
         if(f != null) {
             try {
                 Furniture clonedF = (Furniture)f.clone();
-                ToolboxPanel.cellInfoPan.getCell().setFurniture(clonedF);
-                ToolboxPanel.infoPanel.remove(1);
-                ToolboxPanel.infoPanel.add(informationsMeubles);
+                GarbagePanel.cellInfoPan.getCell().setFurniture(clonedF);
+                GarbagePanel.infoPanel.remove(1);
+                GarbagePanel.infoPanel.add(informationsMeubles);
                 this.setVisible(true);
-                ToolboxPanel.infoPanel.revalidate();
-                ToolboxPanel.infoPanel.repaint();
+                GarbagePanel.infoPanel.revalidate();
+                GarbagePanel.infoPanel.repaint();
             } catch (CloneNotSupportedException ex) {
                 ex.printStackTrace();
             }
