@@ -110,25 +110,25 @@ public class GarbagePanel extends JPanel implements ActionListener {
         grid.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
+        c.insets = new Insets(75,0,0,0);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.5;
         c.gridx = 0;
-        c.gridy = 0;
+        c.gridy = 1;
         grid.add(trash, c);
 
         c.insets = new Insets(30,0,0,0);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.5;
         c.gridx = 0;
-        c.gridy = 1;
+        c.gridy = 0;
         grid.add(modifMeuble, c);
 
-        c.insets = new Insets(330,0,0,0);
+        c.insets = new Insets(10,0,0,0);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.5;
         c.gridx = 0;
         c.gridy = 2;
-
         grid.add(panel, c);
         grid.setBackground(new Color(227, 72, 181));
 
