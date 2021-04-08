@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.io.Serializable;
 
 public class Furniture implements Serializable, Cloneable {
-
     private String type;
     private String style;
     private String color;
@@ -22,7 +21,6 @@ public class Furniture implements Serializable, Cloneable {
         this.image = image;
         this.orientation = 0;
     }
-
 
     public void incrementeOrientation(){
         this.orientation += 90;
