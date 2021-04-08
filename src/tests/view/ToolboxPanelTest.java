@@ -1,15 +1,11 @@
 package view;
 
-import model.Cell;
 import model.Furniture;
 import org.junit.Test;
 import process.ToolboxHandler;
-
 import javax.swing.*;
-
 import java.io.IOException;
 import java.util.ArrayList;
-
 import static org.junit.Assert.*;
 
 public class ToolboxPanelTest {
@@ -19,7 +15,6 @@ public class ToolboxPanelTest {
         JComboBox comboBoxMeuble = new JComboBox();
         JComboBox comboBoxStyles = new JComboBox();
         JPanel jPanel = new JPanel();
-
         jPanel.add(comboBoxMeuble);
         jPanel.add(comboBoxStyles);
         assertNotNull(jPanel);
@@ -34,9 +29,6 @@ public class ToolboxPanelTest {
         ArrayList<Furniture> furnitures = tlb.initFurniture("./ressources/furnitures.csv");
         ArrayList<String> aStyle = tlb.getFilters("./ressources/styleFilter.csv");
         ArrayList<String> aType = tlb.getFilters("./ressources/meubleFilter.csv");
-
-
-
 
         gridPanel.getGridHandler().removeFurnitures();
         int nbElt = 0;

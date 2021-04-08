@@ -1,7 +1,6 @@
 package view;
 
 import org.junit.Test;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -21,7 +20,6 @@ public class IHMTest {
         toolboxPan.setPreferredSize(new Dimension(width/4, height));
         toolboxPan.setBorder(BorderFactory.createEmptyBorder(30,0,30,0));
         assertNotNull(toolboxPan);
-
     }
 
     @Test
