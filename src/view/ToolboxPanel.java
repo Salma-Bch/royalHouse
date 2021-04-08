@@ -88,22 +88,11 @@ public class ToolboxPanel extends JPanel implements ActionListener {
             gridPanel.repaint();
         }
     }
-        /*if(Button == ajouter){
-            if(nbCell<49 && IHM.toolboxPan.gridPanel.gridHandler.getSelectedCell() <emplacement.size()) {
-                //ArrayList<Furniture> furnitures = toolboxHandler.initFurniture();
-                IHM.gridPan.drawF(nbCell, emplacement.get(IHM.toolboxPan.gridPanel.gridHandler.getSelectedCell()));
-                IHM.toolboxPan.gridPanel.gridHandler.setSelectedCell(-1);
-                IHM.gridPan.repaint();
-                nbCell++;
-
-                //System.out.println(IHM.toolboxPan.gridPanel.gridHandler.getSelectedCell());
-            }
-        }*/
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(image, 0, 0, this);
+        g.drawImage(image, 0, 0,getWidth(),getHeight(), this);
     }
 
 }
