@@ -4,9 +4,6 @@ import model.Cell;
 import model.Furniture;
 import model.Grid;
 import view.CellPanel;
-
-import javax.swing.*;
-import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -50,6 +47,7 @@ public class GridHandler implements Serializable{
     public int getRowNumber() {
         return this.rowNumber;
     }
+
     public int getColumnNumber(){
         return this.columnNumber;
     }
