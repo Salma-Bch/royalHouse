@@ -7,9 +7,10 @@ import view.CellPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class GridHandler {
+public class GridHandler implements Serializable{
     private int columnNumber, rowNumber;
     private Grid grid;
     public static CellPanel selectedCellPanel;

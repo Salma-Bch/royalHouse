@@ -41,7 +41,6 @@ public class DragGestureHandler implements DragGestureListener, DragSourceListen
         DragSource ds = dge.getDragSource();
 
         ds.startDrag(dge, null,transferable, this);
-        parent.remove(getPanel());
         parent.invalidate();
         parent.repaint();
     }
@@ -73,7 +72,6 @@ public class DragGestureHandler implements DragGestureListener, DragSourceListen
                 ((CellPanel)getPanel()).getCell().setFurniture(null);
                 System.out.println("mis a null");
             }
-            getParent().add(getPanel());
             getParent().invalidate();
             getParent().repaint();
         }
