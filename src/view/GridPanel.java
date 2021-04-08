@@ -14,14 +14,6 @@ public class GridPanel extends JPanel  {
     private boolean dropable;
     private int cellSize = 150;
 
-
-    //A ENLEVER
-    /*private DragGestureRecognizer dgr;
-    private DragGestureHandler dragGestureHandler;
-    DropTarget dropTarget;
-    DropHandler dropHandler;*/
-    ///////////
-
     public GridPanel( int columnNumber, int rowNumber, boolean dropable, boolean canThrow, int cellSize) {
         super();
         this.dropable = dropable;

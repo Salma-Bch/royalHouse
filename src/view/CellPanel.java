@@ -106,12 +106,7 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
 
         this.getParent().repaint();
         Furniture f = cell.getFurniture();
-
         GridHandler.selectedCellPanel = this;
-      /*  if(GridHandler.selectedCellPanel == this){
-            ToolboxHandler.selectedCellPanel.setVisible(false);
-
-        }*/
 
         if(f != null) {
             JPanel informationsMeubles = informationsMeubles();
@@ -127,7 +122,7 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
                 ex.printStackTrace();
             }
 
-            backgroundColor = Color.BLUE;
+            backgroundColor = new Color(61, 101, 160);
             this.repaint();
 
         }
@@ -146,7 +141,6 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
         couleur.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 22));
         style.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 22));
         type.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 22));
-
 
         informations.add(couleur);
         informations.add(type);
