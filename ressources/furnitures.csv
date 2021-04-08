@@ -34,10 +34,10 @@ Lit;Design;Bleu;./ressources/images/lits/design_3.png
 Lit;Design;Violet;./ressources/images/lits/design_4.png
 Lit;Design;Vert;./ressources/images/lits/design_5.png
 Lit;Design;Orange;./ressources/images/lits/design_6.png
-Table;Baroque;Bois;./ressources/images/tables/baroque_1.png
+Table;Baroque;Bois pin;./ressources/images/tables/baroque_1.png
 Table;Baroque;Vert;./ressources/images/tables/baroque_2.png
 Table;Baroque;Rouge;./ressources/images/tables/baroque_3.png
-Table;Baroque;Bois;./ressources/images/tables/baroque_4.png
+Table;Baroque;Bois naturel;./ressources/images/tables/baroque_4.png
 Table;Baroque;Bleu;./ressources/images/tables/baroque_5.png
 Table;Baroque;Jaune;./ressources/images/tables/baroque_6.png
 Table;Classique;Beige;./ressources/images/tables/classique_1.png
@@ -49,6 +49,6 @@ Table;Classique;Violet;./ressources/images/tables/classique_6.png
 Table;Design;Blanc;./ressources/images/tables/design_1.png
 Table;Design;Gris;./ressources/images/tables/design_2.png
 Table;Design;Noir;./ressources/images/tables/design_3.png
-Table;Design;Gris;./ressources/images/tables/design_4.png
+Table;Design;Gris anthracite;./ressources/images/tables/design_4.png
 Table;Design;Noir;./ressources/images/tables/design_5.png
-Table;Design;Gris;./ressources/images/tables/design_6.png
+Table;Design;Gris mat;./ressources/images/tables/design_6.png
