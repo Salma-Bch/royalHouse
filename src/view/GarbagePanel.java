@@ -49,7 +49,7 @@ public class GarbagePanel extends JPanel implements ActionListener {
         try {
             buttonIcon = ImageIO.read(new File("./ressources/images/autres/rotation.png"));
             button = new JButton(new ImageIcon(buttonIcon));
-            button.setPreferredSize(new Dimension(130, 130));
+            button.setPreferredSize(new Dimension(100, 100));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -104,15 +104,13 @@ public class GarbagePanel extends JPanel implements ActionListener {
 
         modifMeuble.setPreferredSize(new Dimension(200,200));
 
-
         infoPanel = new JPanel();
-        infoPanel.setLayout(new GridLayout(1,2));
+        infoPanel.setLayout(new GridLayout(2,1));
         infoPanel.add(cellInfoPan);
         infoPanel.add(new JPanel());
 
         this.add(infoPanel, BorderLayout.SOUTH);
-        infoPanel.setPreferredSize(new Dimension(400,200));
-        cellInfoPan.setPreferredSize(new Dimension(200,200));
+        infoPanel.setPreferredSize(new Dimension(200,400));
 
         JPanel complete = buildPanel(poubelle, cellPan, modifMeuble);
 

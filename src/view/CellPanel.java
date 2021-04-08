@@ -4,8 +4,6 @@ import model.Cell;
 import model.Furniture;
 import process.GridHandler;
 import process.RotatedIcon;
-import process.ToolboxHandler;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.dnd.*;
@@ -76,7 +74,6 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
         }
     }
 
-
     @Override
     public void paint(Graphics g){
         super.paint(g);
@@ -115,8 +112,9 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
             ToolboxHandler.selectedCellPanel.setVisible(false);
 
         }*/
-        JPanel informationsMeubles = informationsMeubles();
+
         if(f != null) {
+            JPanel informationsMeubles = informationsMeubles();
             try {
                 Furniture clonedF = (Furniture)f.clone();
                 GarbagePanel.cellInfoPan.getCell().setFurniture(clonedF);
@@ -138,12 +136,18 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
     public JPanel informationsMeubles() {
         JPanel informations = new JPanel();
         informations.setLayout(new GridLayout(3,1));
+
         couleur = new JLabel();
         style = new JLabel();
         type = new JLabel();
         couleur.setText("Couleur : " + cell.getFurniture().getColor());
         style.setText("Style : " + cell.getFurniture().getStyle());
         type.setText("Type : " + cell.getFurniture().getType());
+        couleur.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 22));
+        style.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 22));
+        type.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 22));
+
+
         informations.add(couleur);
         informations.add(type);
         informations.add(style);
