@@ -5,7 +5,6 @@ import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 
-
 /**
  * \file ToolboxHandler.c
  * \brief Gestionnaire de boite à outil

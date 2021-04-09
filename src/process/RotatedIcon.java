@@ -212,7 +212,6 @@ public class RotatedIcon implements Icon
     /**
      * void paintIcon(Component c, Graphics g, int x, int y)
      * @brief Fonction qui peint les icônes de cette icône composée à l'emplacement spécifié
-     *
      *  @param c Le composant sur lequel l'icône est peinte
      *  @param g le contexte graphique
      *  @param x la coordonnée X du coin supérieur gauche de l'icône
