@@ -6,6 +6,16 @@ import java.awt.datatransfer.Transferable;
 import java.awt.dnd.*;
 import java.io.Serializable;
 
+/**
+ * \file DragGestureHandler.c
+ * \brief Gestionnaire de geste de glissement
+ * \author LEKMITI Mouncif, MANOUBI Farah, BENCHELKHA Salma, OBEYESEKARA Avishka, CERINI Enzo, DENDOUNE Rayane
+ * \version 1.0
+ * \date 09/04/2021
+ *
+ * Cette classe est le gestionnaire de geste de glissement. Cette classe nous est utile pour le système de drag & drop.
+ *
+ */
 public class DragGestureHandler implements DragGestureListener, DragSourceListener, Serializable {
     private Container parent;
     private CellPanel child;

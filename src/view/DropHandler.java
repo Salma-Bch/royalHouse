@@ -8,6 +8,16 @@ import java.awt.datatransfer.Transferable;
 import java.awt.dnd.*;
 import java.io.Serializable;
 
+/**
+ * \file DropHandler.c
+ * \brief Gestionnaire de dépôt
+ * \author LEKMITI Mouncif, MANOUBI Farah, BENCHELKHA Salma, OBEYESEKARA Avishka, CERINI Enzo, DENDOUNE Rayane
+ * \version 1.0
+ * \date 09/04/2021
+ *
+ * Cette classe est le gestionnaire de dépôt. Cette classe nous est utile pour le système de drag & drop.
+ *
+ */
 public class DropHandler implements DropTargetListener, Serializable {
     @Override
     public void dragEnter(DropTargetDragEvent dtde) {
