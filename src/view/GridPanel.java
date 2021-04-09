@@ -4,7 +4,6 @@ import model.Grid;
 import process.GridHandler;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.dnd.*;
 import java.util.ArrayList;
 
 public class GridPanel extends JPanel  {
@@ -14,14 +13,6 @@ public class GridPanel extends JPanel  {
     private final Grid grid;
     private boolean dropable;
     private int cellSize = 150;
-
-
-    //A ENLEVER
-    /*private DragGestureRecognizer dgr;
-    private DragGestureHandler dragGestureHandler;
-    DropTarget dropTarget;
-    DropHandler dropHandler;*/
-    ///////////
 
     public GridPanel( int columnNumber, int rowNumber, boolean dropable, boolean canThrow, int cellSize) {
         super();

@@ -2,7 +2,6 @@ package view;
 
 import model.Furniture;
 import process.GridHandler;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.Transferable;

@@ -3,7 +3,6 @@ package model;
 import java.io.Serializable;
 
 public class Cell implements Serializable {
-
     public static int width;
     public static int height;
     private Furniture furniture;

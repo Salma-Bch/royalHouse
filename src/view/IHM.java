@@ -1,5 +1,7 @@
 package view;
 
+import de.javasoft.synthetica.blackeye.SyntheticaBlackEyeLookAndFeel;
+
 import java.awt.* ;
 import java.io.Serializable;
 import javax.swing.* ;
@@ -13,7 +15,13 @@ public class IHM extends JFrame implements Serializable {
     private int width;
     private Image image ;
 
-    public IHM(){
+    public IHM() {
+        try {
+            UIManager.setLookAndFeel(new SyntheticaBlackEyeLookAndFeel());
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        //EventQueue.invokeLater(IHM::new);
         toolboxPan = initToolboxPan();
         gridPan = initGridPan();
 

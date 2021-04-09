@@ -16,47 +16,53 @@ import java.util.ArrayList;
 
 public class GarbagePanel extends JPanel implements ActionListener {
 
-    private JButton poubelle = new JButton("Poubelle");
-    private JPanel deleteZone = new JPanel();
-    private Image image;
-    private JButton button ;
-    private JPanel modifMeuble = new JPanel();
-    private JComboBox<String> color;// = new JComboBox<String>();
-    private JComboBox<String> style = new JComboBox<String>();
-    private JComboBox<String> type = new JComboBox<String>();
+    private JButton poubelle ;
+    private JButton rotation ;
     private JButton valider = new JButton("Valider");
     private JButton modifier = new JButton("Modifier");
-    JLabel phrase1 = new JLabel("Modification esthétique");
-    JLabel phrase2 = new JLabel("Et en quelle couleur ?");
-    private boolean alreadyDone = false;
-    public JPanel garbagePanel;
+
+    private Image image;
+
+    private JComboBox<String> color;
+    private JComboBox<String> style = new JComboBox<String>();
+    private JComboBox<String> type = new JComboBox<String>();
+
+    private JLabel phrase1 = new JLabel("Modification esthétique");
+    private JLabel phrase2 = new JLabel("Et en quelle couleur ?");
+
     public GridPanel cellPan;
+    private JPanel modifMeuble = new JPanel();
+
     public static JPanel infoPanel;
     public static CellPanel cellInfoPan;
+    private boolean alreadyDone = false;
 
     public GarbagePanel(int width, int height) {
         super();
-        this.setPreferredSize(new Dimension(width/6, height));
+        this.setPreferredSize(new Dimension(width/4, height));
         this.setBorder(BorderFactory.createEmptyBorder(30,0,30,0));
-        cellInfoPan = new CellPanel(new Cell(600,600,null),200, false, false,false);
 
-        //Sa c'est pour PNG
-        ImageIcon icon = new ImageIcon("./ressources/images/SVGFiles/trash.png");
-        ImageIcon icon2 = new ImageIcon(icon.getImage().getScaledInstance(25,25,Image.SCALE_DEFAULT));
+        cellInfoPan = new CellPanel(new Cell(600,600,null),150, false, false,false);
+        image = Toolkit.getDefaultToolkit().getImage("./ressources/images/autres/royal_texture_droite.jpg");
+        BufferedImage rotationIcon = null;
+        BufferedImage poubelleIcon = null;
 
-        image = Toolkit.getDefaultToolkit().getImage("./ressources/images/autres/royal_texture.jpg");
-        BufferedImage buttonIcon = null;
         try {
-            buttonIcon = ImageIO.read(new File("./ressources/images/autres/rotation.png"));
-            button = new JButton(new ImageIcon(buttonIcon));
-            button.setPreferredSize(new Dimension(100, 100));
+            rotationIcon = ImageIO.read(new File("./ressources/images/autres/rotation.png"));
+            poubelleIcon = ImageIO.read(new File("./ressources/images/autres/trash.png"));
+
+            rotation = new JButton(new ImageIcon(rotationIcon));
+            poubelle = new JButton(new ImageIcon(poubelleIcon));
+
+            rotation.setPreferredSize(new Dimension(140, 140));
+            poubelle.setPreferredSize(new Dimension(140, 140));
+            rotation.putClientProperty("Synthetica.opaque",Boolean.TRUE);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-
-
-        button.addActionListener(new ActionListener() {
+        rotation.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -67,25 +73,16 @@ public class GarbagePanel extends JPanel implements ActionListener {
             }
         });
 
-        poubelle.addActionListener(this);
-
-        Cell cell = new Cell(200,200,null);
         cellPan = new GridPanel(1,1,true,true,200);
 
-        //il faut que dragable soit impossible
-
-        /*cellPan = new CellPanel(cell,200, true, false,false);*/
-        cellPan.setPreferredSize(new Dimension(200,200));
-
-
+        poubelle.addActionListener(this);
         valider.addActionListener(this);
         modifier.addActionListener(this);
 
-        (new ToolboxHandler()).initComboBox(style, type);
-        JLabel phrase = new JLabel("Question : ");
+        new ToolboxHandler().initComboBox(style,type);
         modifMeuble.add(phrase1);
-        modifMeuble.add(style);
         modifMeuble.add(type);
+        modifMeuble.add(style);
         modifMeuble.add(valider);
 
         style.setPreferredSize(new Dimension(150,40));
@@ -97,28 +94,36 @@ public class GarbagePanel extends JPanel implements ActionListener {
         ((JLabel)style.getRenderer()).setVerticalAlignment(SwingConstants.BOTTOM);
         ((JLabel)type.getRenderer()).setVerticalAlignment(SwingConstants.BOTTOM);
 
-        valider.setPreferredSize(new Dimension(100, 40));
+        phrase1.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 22));
+        phrase2.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 22));
+
+        valider.setPreferredSize(new Dimension(305, 40));
         valider.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 20));
         valider.setVerticalAlignment(SwingConstants.BOTTOM);
         valider.addActionListener(this);
 
-        modifMeuble.setPreferredSize(new Dimension(200,200));
+        modifier.setPreferredSize(new Dimension(305, 40));
+        modifier.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 20));
+        modifier.setVerticalAlignment(SwingConstants.BOTTOM);
+        modifier.addActionListener(this);
+
+        modifMeuble.setPreferredSize(new Dimension(350,350));
 
         infoPanel = new JPanel();
         infoPanel.setLayout(new GridLayout(2,1));
         infoPanel.add(cellInfoPan);
         infoPanel.add(new JPanel());
 
-        this.add(infoPanel, BorderLayout.SOUTH);
-        infoPanel.setPreferredSize(new Dimension(200,400));
+        this.add(infoPanel, BorderLayout.NORTH);
+        infoPanel.setPreferredSize(new Dimension(350,350));
 
-        JPanel complete = buildPanel(poubelle, cellPan, modifMeuble);
-
-        this.add(button);
+        JPanel complete = buildPanel(poubelle, modifMeuble);
+        this.add(rotation);
+        this.add(poubelle);
         this.add(complete);
     }
 
-    public JPanel buildPanel(JButton trash, GridPanel panel, JPanel modifMeuble) {
+    public JPanel buildPanel(JButton trash, JPanel modifMeuble) {
         JPanel grid = new JPanel();
         grid.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -137,50 +142,47 @@ public class GarbagePanel extends JPanel implements ActionListener {
         c.gridy = 0;
         grid.add(modifMeuble, c);
 
-        c.insets = new Insets(10,0,0,0);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0.5;
-        c.gridx = 0;
-        c.gridy = 2;
-        grid.add(panel, c);
-
         return grid;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         Object Button = e.getSource();
-        if (Button == poubelle) {
-            //cellPan.getCell().setFurniture(null);
-            cellPan.getGridHandler().getGrid().getCells().get(0).setFurniture(null);
-            //getParent().add(cellPan.getCell());
-            //getParent().invalidate();
-            //getParent().repaint();
-            repaint();
-        }
+        CellPanel selectedCellPanel = IHM.gridPan.gridHandler.selectedCellPanel;
+        if(selectedCellPanel != null) {
+            Furniture f = selectedCellPanel.getCell().getFurniture();
+            if (Button == poubelle && f != null) {
+                IHM.gridPan.gridHandler.selectedCellPanel.getCell().setFurniture(null);
+                ToolboxPanel.gridPanel.reinitCellPanels();
+                ToolboxPanel.gridPanel.revalidate();
+                ToolboxPanel.gridPanel.repaint();
+                IHM.gridPan.reinitCellPanels();
+                IHM.gridPan.revalidate();
+                IHM.gridPan.repaint();
+            }
 
-        if(Button == valider) {
-            try {
-                //color = new JComboBox<String>();
-                color = couleurMeuble((String)type.getSelectedItem(), (String)style.getSelectedItem());
-                if(!alreadyDone) {
-                    modifMeuble.add(phrase2);
-                    modifMeuble.add(color);
-                    modifMeuble.add(modifier);
-                    alreadyDone = true;
-                }
-                else {
-                    modifMeuble.remove(5);
-                    modifMeuble.remove(5);
-                    modifMeuble.add(color);
-                    modifMeuble.add(modifier);
-                }
+            if (Button == valider) {
+                try {
+                    color = couleurMeuble((String) type.getSelectedItem(), (String) style.getSelectedItem());
+                    color.setPreferredSize(new Dimension(150,40));
+                    color.setFont(new Font("Candara", Font.BOLD | Font.ITALIC, 22));
+                    ((JLabel)color.getRenderer()).setVerticalAlignment(SwingConstants.BOTTOM);
 
-                //modifMeuble.repaint();
-                modifMeuble.revalidate();
-            } catch (IOException ex) {
-                ex.printStackTrace();
+                    if (!alreadyDone) {
+                        modifMeuble.add(phrase2);
+                        modifMeuble.add(color);
+                        modifMeuble.add(modifier);
+                        alreadyDone = true;
+                    } else {
+                        modifMeuble.remove(5);
+                        modifMeuble.remove(5);
+                        modifMeuble.add(color);
+                        modifMeuble.add(modifier);
+                    }
+                    modifMeuble.revalidate();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         }
 
@@ -210,7 +212,7 @@ public class GarbagePanel extends JPanel implements ActionListener {
         JComboBox<String> color = new JComboBox<String>();
 
         for(int i = 0; i<furnitures.size(); i++) {
-            if (furnitures.get(i).getStyle().equals(style) && furnitures.get(i).getType().equals(type)) {
+            if (furnitures.get(i).getType().equals(type) && furnitures.get(i).getStyle().equals(style)) {
                 color.addItem(furnitures.get(i).getColor());
             }
         }
@@ -220,6 +222,6 @@ public class GarbagePanel extends JPanel implements ActionListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(image, 0, 0, this);
+        g.drawImage(image, 0, 0,getWidth(),getHeight(), this);
     }
 }
