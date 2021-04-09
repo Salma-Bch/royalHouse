@@ -12,8 +12,23 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
+/**
+ * \file ToolboxHandlerTest.java
+ * \brief Classe qui permet de tester les méthodes de la classe ToolboxHandler
+ * \author BENCHELKA Salma, LEKMITI Mouncif, MANOUBI Farah, OBEYESEKARA Avishka, CERINI Enzo, DENDOUNE Rayane
+ * \version 1.0
+ * \date 09/04/2021
+ *
+ * Classe contenant toutes les methodes de test de la classe ToolboxHandler
+ */
+
 public class ToolboxHandlerTest {
 
+    /**
+     * @brief Méthode permettant de tester la méthode getFilters(String filePathName) de la classe ToolboxHandler.
+     * @details Méthode dans laquelle on ajoute dans 2 ArrayList les types de meubles (String). Dans la première on les ajoute directement depuis le fichier mmeubleFilter.csv. Dans l'autre on les ajoute en utilisant la méthode getFilters() de la classe TollboxHandler. On vérifie ensuite que ces deux Arraylist possèdent le même nombre d'éléments.
+     * @throws IOException
+     */
     @Test
     public void getFilters() throws IOException {
         ToolboxHandler tbh = new ToolboxHandler();
@@ -31,6 +46,11 @@ public class ToolboxHandlerTest {
         assertEquals(filtres2.size(), filtres1.size());
     }
 
+    /**
+     * @brief Méthode permettant de tester la méthode initComboBox(JComboBox  comboBoxMeuble, JComboBox comboBoxStyles) de la classe ToolboxHandler.
+     * @Méthode qui vérifie que le nombre nbComboBox correspond bien au nombre d'éléments ajoutés à la JComboBox jcb.
+     * @throws IOException
+     */
     @Test
     public void initComboBox() throws IOException {
         ToolboxHandler tbh = new ToolboxHandler();
@@ -47,6 +67,11 @@ public class ToolboxHandlerTest {
         assertEquals(filtres.size(), nbComboBox);
     }
 
+    /**
+     * @brief Méthode permettant de tester la méthode initFurniture(String filePathName) de la classe ToolboxHandler.
+     * @details Méthode qui vérifie que le nombre de meubles ajoutés à la ToolboxHandler est bien égal au nombre de meubles contenue dans le fichier furnitures.csv.
+     * @throws IOException
+     */
     @Test
     public void initFurniture() throws IOException {
         ToolboxHandler tbh = new ToolboxHandler();

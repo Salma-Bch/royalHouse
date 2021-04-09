@@ -6,8 +6,21 @@ import java.awt.*;
 import java.util.ArrayList;
 import static org.junit.Assert.*;
 
+/**
+ * \file GridPanelTest.java
+ * \brief Classe qui permet de tester les méthodes de la classe GridPanel.
+ * \author BENCHELKA Salma, LEKMITI Mouncif, MANOUBI Farah, OBEYESEKARA Avishka, CERINI Enzo, DENDOUNE Rayane
+ * \version 1.0
+ * \date 09/04/2021
+ *
+ * Classe contenant toutes les methodes de test de la classe GridPanel.
+ */
 public class GridPanelTest {
 
+    /**
+     * @Brief Méthode permettant de tester la méthode reinitCellPanels()
+     * @details Méthode qui vérifie que la couleur des cellPanel à bien été modifié à gris après l'appel de la fonction reinitCellPanels() de la classe GridPanel.
+     */
     @Test
     public void reinitCellPanels() {
         ArrayList<CellPanel> cellPanels = new ArrayList<CellPanel>();
@@ -31,6 +44,10 @@ public class GridPanelTest {
         }
    }
 
+    /**
+     * @Brief Méthode permettant de tester la méthode initCellPanels().
+     * @details Méthode qui vérifie que le nombre de cellPanels ajoutés à cell est bien égale au nombre de cellule de disponible dans cell.
+     */
     @Test
     public void initCellPanels() {
         ArrayList<CellPanel> cellPanels = new ArrayList<CellPanel>();

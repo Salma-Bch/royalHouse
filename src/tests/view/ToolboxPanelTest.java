@@ -8,8 +8,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import static org.junit.Assert.*;
 
+/**
+ * \file ToolboxPanelTest.java
+ * \brief Classe qui permet de tester les méthodes de la classe ToolboxPanel.
+ * \author BENCHELKA Salma, LEKMITI Mouncif, MANOUBI Farah, OBEYESEKARA Avishka, CERINI Enzo, DENDOUNE Rayane
+ * \version 1.0
+ * \date 09/04/2021
+ *
+ * Classe contenant toutes les methodes de test de la classe ToolboxPanel.
+ */
 public class ToolboxPanelTest {
 
+    /**
+     * @Brief Méthode permettant de tester la méthode getJpanelComboboxs() de la classe IHMTest.
+     * @details Méthode qui vérifie que la JComboBox comboBoxMeuble initialisée est identique à celle ajoutée dans le JPanel jPanel. Idem pour la JComboBox comboBoxStyles.
+     */
     @Test
     public void getJpanelComboboxs() {
         JComboBox comboBoxMeuble = new JComboBox();
@@ -22,6 +35,10 @@ public class ToolboxPanelTest {
         assertEquals(comboBoxStyles, jPanel.getComponent(1));
     }
 
+    /**
+     * @brief Méthode permettant de tester la méthode drawFurniture(String type, String style) de la classe ToolboxPanel().
+     * @throws IOException
+     */
     @Test
     public void drawFurniture() throws IOException {
         GridPanel gridPanel = new GridPanel(12, 12, false, false,1);

@@ -6,8 +6,21 @@ import java.awt.*;
 
 import static org.junit.Assert.*;
 
+/**
+ * \file IHMTest.java
+ * \brief Classe qui permet de tester les méthodes de la classe IHMTest.
+ * \author BENCHELKA Salma, LEKMITI Mouncif, MANOUBI Farah, OBEYESEKARA Avishka, CERINI Enzo, DENDOUNE Rayane
+ * \version 1.0
+ * \date 09/04/2021
+ *
+ * Classe contenant toutes les methodes de test de la classe IHMTest.
+ */
 public class IHMTest {
 
+    /**
+     * @Brief Méthode permettant de tester la méthode initToolBoxPan() de la classe IHMTest.
+     * @details Méthode qui vérifie que le ToolboxPan initialisé à bien été créé, c'est à dire qu'il n'est pas NULL.
+     */
     @Test
     public void initToolboxPan() {
         Dimension dimension;
@@ -22,6 +35,10 @@ public class IHMTest {
         assertNotNull(toolboxPan);
     }
 
+    /**
+     * @Brief Méthode qui permet de tester la méthode initGridPan() de la classe IHMTest.
+     * @details Méthode qui vérifie que le GridPan initialisé à bien été créé, c'est à dire qu'il n'est pas NULL.
+     */
     @Test
     public void initGridPan() {
         Dimension dimension;

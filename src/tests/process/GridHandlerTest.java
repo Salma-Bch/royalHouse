@@ -12,8 +12,40 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-public class GridHandlerTest {
+/**
+ * \file GridHandlerTest.java
+ * \brief Classe qui permet de tester les méthodes de la classe GridHandler
+ * \author BENCHELKA Salma, LEKMITI Mouncif, MANOUBI Farah, OBEYESEKARA Avishka, CERINI Enzo, DENDOUNE Rayane
+ * \version 1.0
+ * \date 09/04/2021
+ *
+ * Classe contenant toutes les methodes de test de la classe GridHandler.
+ */
 
+public class GridHandlerTest {
+    /**
+     * @brief Méthode permettant de tester la méthode initGrid(int columnNumber, int rowNumber) de la classe GridHandler.
+     * @details Méthode dans laquelle est initialisé un GridPanel dans lequel on ajoute des cellules (Cell). On vérifie ensuite que le nombre de cellules ajoutés est bien égal au nombre de cellules totale de GridPanel.
+     */
+    @Test
+    public void initGrid(){
+        int r=4, c=4;
+        Grid grid = new Grid(r,c);
+        ArrayList<Cell> cells = new ArrayList<Cell>();
+        for(int i = 0; i<r*c; i++) {
+            Cell cell = new Cell(200, 200, null);
+            cells.add(cell);
+        }
+        grid.setCells(cells);
+        assertNotNull(grid);
+        //assertSame(grid,cells);
+        assertEquals(r*c, grid.getCells().size());
+    }
+
+    /**
+     * @brief Méthode permettant de tester la méthode addFurniture(int position, Furniture furniture) de la classe GridHandler.
+     * @details Un meuble qui à été créé est ajouté à un GridPanel. La méthode verifie que le meuble contenu dans la GridPanel n'est pas NULL et qu'il correspond bien au meuble créé initialement.
+     */
     @Test
     public void addFurniture() {
         int position=0;
@@ -46,21 +78,6 @@ public class GridHandlerTest {
     }
 
     @Test
-    public void initGrid(){
-        int r=4, c=4;
-        Grid grid = new Grid(r,c);
-        ArrayList<Cell> cells = new ArrayList<Cell>();
-        for(int i = 0; i<r*c; i++) {
-            Cell cell = new Cell(200, 200, null);
-            cells.add(cell);
-        }
-        grid.setCells(cells);
-        assertNotNull(grid);
-        //assertSame(grid,cells);
-        assertEquals(r*c, grid.getCells().size());
-    }
-
-    @Test
     public void setSelectedCell() {
     }
 
@@ -72,6 +89,10 @@ public class GridHandlerTest {
     public void getGrid() {
     }
 
+    /**
+     * @brief Méthode permettant de tester la méthode removeFurnitures() de la classe GridHandler.
+     * @details Méthode qui vérifie qu'un meuble créé au préalable est bien à NULL après sa suppression.
+     */
     @Test
     public void removeFurnitures() {
         int position=0;
