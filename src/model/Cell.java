@@ -20,7 +20,7 @@ public class Cell implements Serializable {
      * \fn Cell(int width, int height, Furniture furniture)
      * \brief Constructeur de Cellule
      * \param [in] width correspond à la largeur d'une cellule (Type Integer)
-     * \param [in] height correspond  à la taille d'une cellule (Type Intgeger)
+     * \param [in] height correspond  à la taille d'une cellule (Type Integer)
      * \param [in] furniture correspond au meuble present dans la cellule (Type Furniture)
      */
 

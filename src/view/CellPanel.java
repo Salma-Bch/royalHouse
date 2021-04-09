@@ -11,6 +11,17 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.Serializable;
 
+/**
+ * \file CellPanel.java
+ * \brief Classe qui permet d afficher une cellule
+ * \author CERINI Enzo, OBEYESEKARA Avishka, MANOUBI Farah, DENDOUNE Rayane, LEKMITI Mouncif, BENCHELKHA Salma
+ * \version 1.0
+ * \date 09/04/2021
+ *
+ * Classe contenant toutes les fonctions associées à l'affichage d'une cellule
+ *
+ */
+
 public class CellPanel extends JPanel implements MouseListener, Serializable {
     private final Cell cell;
     private final int cellSize;
@@ -27,6 +38,14 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
     DropTarget dropTarget;
     DropHandler dropHandler;
 
+    /**
+     * \fn CellPanel(Cell cell, int cellSize, boolean dropable, boolean dragable,boolean canThrow)
+     * \brief Constructeur de CellulePanel
+     * \param [in] cell correspond à une cellule (Type Cellule)
+     * \param [in] cellSize correspond  à la taille d'une cellule (Type Integer)
+     * \param [in] dropable permet d'indiquer si un meuble est dropable (Type Boolean)
+     * \param [in] canThrow permet d'indiquer si un meuble est dragable (Type Boolean)
+     */
     public CellPanel(Cell cell, int cellSize, boolean dropable, boolean dragable,boolean canThrow){
         super();
         this.cell = cell;
@@ -37,14 +56,29 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.addMouseListener(this);
     }
+
+    /**
+     * \fn Cell getCell()
+     * \brief Fonction qui retourne une cellule
+     * \return Retourne une cellule
+     */
     public Cell getCell(){
         return this.cell;
     }
 
+    /**
+     * \fn Color getBackgroundColor()
+     * \brief Fonction qui permet de retourner une couleur de fond
+     * \return Retourne une couleur
+     */
     public Color getBackgroundColor() {
         return backgroundColor;
     }
 
+    /**
+     * \fn void addNotify()
+     * \brief Fonction qui permet de notifier
+     */
     @Override
     public void addNotify(){
         if(dragable) {
@@ -60,6 +94,10 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
         }
     }
 
+    /**
+     * \fn void remoteNotify()
+     * \brief Fonction qui permet de supprimer une notification
+     */
     @Override
     public void removeNotify(){
         if(dragable) {
@@ -73,7 +111,11 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
                 dropTarget.removeDropTargetListener(dropHandler);
         }
     }
-
+    /**
+     * \fn void paint(Graphics g)
+     * \brief Fonction qui permet de dessiner
+     * \param [in] g correspond au Graphique (Type Graphics)
+     */
     @Override
     public void paint(Graphics g){
         super.paint(g);
@@ -81,6 +123,11 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
         paintFurniture(g);
     }
 
+    /**
+     * \fn void paintFurniture(Graphics g)
+     * \brief Fonction qui permet de dessiner un meuble dans une cellule
+     * \param [in] g correspond au Graphique (Type Graphics)
+     */
     public void paintFurniture(Graphics g){
         if(cell.getFurniture() != null) {
             Image image = cell.getFurniture().getImage().getImage().getScaledInstance(cellSize, cellSize, Image.SCALE_DEFAULT);
@@ -94,6 +141,11 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
         this.backgroundColor = backgroundColor;
     }
 
+    /**
+     * \fn void mouseClicked(MouseEvent e)
+     * \brief Fonction qui permet de gérer les mouvements de la souris dans une cellule
+     * \param [in] e correspond aux évènements de la souris (Type MouseEvent)
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -128,6 +180,11 @@ public class CellPanel extends JPanel implements MouseListener, Serializable {
         }
 
     }
+    /**
+     * \fn JPanel informationsMeubles()
+     * \brief Fonction qui permet d'afficher les informations d'un meuble sélectionné dans un JPanel
+     * \return un JPanel contenant les informations du meuble sélectionné
+     */
     public JPanel informationsMeubles() {
         JPanel informations = new JPanel();
         informations.setLayout(new GridLayout(3,1));

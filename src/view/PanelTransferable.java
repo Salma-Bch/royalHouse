@@ -5,6 +5,16 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
+/**
+ * \file PanelTransferable.java
+ * \brief Classe qui permet de gérer le transfert d'un objet vers le panel
+ * \author CERINI Enzo, OBEYESEKARA Avishka, MANOUBI Farah, DENDOUNE Rayane, LEKMITI Mouncif, BENCHELKHA Salma
+ * \version 1.0
+ * \date 09/04/2021
+ *
+ * Classe contenant toutes les fonctions associées au transfert d'un objet vers le panel
+ *
+ */
 
 public class PanelTransferable implements Transferable {
     private DataFlavor[] flavors = new DataFlavor[]{PanelDataFlavor.SHARED_INSTANCE};

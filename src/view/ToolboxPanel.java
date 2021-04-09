@@ -9,6 +9,16 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * \file ToolboxPanel.java
+ * \brief Classe qui permet d afficher la boite à outils
+ * \author CERINI Enzo, OBEYESEKARA Avishka, MANOUBI Farah, DENDOUNE Rayane, LEKMITI Mouncif, BENCHELKHA Salma
+ * \version 1.0
+ * \date 09/04/2021
+ *
+ * Classe contenant toutes les fonctions associées à l'affichage de la boite à outils
+ *
+ */
 public class ToolboxPanel extends JPanel implements ActionListener {
     private JComboBox comboBoxMeuble = new JComboBox();
     private JComboBox comboBoxStyles = new JComboBox();
@@ -19,6 +29,10 @@ public class ToolboxPanel extends JPanel implements ActionListener {
     private ArrayList<Furniture> emplacement = new ArrayList<Furniture>();
     private Image image;
 
+    /**
+     * \fn TooloboxPanel()
+     * \brief Constructeur de TooloboxPanel
+     */
     public ToolboxPanel() {
         super();
         JPanel mainPan = new JPanel();
@@ -61,7 +75,13 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         jPanel.add(comboBoxStyles);
         return jPanel;
     }
-
+    /**
+     * \fn  GridPanel drawFurniture(String type, String style)
+     * \brief Fonction qui permet de dessiner un meuble dans la ToolboxPanel
+     * \param type correspond au type de meuble(Type String)
+     * \param style correspond au style (Type String)
+     * \return Retourne la grille avec le meuble dessiner
+     */
     public GridPanel drawFurniture(String type, String style) throws IOException {
         ArrayList<Furniture> furnitures = toolboxHandler.initFurniture("./ressources/furnitures.csv");
         int nbElt = 0;
@@ -74,7 +94,11 @@ public class ToolboxPanel extends JPanel implements ActionListener {
         }
         return gridPanel;
     }
-
+    /**
+     * \fn void actionPerformed(ActionEvent e)
+     * \brief Fonction qui gère l'affichage dans la boite à outilsen fonction de l'action effectué
+     * \param [in] e correspond aux évènements de l'utilisateur
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object Button = e.getSource();

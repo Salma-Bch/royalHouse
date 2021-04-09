@@ -13,6 +13,16 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+/**
+ * \file CellPanel.java
+ * \brief Classe qui permet d afficher la corbeille
+ * \author CERINI Enzo, OBEYESEKARA Avishka, MANOUBI Farah, DENDOUNE Rayane, LEKMITI Mouncif, BENCHELKHA Salma
+ * \version 1.0
+ * \date 09/04/2021
+ *
+ * Classe contenant toutes les fonctions associées à l'affichage de la corbeille
+ *
+ */
 
 public class GarbagePanel extends JPanel implements ActionListener {
 
@@ -37,6 +47,12 @@ public class GarbagePanel extends JPanel implements ActionListener {
     public static CellPanel cellInfoPan;
     private boolean alreadyDone = false;
 
+    /**
+     * \fn GarbagePanel(int width, int height)
+     * \brief Constructeur de GarbagePanel
+     * \param [in] width correspond à la largeur de la corbeille (Type Integer)
+     * \param [in] height correspond  à la taille de la corbeille (Type Integer)
+     */
     public GarbagePanel(int width, int height) {
         super();
         this.setPreferredSize(new Dimension(width/4, height));
@@ -122,7 +138,13 @@ public class GarbagePanel extends JPanel implements ActionListener {
         this.add(poubelle);
         this.add(complete);
     }
-
+    /**
+     * \fn JPanel buildPanel(JButton trash, JPanel modifMeuble)
+     * \brief Fonction qui permet d'afficher l'affichage de la corbeille
+     * \param [in] trash correspond à un boutton (Type JButton)
+     * \param [in] modifMeuble correspond à un JPanel(Type JPanel)
+     * \return Retourne le JPanel correspodant
+     */
     public JPanel buildPanel(JButton trash, JPanel modifMeuble) {
         JPanel grid = new JPanel();
         grid.setLayout(new GridBagLayout());
@@ -145,6 +167,11 @@ public class GarbagePanel extends JPanel implements ActionListener {
         return grid;
     }
 
+    /**
+     * \fn void actionPerformed(ActionEvent e)
+     * \brief Fonction qui gère l'affichage dans la corbeille en fonction de l'action effectué
+     * \param [in] e correspond aux évènements de l'utilisateur
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object Button = e.getSource();
@@ -206,6 +233,13 @@ public class GarbagePanel extends JPanel implements ActionListener {
         }
 
     }
+
+    /**
+     * \fn JComboBox couleurMeuble(String type, String style)
+     * \brief Fonction qui permet de généner une comboBox contenant les couleurs des meubles et styles sélectionés
+     * \param [in] type correspond au type du meuble (Type String)
+     * \param [in] style correspond au style du meuble (Type String)
+     */
 
     public JComboBox couleurMeuble(String type, String style) throws IOException {
         ArrayList<Furniture> furnitures = (new ToolboxHandler()).initFurniture("./ressources/furnitures.csv");

@@ -6,6 +6,17 @@ import java.awt.* ;
 import java.io.Serializable;
 import javax.swing.* ;
 
+/**
+ * \file IHM.java
+ * \brief Classe qui permet l'affichage globale de l'interface graphique
+ * \author CERINI Enzo, OBEYESEKARA Avishka, MANOUBI Farah, DENDOUNE Rayane, LEKMITI Mouncif, BENCHELKHA Salma
+ * \version 1.0
+ * \date 09/04/2021
+ *
+ * Classe contenant toutes les fonctions associées à l'affichage globale de notre ineterface graphique
+ *
+ */
+
 public class IHM extends JFrame implements Serializable {
     public static ToolboxPanel toolboxPan;
     public static GridPanel gridPan;
